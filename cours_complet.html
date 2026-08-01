@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optique géométrique — Cours complet (13 chapitres) à exporter en PDF</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+<style>
+/* ═══════ barre d'outils (écran seulement) ═══════ */
+.toolbar{
+  position:sticky; top:0; z-index:60;
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  background:color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  padding:10px 24px;
+}
+.toolbar .back{
+  font-size:13px; color:var(--ink-2); text-decoration:none; white-space:nowrap;
+}
+.toolbar .back:hover{color:var(--ink)}
+.toolbar .tb-title{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); margin-right:auto;
+}
+.toolbar button{
+  font:inherit; font-size:13.5px; font-weight:600; cursor:pointer;
+  padding:8px 18px; border-radius:999px; border:1px solid var(--beam);
+  background:var(--beam); color:#fff; transition:opacity .15s;
+}
+.toolbar button:hover{opacity:.88}
+.toolbar button:focus-visible{outline:2px solid var(--beam); outline-offset:2px}
+
+/* ═══════ couverture ═══════ */
+.cover{padding:72px 0 8px}
+.cover .eyebrow{margin-bottom:18px}
+.cover .dek{max-width:66ch}
+.cover-toc{
+  margin:40px 0 0; padding:0; list-style:none; max-width:560px;
+  border:1px solid var(--line); border-radius:5px; background:var(--surface);
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.cover-toc li{margin:0}
+.cover-toc li + li{border-top:1px solid var(--line-soft)}
+.cover-toc a{
+  display:flex; align-items:baseline; gap:16px; padding:10px 18px;
+  text-decoration:none; color:var(--ink);
+}
+.cover-toc a:hover{background:var(--surface-2)}
+.cover-toc b{
+  font-family:var(--mono); font-size:11px; font-weight:500; color:var(--beam);
+  width:1.6em; flex:none; text-align:right;
+}
+.cover .note{
+  margin-top:36px; max-width:74ch; font-size:13.5px; color:var(--ink-3);
+  border-top:1px solid var(--line); padding-top:14px;
+}
+
+/* ═══════ chargement / erreur ═══════ */
+.status{
+  margin:56px 0; font-family:var(--mono); font-size:13px; color:var(--ink-3);
+}
+.status.error{color:var(--warn); font-family:var(--sans); font-size:15px; max-width:66ch}
+
+/* la note qui remplace chaque banc interactif */
+.bench-note{font-size:13.5px}
+
+/* ═══════ impression / export PDF ═══════ */
+@media print{
+  @page{size:A4; margin:15mm 13mm}
+  :root, :root[data-theme="light"]{
+    --bg:#fff; --surface:#fff; --surface-2:#fff; --sunk:#fff;
+    --shadow:none; --grid:transparent;
+  }
+  body{background:#fff}
+  .toolbar{display:none}
+  main{padding-bottom:0}
+  .wrap{max-width:none; padding:0}
+  .cover{padding:36px 0 0}
+  .cover-toc{box-shadow:none}
+  .cover-toc a{padding:6px 14px}
+  /* chaque chapitre démarre sur une nouvelle page */
+  #doc > .ch{break-before:page; padding-top:0}
+  .ch + .ch{border-top:none}
+  .ch h3{margin-top:26px; break-after:avoid}
+  .ch-head h2{break-after:avoid}
+  figure.fig, .formula, .callout, .tbl, .grid2 > *, .cover-toc{break-inside:avoid}
+  figure.fig{box-shadow:none}
+  figure.fig .canvas{background:#fff}
+  a{color:inherit; text-decoration:none}
+  .cover-toc b, .ch h3::before, figure.fig figcaption b,
+  .callout .t, .eyebrow, h1 em{color:var(--beam)}
+  .callout.info .t{color:var(--glass)}
+  .callout.warn .t{color:var(--warn)}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="tb-title">Cours complet · version imprimable</span>
+  <a class="back" href="index.html">&larr; Retour au cours en ligne</a>
+  <button type="button" onclick="window.print()">Exporter en PDF</button>
+</div>
+
+<main>
+<div class="wrap">
+
+<header class="cover">
+  <p class="eyebrow">Cours d'optique géométrique · théorie seule, sans les exercices</p>
+  <h1>Optique <em>géométrique</em></h1>
+  <p class="dek">Les 13 chapitres de théorie et leurs figures, rassemblés dans un seul
+    document. Pour obtenir le PDF : bouton « Exporter en PDF » (ou Ctrl/Cmd&nbsp;+&nbsp;P),
+    puis « Enregistrer au format PDF ». Les exercices et leurs corrigés font l'objet d'un
+    document séparé.</p>
+  <ol class="cover-toc">
+    <li><a href="#c1"><b>1</b>Bases et conventions</a></li>
+    <li><a href="#c2"><b>2</b>Les lois de Snell-Descartes</a></li>
+    <li><a href="#c3"><b>3</b>La réflexion totale</a></li>
+    <li><a href="#c4"><b>4</b>Le miroir plan</a></li>
+    <li><a href="#c5"><b>5</b>Les miroirs sphériques</a></li>
+    <li><a href="#c6"><b>6</b>Les lentilles minces</a></li>
+    <li><a href="#c7"><b>7</b>L'œil</a></li>
+    <li><a href="#c8"><b>8</b>Les défauts visuels</a></li>
+    <li><a href="#c9"><b>9</b>La loupe</a></li>
+    <li><a href="#c10"><b>10</b>L'appareil photo et le champ de vision</a></li>
+    <li><a href="#c11"><b>11</b>Le microscope</a></li>
+    <li><a href="#c12"><b>12</b>Le principe de Fermat</a></li>
+    <li><a href="#c13"><b>13</b>Formulaire et méthode</a></li>
+  </ol>
+  <p class="note">Convention de signe unique dans tout le cours : la lumière va de gauche à
+    droite, l'origine est au sommet du système (O ou S), les distances vers la droite sont
+    positives. Sauf indication contraire : c = 3,00 × 10⁸ m/s, n(air) = 1,00,
+    n(eau) = 1,33, n(verre) = 1,5.</p>
+</header>
+
+<p class="status" id="status">Assemblage des 13 chapitres…</p>
+
+<div id="doc"></div>
+
+</div>
+</main>
+
+<script>
+(function(){
+"use strict";
+
+const CHAPTERS = [
+  "01-bases.html", "02-snell-descartes.html", "03-reflexion-totale.html",
+  "04-miroir-plan.html", "05-miroirs-spheriques.html", "06-lentilles-minces.html",
+  "07-oeil.html", "08-defauts-visuels.html", "09-loupe.html",
+  "10-appareil-photo.html", "11-microscope.html", "12-fermat.html",
+  "13-formulaire.html"
+];
+
+const status = document.getElementById("status");
+const target = document.getElementById("doc");
+
+async function build(){
+  const pages = await Promise.all(CHAPTERS.map(async f => {
+    const r = await fetch("chapitres/" + f);
+    if(!r.ok) throw new Error(f + " : " + r.status);
+    return r.text();
+  }));
+
+  const parser = new DOMParser();
+  pages.forEach(html => {
+    const page = parser.parseFromString(html, "text/html");
+    /* la théorie seulement : les sections d'exercices (.exos) sont ignorées */
+    page.querySelectorAll("main section.ch:not(.exos)").forEach(sec => {
+      /* les bancs interactifs ne vivent que dans le navigateur :
+         on les remplace par un renvoi vers la version en ligne */
+      sec.querySelectorAll(".bench-wrap").forEach(b => {
+        const note = page.createElement("div");
+        note.className = "callout info bench-note";
+        note.innerHTML = '<span class="t">Banc interactif</span>' +
+          "À cet endroit, la version en ligne du chapitre propose un banc interactif : " +
+          "les paramètres se manipulent et les rayons se retracent en direct.";
+        b.replaceWith(note);
+      });
+      /* les liens internes des chapitres n'ont pas de sens dans le document assemblé */
+      sec.querySelectorAll("a").forEach(a => {
+        const span = page.createElement("span");
+        span.innerHTML = a.innerHTML;
+        a.replaceWith(span);
+      });
+      target.appendChild(document.importNode(sec, true));
+    });
+  });
+  status.hidden = true;
+}
+
+build().catch(err => {
+  status.classList.add("error");
+  status.textContent = "Impossible d'assembler les chapitres (" + err.message + "). " +
+    "Cette page doit être ouverte depuis le site en ligne ou un serveur local " +
+    "(par exemple « python3 -m http.server » dans le dossier du cours) — " +
+    "l'ouverture directe du fichier ne permet pas de charger les chapitres.";
+});
+})();
+</script>
+</body>
+</html>
