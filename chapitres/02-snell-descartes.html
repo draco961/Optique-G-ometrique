@@ -133,6 +133,93 @@
   </div>
 </section>
 
+<section class="ch exos" id="exercices">
+  <div class="ch-head">
+    <p class="ch-num">Entraînement · 4 exercices</p>
+    <h2>Exercices du chapitre</h2>
+    <p class="lede">Cherche chaque exercice au brouillon avant d'afficher la réponse : c'est
+    en te trompant d'abord que la correction devient utile.
+    Tu peux aussi <a class="inline" href="03-reflexion-totale.html">passer directement au chapitre suivant</a>.</p>
+  </div>
+
+  <article class="exo" id="exo-2-1">
+    <h3 class="exo-h"><span class="exo-n">Exercice 2.1</span>De l'air vers le verre</h3>
+    <p>Un rayon lumineux arrive de l'air sur une vitre en verre (n = 1,5) avec un angle d'incidence i₁ = 45°.</p>
+    <ol class="q">
+    <li>Énoncer les deux lois de Snell-Descartes pour la réfraction.</li>
+    <li>Calculer l'angle de réfraction i₂.</li>
+    <li>Le rayon se rapproche-t-il ou s'éloigne-t-il de la normale ? Justifier par une règle générale.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>① Le rayon réfracté est dans le <b>plan d'incidence</b> (plan contenant le rayon incident et la normale). ② <b>n₁ sin i₁ = n₂ sin i₂</b>.</li>
+        <li>sin i₂ = (n₁/n₂) sin i₁ = (1/1,5) × sin 45° = 0,471 → <b class="res">i₂ ≈ 28°</b>.</li>
+        <li>Il se <b class="res">rapproche de la normale</b>. Règle : en passant vers un milieu <b>plus réfringent</b> (n₂ &gt; n₁), le rayon se rapproche toujours de la normale.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-2-2">
+    <h3 class="exo-h"><span class="exo-n">Exercice 2.2</span>De l'eau vers l'air</h3>
+    <p>Un rayon passe de l'eau (n = 1,33) vers l'air avec un angle d'incidence de 25°.</p>
+    <ol class="q">
+    <li>Calculer l'angle de réfraction.</li>
+    <li>Comparer à l'angle d'incidence et commenter.</li>
+    <li>Expliquer pourquoi une paille plongée dans un verre d'eau semble « cassée ».</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>sin i₂ = (1,33/1) × sin 25° = 0,562 → <b class="res">i₂ ≈ 34°</b>.</li>
+        <li>i₂ &gt; i₁ : le rayon <b class="res">s'éloigne de la normale</b> (passage vers un milieu moins réfringent).</li>
+        <li>Les rayons venant de la partie immergée de la paille sont déviés à la traversée de la surface eau → air : l'œil les prolonge en ligne droite et « voit » la paille à une position décalée, d'où l'apparence brisée.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-2-3">
+    <h3 class="exo-h"><span class="exo-n">Exercice 2.3</span>Identifier un milieu</h3>
+    <p>Un rayon venant de l'air entre dans un milieu transparent inconnu : pour i₁ = 60°, on mesure i₂ = 35°.</p>
+    <ol class="q">
+    <li>Calculer l'indice de réfraction du milieu.</li>
+    <li>À l'aide du tableau des indices du cours, proposer la nature de ce milieu.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>n₂ = sin i₁ / sin i₂ = sin 60° / sin 35° = 0,866 / 0,574 ≈ <b class="res">1,51</b>.</li>
+        <li>n ≈ 1,5 : c'est du <b class="res">verre courant</b>.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-2-4">
+    <h3 class="exo-h"><span class="exo-n">Exercice 2.4</span>Questions de cours</h3>
+    <ol class="q">
+    <li>Énoncer les lois de la réflexion.</li>
+    <li>Que signifie le principe du retour inverse de la lumière ?</li>
+    <li>Que se passe-t-il pour un rayon arrivant avec i = 0° (incidence normale) ?</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>① Le rayon réfléchi est dans le plan d'incidence. ② L'angle de réflexion est égal à l'angle d'incidence : <b class="res">r = i</b>.</li>
+        <li>Si la lumière suit un trajet d'un point A vers un point B, elle peut suivre exactement le <b>même trajet en sens inverse</b> de B vers A.</li>
+        <li>sin 0° = 0 donc i₂ = 0° : le rayon <b class="res">traverse sans être dévié</b> (mais sa vitesse change).</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+</section>
+
 <div class="pager">
   <a class="prev" href="01-bases.html"><span>&larr; Chapitre 1</span><b>Bases et conventions</b></a>
   <a class="next" href="03-reflexion-totale.html"><span>Chapitre 3 &rarr;</span><b>La réflexion totale</b></a>
@@ -143,8 +230,8 @@
 
 <footer>
   <div class="wrap">
-    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
-    interactifs. Convention de signe unique dans tout le cours :
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles, 9 bancs
+    interactifs et 47 exercices corrigés. Convention de signe unique dans tout le cours :
     la lumière va de gauche à droite, l'origine est au sommet du système,
     les distances vers la droite sont positives.
   </div>

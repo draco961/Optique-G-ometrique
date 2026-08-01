@@ -8,6 +8,16 @@ const fmt = (x, d = 1) => {
 const sgn = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(x).toFixed(d).replace(".", ",");
 const esc = s => String(s);
 
+/* écran tactile : poignées et tolérance de saisie élargies */
+const COARSE = window.matchMedia && matchMedia("(pointer:coarse)").matches;
+const HITR = COARSE ? 32 : 17;   /* rayon de la poignée invisible, en px du viewBox */
+const HIT = COARSE ? 36 : 22;    /* tolérance de saisie autour de l'objet */
+/* touch-action:none sur la poignée seule : on peut la tirer au doigt,
+   mais le reste du schéma laisse défiler la page */
+const HANDLE = (x, y, r = HITR) =>
+  `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="transparent"
+     style="cursor:grab;touch-action:none" data-handle="1"/>`;
+
 /* extend a ray from p along direction d until it leaves the rect */
 function edge(p, d, r) {
   let t = Infinity;
@@ -244,16 +254,16 @@ function defs(id) {
   /* drag the object along the axis */
   svg.addEventListener("pointerdown", e => {
     const cm = toCm(e);
-    if (Math.abs(cm - st.OA) > 22 / scale) return;
+    if (Math.abs(cm - st.OA) > HIT / scale) return;
     svg.setPointerCapture(e.pointerId);
-    svg.dataset.drag = "1"; e.preventDefault();
+    svg.dataset.drag = "1"; svg.style.touchAction = "none"; e.preventDefault();
   });
   svg.addEventListener("pointermove", e => {
     if (svg.dataset.drag !== "1") return;
     st.OA = Math.max(-200, Math.min(-1, Math.round(toCm(e) * 2) / 2));
     cOA.value = st.OA; render();
   });
-  const stop = e => { svg.dataset.drag = "0"; };
+  const stop = e => { svg.dataset.drag = "0"; svg.style.touchAction = ""; };
   svg.addEventListener("pointerup", stop); svg.addEventListener("pointercancel", stop);
   function toCm(e) {
     const r = svg.getBoundingClientRect();
@@ -310,7 +320,7 @@ function defs(id) {
     g += DOT(xA, y0, "dot-obj", 4);
     g += T(xA - 10, y0 - 7, "A", "pt-obj", "end");
     g += T(B.x, B.y - 12, "B", "pt-obj");
-    g += `<circle cx="${xA}" cy="${y0 - HOBJ / 2}" r="17" fill="transparent" style="cursor:grab"/>`;
+    g += HANDLE(xA, y0 - HOBJ / 2);
 
     /* ---- the three construction rays ---- */
     let rays = "";
@@ -433,15 +443,16 @@ function defs(id) {
     cSA.value = st.SA; render();
   });
   svg.addEventListener("pointerdown", e => {
-    if (Math.abs(toCm(e) - st.SA) > 22 / scale) return;
-    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1"; e.preventDefault();
+    if (Math.abs(toCm(e) - st.SA) > HIT / scale) return;
+    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1";
+    svg.style.touchAction = "none"; e.preventDefault();
   });
   svg.addEventListener("pointermove", e => {
     if (svg.dataset.drag !== "1") return;
     st.SA = Math.max(-200, Math.min(-1, Math.round(toCm(e) * 2) / 2));
     cSA.value = st.SA; render();
   });
-  const stop = () => { svg.dataset.drag = "0"; };
+  const stop = () => { svg.dataset.drag = "0"; svg.style.touchAction = ""; };
   svg.addEventListener("pointerup", stop); svg.addEventListener("pointercancel", stop);
   function toCm(e) {
     const r = svg.getBoundingClientRect();
@@ -498,7 +509,7 @@ function defs(id) {
     g += DOT(xA, y0, "dot-obj", 4);
     g += T(xA - 10, y0 - 7, "A", "pt-obj", "end");
     g += T(B.x, B.y - 12, "B", "pt-obj");
-    g += `<circle cx="${xA}" cy="${y0 - HOBJ / 2}" r="17" fill="transparent" style="cursor:grab"/>`;
+    g += HANDLE(xA, y0 - HOBJ / 2);
 
     /* rays — paraxial: reflect at the plane x = Sx */
     let rays = "";
@@ -845,15 +856,16 @@ function defs(id) {
   cE.addEventListener("input", e => { st.eye = +e.target.value; render(); });
 
   svg.addEventListener("pointerdown", e => {
-    if (Math.abs(toCm(e) - st.d) > 26 / scale) return;
-    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1"; e.preventDefault();
+    if (Math.abs(toCm(e) - st.d) > (HIT + 4) / scale) return;
+    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1";
+    svg.style.touchAction = "none"; e.preventDefault();
   });
   svg.addEventListener("pointermove", e => {
     if (svg.dataset.drag !== "1") return;
     st.d = Math.max(10, Math.min(140, Math.round(toCm(e))));
     cD.value = st.d; render();
   });
-  const stop = () => { svg.dataset.drag = "0"; };
+  const stop = () => { svg.dataset.drag = "0"; svg.style.touchAction = ""; };
   svg.addEventListener("pointerup", stop); svg.addEventListener("pointercancel", stop);
   function toCm(e) {
     const r = svg.getBoundingClientRect();
@@ -881,7 +893,7 @@ function defs(id) {
     g += DOT(xA, y0, "dot-obj", 4);
     g += T(xA - 11, y0 - 7, "A", "pt-obj", "end");
     g += T(B.x - 4, B.y - 12, "B", "pt-obj", "end");
-    g += `<circle cx="${xA}" cy="${y0 - hpx / 2}" r="18" fill="transparent" style="cursor:grab"/>`;
+    g += HANDLE(xA, y0 - hpx / 2, Math.max(HITR, 18));
     g += L({ x: xAp, y: y0 }, Bp, "img-v", `marker-end="url(#fl-img)"`);
     g += DOT(xAp, y0, "dot-img", 4);
     g += T(xAp + 11, y0 - 7, "A′", "pt-img", "start");
@@ -963,15 +975,16 @@ function defs(id) {
   });
   svg.addEventListener("pointerdown", e => {
     const cm = toCm(e), OA = st.v * st.fp / 100;
-    if (Math.abs(cm - OA) > 24 / scale) return;
-    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1"; e.preventDefault();
+    if (Math.abs(cm - OA) > HIT / scale) return;
+    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1";
+    svg.style.touchAction = "none"; e.preventDefault();
   });
   svg.addEventListener("pointermove", e => {
     if (svg.dataset.drag !== "1") return;
     st.v = Math.max(-150, Math.min(-5, Math.round(toCm(e) / st.fp * 100)));
     cA.value = st.v; render();
   });
-  const stop = () => { svg.dataset.drag = "0"; };
+  const stop = () => { svg.dataset.drag = "0"; svg.style.touchAction = ""; };
   svg.addEventListener("pointerup", stop); svg.addEventListener("pointercancel", stop);
   function toCm(e) {
     const r = svg.getBoundingClientRect();
@@ -1009,7 +1022,7 @@ function defs(id) {
     g += DOT(xA, y0, "dot-obj", 4);
     g += T(xA - 10, y0 - 7, "A", "pt-obj", "end");
     g += T(B.x, B.y - 12, "B", "pt-obj");
-    g += `<circle cx="${xA}" cy="${y0 - HOBJ / 2}" r="17" fill="transparent" style="cursor:grab"/>`;
+    g += HANDLE(xA, y0 - HOBJ / 2);
 
     /* rayons : parallèle → F′, et par O */
     const rays = [];
@@ -1323,10 +1336,14 @@ function defs(id) {
     cX.value = st.t; render();
   });
   svg.addEventListener("pointerdown", e => {
-    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1"; move(e); e.preventDefault();
+    /* au doigt : seule la poignée démarre le glissement (le reste laisse défiler la page) ;
+       à la souris : un clic n'importe où déplace le point I */
+    if (e.pointerType !== "mouse" && !(e.target.dataset && e.target.dataset.handle)) return;
+    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1";
+    svg.style.touchAction = "none"; move(e); e.preventDefault();
   });
   svg.addEventListener("pointermove", e => { if (svg.dataset.drag === "1") move(e); });
-  const stop = () => { svg.dataset.drag = "0"; };
+  const stop = () => { svg.dataset.drag = "0"; svg.style.touchAction = ""; };
   svg.addEventListener("pointerup", stop); svg.addEventListener("pointercancel", stop);
   function move(e) {
     const r = svg.getBoundingClientRect();
@@ -1376,6 +1393,8 @@ function defs(id) {
     g += DOT(A.x, A.y, "dot-obj", 5.5) + T(A.x - 12, A.y - 6, "A", "pt-obj", "end");
     g += DOT(Bp.x, Bp.y, "dot-img", 5.5) + T(Bp.x + 12, Bp.y + 6, "B", "pt-img", "start");
     g += `<circle cx="${x}" cy="${IY}" r="9" fill="var(--beam)" stroke="var(--sunk)" stroke-width="2" style="cursor:ew-resize"/>`;
+    g += `<circle cx="${x}" cy="${IY}" r="${COARSE ? 34 : 14}" fill="transparent"
+            style="cursor:ew-resize;touch-action:none" data-handle="1"/>`;
     g += T(x, IY - 80, "glisse-moi", "tag-b", "middle");
     if (Math.abs(xm - x) > 46) g += T(xm, IY - 16, "le plus rapide", "tag", "middle");
 
@@ -1439,4 +1458,12 @@ function defs(id) {
     document.getElementById("ro-fm-chips").innerHTML = chips.join("");
   }
   render();
+})();
+
+/* ══════════════════ nav : centre le chapitre courant ══════════════════ */
+(function () {
+  const live = document.querySelector("nav.rail .live");
+  if (!live) return;
+  const w = live.parentElement;
+  w.scrollLeft = live.offsetLeft - (w.clientWidth - live.offsetWidth) / 2;
 })();

@@ -230,7 +230,9 @@ td.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:n
 }
 @media (max-width:920px){ .bench{grid-template-columns:1fr} }
 .stage{background:var(--sunk); padding:14px 14px 0; min-width:0}
-.stage svg{display:block; width:100%; height:auto; touch-action:none}
+/* pas de touch-action ici : seule la poignée de l'objet bloque le défilement,
+   le reste du schéma laisse défiler la page au doigt */
+.stage svg{display:block; width:100%; height:auto}
 .stage-cap{font-family:var(--mono); font-size:11px; color:var(--ink-3); padding:6px 2px 12px}
 .readout{background:var(--surface); padding:18px; min-width:0}
 .readout h3{
@@ -294,11 +296,48 @@ input[type=range]:disabled{opacity:.4}
   color:var(--ink-3); align-self:center; margin-right:4px}
 .switch{display:flex; align-items:center; gap:9px; font-size:13px; color:var(--ink-2); cursor:pointer}
 .switch input{accent-color:var(--beam); width:16px; height:16px; cursor:pointer}
+
+/* ═══════════════════ écrans tactiles ═══════════════════ */
+@media (pointer:coarse){
+  input[type=range]{height:32px}
+  input[type=range]::-webkit-slider-runnable-track{height:4px}
+  input[type=range]::-webkit-slider-thumb{width:24px; height:24px; margin-top:-10px}
+  input[type=range]::-moz-range-track{height:4px}
+  input[type=range]::-moz-range-thumb{width:22px; height:22px}
+  nav.rail a{padding:9px 13px}
+  .presets button{padding:8px 14px}
+  .seg label{padding:9px 12px}
+  .switch input{width:20px; height:20px}
+}
+
+/* ═══════════════════ mobile ═══════════════════ */
 @media (max-width:720px){
+  body{font-size:15.5px}
+  .wrap{padding:0 16px}
+  header.top .wrap{padding-top:34px; padding-bottom:26px}
+  .hero-meta{gap:6px 18px; margin-top:18px}
+  main{padding-bottom:70px}
+  .ch{padding-top:52px}
+  .ch h3{margin-top:34px}
+  .toc{gap:10px; margin-top:28px}
+  .toc a{padding:16px 16px 18px}
+  .formula{padding:13px 14px}
+  .formula .why{flex-basis:100%; margin-left:0; padding-left:0; text-align:left}
+  .cols{columns:1}
+  .pager{margin-top:48px}
+  footer .wrap{padding:22px 16px 32px}
+
+  /* banc : le schéma défile latéralement, les curseurs viennent juste dessous,
+     le panneau de calcul ensuite */
   .stage{overflow-x:auto}
   .stage svg{min-width:620px}
-  .ctl{flex:1 1 100%}
-  .cols{columns:1}
+  .ctl{flex:1 1 100%; min-width:0}
+  .bench-wrap{display:flex; flex-direction:column}
+  .bench{display:contents}
+  .bench-title{order:0}
+  .stage{order:1; border:1px solid var(--line); border-bottom:none; border-radius:4px 4px 0 0}
+  .controls{order:2; border-top:1px solid var(--line); border-radius:0; padding:14px; gap:14px 20px}
+  .readout{order:3; border:1px solid var(--line); border-top:none; border-radius:0 0 4px 4px; padding:14px 16px}
 }
 
 /* ═══════════════════ pied ═══════════════════ */
@@ -352,3 +391,53 @@ footer code{font-family:var(--mono); font-size:12px; color:var(--ink-2)}
 .pager a b{font-weight:600; font-size:.95rem}
 .pager a:hover b{color:var(--beam)}
 .pager .next{margin-left:auto; text-align:right}
+
+/* ═══════════════════ exercices de fin de chapitre ═══════════════════ */
+.exos{padding-top:64px}
+.exo{
+  margin-top:20px; background:var(--surface); border:1px solid var(--line);
+  border-radius:5px; box-shadow:var(--shadow); padding:20px 24px 18px;
+}
+.ch-head + .exo{margin-top:36px}
+.ch .exo h3.exo-h{
+  margin:0; font-size:1.02rem; font-weight:650;
+  display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+}
+.exo-n{
+  font-family:var(--mono); font-size:11.5px; font-weight:500;
+  color:var(--beam); letter-spacing:.06em; white-space:nowrap;
+}
+.exo p{font-size:15.5px}
+.exo ol.q{margin:12px 0 0; font-size:15.5px}
+.exo ol.q li{margin-bottom:6px}
+
+/* réponse dépliable */
+details.sol{margin:16px 0 0; border-top:1px dashed var(--line)}
+.sol summary{
+  list-style:none; cursor:pointer; user-select:none; display:inline-block;
+  padding:12px 2px 2px; font-family:var(--mono); font-size:11px; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ok);
+}
+.sol summary::-webkit-details-marker{display:none}
+.sol summary::before{content:"+"; display:inline-block; width:1.2em; font-size:13px}
+.sol[open] summary::before{content:"−"}
+.sol summary .s-hide{display:none}
+.sol[open] summary .s-show{display:none}
+.sol[open] summary .s-hide{display:inline}
+.sol summary:hover{text-decoration:underline; text-underline-offset:3px}
+.sol summary:focus-visible{outline:2px solid var(--ok); outline-offset:2px; border-radius:2px}
+.sol-body{
+  margin:10px 0 4px; padding:14px 18px; font-size:15px;
+  border-left:2px solid var(--ok); border-radius:0 4px 4px 0;
+  background:color-mix(in srgb, var(--ok) 7%, transparent);
+}
+.sol-body p, .sol-body ol.q{margin:0; color:var(--ink-2)}
+.sol-body ol.q li{margin-bottom:8px}
+.sol-body ol.q li:last-child{margin-bottom:0}
+.sol-body b{color:var(--ink)}
+.sol-body b.res{color:var(--ok)}
+@media (max-width:720px){
+  .exos{padding-top:48px}
+  .exo{padding:16px 16px 14px}
+  .sol-body{padding:12px 14px}
+}

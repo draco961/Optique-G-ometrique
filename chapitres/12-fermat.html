@@ -115,6 +115,83 @@
   </div>
 </section>
 
+<section class="ch exos" id="exercices">
+  <div class="ch-head">
+    <p class="ch-num">Entraînement · 4 exercices</p>
+    <h2>Exercices du chapitre</h2>
+    <p class="lede">Cherche chaque exercice au brouillon avant d'afficher la réponse : c'est
+    en te trompant d'abord que la correction devient utile.
+    Tu peux aussi <a class="inline" href="13-formulaire.html">passer directement au chapitre suivant</a>.</p>
+  </div>
+
+  <article class="exo" id="exo-12-1">
+    <h3 class="exo-h"><span class="exo-n">Exercice 12.1</span>Énoncé et chemin optique</h3>
+    <ol class="q">
+    <li>Énoncer le principe de Fermat.</li>
+    <li>Définir le chemin optique L et donner son lien avec le temps de parcours.</li>
+    <li>Un rayon traverse 5 cm de verre (n = 1,5). Calculer le chemin optique correspondant, puis le temps de traversée.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>Le trajet suivi par la lumière entre deux points est celui dont le <b class="res">temps de parcours est extrémal</b> (le plus souvent minimal).</li>
+        <li>L = n × d ; le temps de parcours est t = L/c : minimiser le temps revient à minimiser le chemin optique.</li>
+        <li>L = 1,5 × 0,05 = 0,075 m = <b class="res">7,5 cm</b> ; t = L/c = 0,075/(3,00 × 10⁸) = <b class="res">2,5 × 10⁻¹⁰ s</b>.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-12-2">
+    <h3 class="exo-h"><span class="exo-n">Exercice 12.2</span>Fermat et la réflexion</h3>
+    <ol class="q">
+    <li>Montrer, à l'aide du point symétrique A′ de la source A par rapport au miroir, que le trajet le plus court A → miroir → B impose la loi i = r.</li>
+    <li>Pourquoi peut-on raisonner sur la distance plutôt que sur le temps dans ce cas ?</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>Tout trajet A → I → B a la même longueur que A′ → I → B (symétrie). Le plus court trajet de A′ à B est la <b>ligne droite</b> : le point I optimal est donc celui où <b>A′, I et B sont alignés</b>. Cette condition géométrique impose exactement <b class="res">i = r</b>.</li>
+        <li>Tout le trajet se fait <b>dans le même milieu</b> (n constant) : le temps est proportionnel à la distance, minimiser l'un revient à minimiser l'autre.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-12-3">
+    <h3 class="exo-h"><span class="exo-n">Exercice 12.3</span>L'analogie du sauveteur</h3>
+    <p>Un sauveteur sur la plage doit atteindre un nageur en difficulté. Il court vite sur le sable et nage lentement.</p>
+    <ol class="q">
+    <li>Pourquoi le sauveteur ne doit-il pas suivre la ligne droite ?</li>
+    <li>Décrire qualitativement le trajet optimal.</li>
+    <li>Expliquer le lien entre cette situation et la loi de la réfraction. Que représentent le sable, l'eau et la ligne de rivage ?</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>La ligne droite minimise la <b>distance</b>, mais pas le <b>temps</b> : elle fait passer trop de trajet dans l'eau, où il est lent.</li>
+        <li>Il <b>rallonge son parcours sur le sable</b> (rapide) pour <b>raccourcir la partie nagée</b> (lente) : sa trajectoire se « brise » à la ligne de rivage.</li>
+        <li>C'est exactement ce que fait la lumière : le sable = milieu d'indice faible (rapide), l'eau = milieu d'indice fort (lent), la ligne de rivage = le <b>dioptre</b>. La minimisation du temps total donne exactement <b class="res">n₁ sin i₁ = n₂ sin i₂</b>.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-12-4">
+    <h3 class="exo-h"><span class="exo-n">Exercice 12.4</span>Question de synthèse</h3>
+    <p>Expliquer en quelques lignes pourquoi on dit que les lois de Snell-Descartes ne sont pas des règles arbitraires, mais les conséquences d'un principe plus profond.</p>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <p class="rep">La propagation rectiligne, la loi de la réflexion (i = r) et la loi de la réfraction (n₁ sin i₁ = n₂ sin i₂) se <b>déduisent toutes</b> d'un unique principe : la lumière suit le trajet de <b class="res">temps de parcours minimal</b> (principe de Fermat). Ces lois ne sont donc pas des règles empiriques indépendantes, mais trois conséquences d'un même principe variationnel plus profond — une idée qui se généralise d'ailleurs à toute la physique (principe de moindre action).</p>
+      </div>
+    </details>
+  </article>
+</section>
+
 <div class="pager">
   <a class="prev" href="11-microscope.html"><span>&larr; Chapitre 11</span><b>Le microscope</b></a>
   <a class="next" href="13-formulaire.html"><span>Chapitre 13 &rarr;</span><b>Formulaire et méthode</b></a>
@@ -125,8 +202,8 @@
 
 <footer>
   <div class="wrap">
-    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
-    interactifs. Convention de signe unique dans tout le cours :
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles, 9 bancs
+    interactifs et 47 exercices corrigés. Convention de signe unique dans tout le cours :
     la lumière va de gauche à droite, l'origine est au sommet du système,
     les distances vers la droite sont positives.
   </div>

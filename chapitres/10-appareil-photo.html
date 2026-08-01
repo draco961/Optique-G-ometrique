@@ -128,6 +128,77 @@
   </div>
 </section>
 
+<section class="ch exos" id="exercices">
+  <div class="ch-head">
+    <p class="ch-num">Entraînement · 3 exercices</p>
+    <h2>Exercices du chapitre</h2>
+    <p class="lede">Cherche chaque exercice au brouillon avant d'afficher la réponse : c'est
+    en te trompant d'abord que la correction devient utile.
+    Tu peux aussi <a class="inline" href="11-microscope.html">passer directement au chapitre suivant</a>.</p>
+  </div>
+
+  <article class="exo" id="exo-10-1">
+    <h3 class="exo-h"><span class="exo-n">Exercice 10.1</span>Formation de l'image</h3>
+    <ol class="q">
+    <li>Pourquoi l'image formée sur le capteur est-elle nécessairement réelle ?</li>
+    <li>Donner les trois caractéristiques de l'image sur le capteur.</li>
+    <li>Un objectif a une focale de 50 mm. À quelle distance de l'objectif faut-il placer le capteur pour photographier un paysage lointain ? Justifier.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>L'objet est toujours <b>bien au-delà du foyer objet</b> : les rayons ressortent convergents et se croisent <b>physiquement</b> sur le capteur. C'est indispensable : un capteur ne peut enregistrer que de la lumière qui l'atteint <b>réellement</b>.</li>
+        <li><b class="res">Réelle, renversée, réduite</b>.</li>
+        <li>Objet à l'infini → rayons parallèles → image <b>au foyer image F′</b> : capteur à <b class="res">50 mm</b> de l'objectif (<span class="ov">OA′</span> = f′).</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-10-2">
+    <h3 class="exo-h"><span class="exo-n">Exercice 10.2</span>La mise au point</h3>
+    <p>Avec ce même objectif (f′ = 50 mm), on photographie maintenant un sujet placé à 2 m.</p>
+    <ol class="q">
+    <li>Que signifie « faire la mise au point » ?</li>
+    <li>Calculer la nouvelle distance objectif–capteur nécessaire.</li>
+    <li>De combien et dans quel sens faut-il déplacer l'objectif par rapport au réglage « infini » ?</li>
+    <li>À quel mécanisme de l'œil cette opération correspond-elle ? Citer la différence.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>Déplacer l'objectif pour que l'image du sujet se forme <b>exactement sur le capteur</b>.</li>
+        <li><span class="ov">OA</span> = −2000 mm. 1/<span class="ov">OA′</span> = 1/50 − 1/2000 = 39/2000 → <b class="res"><span class="ov">OA′</span> ≈ 51,3 mm</b>.</li>
+        <li>Il faut <b class="res">éloigner l'objectif du capteur d'environ 1,3 mm</b> (l'objet se rapproche → l'image s'éloigne).</li>
+        <li>À l'<b class="res">accommodation</b>. Différence : l'œil <b>déforme</b> son cristallin (focale variable), l'appareil <b>déplace</b> sa lentille (focale fixe).</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-10-3">
+    <h3 class="exo-h"><span class="exo-n">Exercice 10.3</span>Champ de vision</h3>
+    <p>On compare deux objectifs, 20 mm et 200 mm, montés sur un capteur de 24 mm de hauteur. On rappelle : tan α = (taille du capteur / 2)/f′, champ = 2α.</p>
+    <ol class="q">
+    <li>Calculer le champ de vision vertical pour chaque objectif.</li>
+    <li>Lequel choisir pour un paysage ? Pour photographier un animal lointain ? Justifier.</li>
+    <li>Citer deux autres conséquences d'une augmentation de la focale.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>20 mm : tan α = 12/20 = 0,6 → α ≈ 31° → champ ≈ <b class="res">62°</b>. 200 mm : tan α = 12/200 = 0,06 → α ≈ 3,4° → champ ≈ <b class="res">7°</b>.</li>
+        <li>Paysage → <b class="res">20 mm</b> (grand-angle : champ large). Animal lointain → <b class="res">200 mm</b> (téléobjectif : champ étroit mais grandissement fort). Le champ de vision est <b>inversement</b> lié à la focale.</li>
+        <li>Quand f′ augmente : le grandissement <b>augmente</b>, la profondeur de champ <b>diminue</b> (arrière-plan plus flou), et le capteur doit être plus éloigné de l'objectif.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+</section>
+
 <div class="pager">
   <a class="prev" href="09-loupe.html"><span>&larr; Chapitre 9</span><b>La loupe</b></a>
   <a class="next" href="11-microscope.html"><span>Chapitre 11 &rarr;</span><b>Le microscope</b></a>
@@ -138,8 +209,8 @@
 
 <footer>
   <div class="wrap">
-    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
-    interactifs. Convention de signe unique dans tout le cours :
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles, 9 bancs
+    interactifs et 47 exercices corrigés. Convention de signe unique dans tout le cours :
     la lumière va de gauche à droite, l'origine est au sommet du système,
     les distances vers la droite sont positives.
   </div>

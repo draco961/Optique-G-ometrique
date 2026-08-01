@@ -80,6 +80,90 @@
   </div>
 </section>
 
+<section class="ch exos" id="exercices">
+  <div class="ch-head">
+    <p class="ch-num">Entraînement · 4 exercices</p>
+    <h2>Exercices du chapitre</h2>
+    <p class="lede">Cherche chaque exercice au brouillon avant d'afficher la réponse : c'est
+    en te trompant d'abord que la correction devient utile.
+    Tu peux aussi <a class="inline" href="04-miroir-plan.html">passer directement au chapitre suivant</a>.</p>
+  </div>
+
+  <article class="exo" id="exo-3-1">
+    <h3 class="exo-h"><span class="exo-n">Exercice 3.1</span>Angle limite du verre</h3>
+    <p>Un rayon se propage dans le verre (n = 1,5) et rencontre la surface verre/air.</p>
+    <ol class="q">
+    <li>Rappeler les deux conditions nécessaires pour observer une réflexion totale.</li>
+    <li>Calculer l'angle limite θ<sub>c</sub>.</li>
+    <li>Que devient un rayon arrivant avec i = 30° ? Avec i = 45° ?</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>① Passage d'un milieu <b>plus réfringent vers un moins réfringent</b> (n₁ &gt; n₂). ② Angle d'incidence <b>supérieur à l'angle limite</b> (i &gt; θ<sub>c</sub>).</li>
+        <li>sin θ<sub>c</sub> = n₂/n₁ = 1/1,5 → <b class="res">θ<sub>c</sub> ≈ 41,8°</b>.</li>
+        <li>i = 30° &lt; θ<sub>c</sub> : le rayon est <b>réfracté</b> (il sort dans l'air en s'éloignant de la normale, avec une réflexion partielle). i = 45° &gt; θ<sub>c</sub> : <b class="res">réflexion totale</b>, tout le rayon reste dans le verre.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-3-2">
+    <h3 class="exo-h"><span class="exo-n">Exercice 3.2</span>Le plongeur</h3>
+    <p>Un plongeur sous l'eau (n = 1,33) regarde vers la surface.</p>
+    <ol class="q">
+    <li>Calculer l'angle limite pour le passage eau → air.</li>
+    <li>Expliquer pourquoi, au-delà de cet angle, la surface de l'eau lui apparaît comme un miroir.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>sin θ<sub>c</sub> = 1/1,33 → <b class="res">θ<sub>c</sub> ≈ 48,8°</b>.</li>
+        <li>Pour i &gt; 48,8°, plus aucune lumière ne sort : toute la lumière est réfléchie vers le bas. La surface se comporte alors comme un <b class="res">miroir parfait</b> : le plongeur y voit le reflet du fond.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-3-3">
+    <h3 class="exo-h"><span class="exo-n">Exercice 3.3</span>L'éclat du diamant</h3>
+    <ol class="q">
+    <li>Calculer l'angle limite du diamant (n = 2,42) vers l'air.</li>
+    <li>Comparer avec celui du verre et expliquer pourquoi un diamant taillé « piège » si bien la lumière.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>sin θ<sub>c</sub> = 1/2,42 → <b class="res">θ<sub>c</sub> ≈ 24,4°</b>.</li>
+        <li>24,4° ≪ 41,8° : dans le diamant, la réflexion totale se produit dès de petits angles. La lumière subit de <b>multiples réflexions totales internes</b> avant de ressortir vers l'œil — d'où l'éclat exceptionnel du diamant taillé.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <article class="exo" id="exo-3-4">
+    <h3 class="exo-h"><span class="exo-n">Exercice 3.4</span>Applications</h3>
+    <ol class="q">
+    <li>Expliquer le principe de guidage de la lumière dans une fibre optique.</li>
+    <li>Pourquoi la réflexion totale est-elle impossible en passant de l'air vers le verre ?</li>
+    <li>Citer une autre application concrète de la réflexion totale.</li>
+    </ol>
+    <details class="sol">
+      <summary><span class="s-show">Afficher la réponse</span><span class="s-hide">Masquer la réponse</span></summary>
+      <div class="sol-body">
+        <ol class="q rep">
+        <li>La lumière injectée dans le cœur de la fibre frappe la paroi avec un angle <b>supérieur à l'angle limite</b> : elle subit une <b class="res">succession de réflexions totales</b> et reste piégée dans le cœur, même si la fibre est courbée.</li>
+        <li>Il faudrait n₁ &gt; n₂ ; or ici n(air) = 1 &lt; n(verre) = 1,5. En passant vers un milieu <b>plus</b> réfringent, le rayon se rapproche de la normale et il existe toujours un rayon réfracté : <b class="res">pas de réflexion totale possible</b>.</li>
+        <li>Exemples : prismes à réflexion totale (jumelles, périscopes), endoscopie médicale, réflecteurs de vélo.</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+</section>
+
 <div class="pager">
   <a class="prev" href="02-snell-descartes.html"><span>&larr; Chapitre 2</span><b>Les lois de Snell-Descartes</b></a>
   <a class="next" href="04-miroir-plan.html"><span>Chapitre 4 &rarr;</span><b>Le miroir plan</b></a>
@@ -90,8 +174,8 @@
 
 <footer>
   <div class="wrap">
-    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
-    interactifs. Convention de signe unique dans tout le cours :
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles, 9 bancs
+    interactifs et 47 exercices corrigés. Convention de signe unique dans tout le cours :
     la lumière va de gauche à droite, l'origine est au sommet du système,
     les distances vers la droite sont positives.
   </div>
