@@ -1,0 +1,153 @@
+EXERCICES DE RÉVISION – OPTIQUE GÉOMÉTRIQUE (COMPLET)
+
+Durée conseillée : 1h30 – 2h
+
+Objectif : préparation examen
+
+
+◆ Exercice 1 – Lois de Snell-Descartes
+
+Un rayon lumineux passe de l'air (n₁ = 1) à l'eau (n₂ = 1,33) avec un angle d'incidence de 30°.
+
+1. Énoncer les lois de la réflexion.
+2. Calculer l'angle de réfraction.
+3. Le rayon se rapproche-t-il ou s'éloigne-t-il de la normale ?
+4. Que se passe-t-il si on inverse les milieux (eau → air) ?
+
+
+◆ Exercice 2 – Réflexion totale
+
+Un rayon passe du verre (n = 1,5) vers l'air.
+
+1. Calculer l'angle limite.
+2. Déterminer si un rayon avec i = 50° subit une réflexion totale.
+3. Donner une application concrète de la réflexion totale.
+
+
+◆ Exercice 3 – Miroir plan
+
+Un objet est placé devant un miroir plan.
+
+1. Décrire les caractéristiques de l'image.
+2. Où se situe l'image ?
+3. Le grandissement vaut-il 1 ? Pourquoi ?
+4. Faire un schéma.
+
+
+◆ Exercice 4 – Miroir sphérique
+
+Un miroir concave a un rayon R = 40 cm.
+
+Un objet est placé à 20 cm.
+
+1. Calculer la distance focale.
+2. Déterminer la position de l'image.
+3. Donner :
+   ○ nature
+   ○ sens
+   ○ taille
+4. Que se passe-t-il si l'objet est placé au foyer ?
+
+
+◆ Exercice 5 – Lentille mince
+
+Une lentille convergente de focale f' = 10 cm.
+
+Un objet est placé à 15 cm.
+
+1. Calculer la position de l'image.
+2. L'image est-elle réelle ou virtuelle ?
+3. Est-elle droite ou inversée ?
+4. Calculer le grandissement.
+
+
+◆ Exercice 6 – Cas piège lentille
+
+Même lentille (f' = 10 cm).
+
+Un objet est placé à 5 cm.
+
+1. Calculer la position de l'image.
+2. Peut-on projeter l'image sur un écran ?
+3. Expliquer pourquoi.
+
+
+◆ Exercice 7 – L'œil
+
+1. Où se forme l'image dans un œil normal ?
+2. Pourquoi l'image est-elle inversée mais perçue droite ?
+3. Définir :
+   ○ punctum proximum
+   ○ punctum remotum
+
+
+◆ Exercice 8 – Défauts visuels
+
+Un patient voit net jusqu'à 2 m.
+
+1. Quel est son défaut ?
+2. Où se forme l'image dans son œil ?
+3. Quel type de lentille corrige ce défaut ?
+4. Cette lentille est-elle convergente ou divergente ?
+
+
+◆ Exercice 9 – Loupe
+
+Une loupe a une focale f' = 5 cm.
+
+1. Calculer le grossissement.
+2. Où placer l'objet pour un confort visuel ?
+3. Nature de l'image ?
+
+
+◆ Exercice 10 – Appareil photo
+
+1. Pourquoi l'image formée est-elle réelle ?
+2. Où se forme l'image si l'objet est à l'infini ?
+3. Que signifie "faire la mise au point" ?
+4. Que se passe-t-il si la focale augmente ?
+
+
+◆ Exercice 11 – Champ de vision
+
+On compare :
+• lentille 20 mm
+• lentille 200 mm
+
+1. Laquelle a le plus grand champ de vision ?
+2. Associer :
+   ○ paysage
+   ○ zoom
+3. Justifier.
+
+
+◆ Exercice 12 – Microscope
+
+1. Rôle de l'objectif ?
+2. Rôle de l'oculaire ?
+3. Nature de l'image finale ?
+4. Orientation de l'image ?
+
+
+◆ Exercice 13 – Problème global (niveau examen)
+
+Un objet est observé à travers une lentille convergente puis par l'œil.
+
+1. Décrire le trajet de la lumière.
+2. L'image finale est-elle réelle ou virtuelle ?
+3. Quels éléments permettent de grossir l'image ?
+4. Donner un exemple concret (instrument).
+
+
+☆ Exercice BONUS – Réflexion
+
+Explique le principe de Fermat et son lien avec :
+• réflexion
+• réfraction
+
+
+✎ Conseils
+
+• Faire des schémas (obligatoire pour progresser)
+• Justifier chaque réponse
+• Vérifier les unités

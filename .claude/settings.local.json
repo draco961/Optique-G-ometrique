@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -)",
+      "Bash(python3 -c \"import cairosvg\")",
+      "Bash(ls /Applications/ | grep -iE \"chrome|chromium|edge|firefox|safari\" ; ls \"/Applications/Google Chrome.app/Contents/MacOS/\" 2>/dev/null)",
+      "Read(//Applications/**)",
+      "Read(//Applications/Google Chrome.app/Contents/**)",
+      "Bash(mkdir -p shots)",
+      "Bash(\"/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge\" --headless=new --disable-gpu --hide-scrollbars --window-size=1280,4200 --screenshot=\"shots/full.png\" --virtual-time-budget=2500 \"file:///Users/guillaume/Documents/Optique%20G%C3%A9ometrique/optique_interactive.html\")"
+    ]
+  }
+}

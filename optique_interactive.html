@@ -1,0 +1,1528 @@
+<title>Banc optique — Optique géométrique interactive</title>
+
+<style>
+/* ============ tokens ============ */
+:root{
+  --bg:#EEF1F3; --surface:#FFFFFF; --surface-2:#F6F9FA; --sunk:#E7ECEF;
+  --line:#D2DBE0; --line-soft:#E4EAEE;
+  --ink:#14202A; --ink-2:#4B5D69; --ink-3:#7C8C97;
+  --beam:#D97316; --beam-soft:#F6E4CE;
+  --obj:#0B8B6A; --img:#7442C6; --glass:#2A7FBE; --warn:#C03B36; --ok:#0B8B6A;
+  --shadow:0 1px 2px rgba(20,32,42,.06), 0 8px 24px -12px rgba(20,32,42,.18);
+  --grid:rgba(20,32,42,.055);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0B1216; --surface:#121D23; --surface-2:#172630; --sunk:#0E181D;
+    --line:#26383F; --line-soft:#1D2C33;
+    --ink:#E9F1F3; --ink-2:#A4B7C0; --ink-3:#71888F;
+    --beam:#F0A64A; --beam-soft:#3A2A16;
+    --obj:#2FC69A; --img:#B08BF2; --glass:#5FB2E8; --warn:#F0736D; --ok:#2FC69A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+    --grid:rgba(233,241,243,.06);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#EEF1F3; --surface:#FFFFFF; --surface-2:#F6F9FA; --sunk:#E7ECEF;
+  --line:#D2DBE0; --line-soft:#E4EAEE;
+  --ink:#14202A; --ink-2:#4B5D69; --ink-3:#7C8C97;
+  --beam:#D97316; --beam-soft:#F6E4CE;
+  --obj:#0B8B6A; --img:#7442C6; --glass:#2A7FBE; --warn:#C03B36; --ok:#0B8B6A;
+  --shadow:0 1px 2px rgba(20,32,42,.06), 0 8px 24px -12px rgba(20,32,42,.18);
+  --grid:rgba(20,32,42,.055);
+}
+:root[data-theme="dark"]{
+  --bg:#0B1216; --surface:#121D23; --surface-2:#172630; --sunk:#0E181D;
+  --line:#26383F; --line-soft:#1D2C33;
+  --ink:#E9F1F3; --ink-2:#A4B7C0; --ink-3:#71888F;
+  --beam:#F0A64A; --beam-soft:#3A2A16;
+  --obj:#2FC69A; --img:#B08BF2; --glass:#5FB2E8; --warn:#F0736D; --ok:#2FC69A;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  --grid:rgba(233,241,243,.06);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 22px 96px}
+
+/* ============ header ============ */
+header.top{
+  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(180deg, transparent 0 68%, var(--bg) 100%),
+    repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(to bottom, var(--grid) 0 1px, transparent 1px 34px),
+    var(--surface);
+}
+header.top .wrap{padding-top:52px; padding-bottom:34px}
+.eyebrow{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--beam); display:flex; align-items:center; gap:12px; margin:0 0 18px;
+}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--beam); opacity:.35}
+h1{
+  font-family:var(--serif); font-weight:400; font-size:clamp(2.4rem,6vw,4rem);
+  line-height:1.02; letter-spacing:-.015em; margin:0; text-wrap:balance;
+}
+h1 em{font-style:italic; color:var(--beam)}
+.dek{
+  margin:18px 0 0; max-width:60ch; color:var(--ink-2); font-size:1.06rem;
+}
+.dek strong{color:var(--ink); font-weight:600}
+
+/* ============ nav ============ */
+nav.rail{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+nav.rail .wrap{
+  display:flex; gap:6px; padding-top:9px; padding-bottom:9px;
+  overflow-x:auto; scrollbar-width:none;
+}
+nav.rail .wrap::-webkit-scrollbar{display:none}
+nav.rail a{
+  flex:none; text-decoration:none; color:var(--ink-2);
+  font-size:13.5px; padding:6px 12px; border-radius:999px; white-space:nowrap;
+  border:1px solid transparent; transition:background .15s, color .15s, border-color .15s;
+}
+nav.rail a:hover{color:var(--ink); background:var(--surface-2); border-color:var(--line-soft)}
+nav.rail a .k{font-family:var(--mono); font-size:11px; color:var(--ink-3); margin-right:7px}
+
+/* ============ station ============ */
+.station{padding-top:64px}
+.station + .station{border-top:1px solid var(--line); margin-top:64px}
+.station-head{max-width:70ch}
+.station-num{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.station h2{
+  font-family:var(--serif); font-weight:400; font-size:clamp(1.7rem,3.4vw,2.3rem);
+  line-height:1.12; margin:8px 0 0; letter-spacing:-.01em; text-wrap:balance;
+}
+.station .lede{margin:12px 0 0; color:var(--ink-2)}
+
+.bench{
+  margin-top:28px; display:grid; gap:1px; background:var(--line);
+  grid-template-columns:minmax(0,1fr) 306px;
+  border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  box-shadow:var(--shadow);
+}
+@media (max-width:900px){ .bench{grid-template-columns:1fr} }
+.stage{background:var(--sunk); padding:14px 14px 0; min-width:0}
+.stage svg{display:block; width:100%; height:auto; touch-action:none}
+.stage-cap{
+  font-family:var(--mono); font-size:11px; color:var(--ink-3);
+  padding:6px 2px 12px; letter-spacing:.02em;
+}
+.readout{background:var(--surface); padding:18px 18px 20px; min-width:0}
+.readout h3{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 14px; font-weight:600;
+}
+.readout h3 + .calc{margin-top:0}
+
+/* controls */
+.controls{
+  background:var(--surface-2); border:1px solid var(--line); border-top:none;
+  border-radius:0 0 4px 4px; margin-top:-1px;
+  padding:16px 18px; display:flex; flex-wrap:wrap; gap:22px 34px; align-items:flex-end;
+}
+.ctl{display:flex; flex-direction:column; gap:7px; min-width:190px; flex:1 1 190px}
+.ctl > .lab{
+  display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+  font-size:12.5px; color:var(--ink-2);
+}
+.ctl .val{font-family:var(--mono); font-size:13px; color:var(--ink); font-variant-numeric:tabular-nums}
+input[type=range]{
+  -webkit-appearance:none; appearance:none; width:100%; height:22px; background:transparent; margin:0;
+}
+input[type=range]::-webkit-slider-runnable-track{height:3px; background:var(--line); border-radius:2px}
+input[type=range]::-moz-range-track{height:3px; background:var(--line); border-radius:2px}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:16px; height:16px; margin-top:-6.5px; border-radius:50%;
+  background:var(--beam); border:2px solid var(--surface); box-shadow:0 0 0 1px var(--beam);
+  cursor:grab;
+}
+input[type=range]::-moz-range-thumb{
+  width:14px; height:14px; border-radius:50%; background:var(--beam);
+  border:2px solid var(--surface); box-shadow:0 0 0 1px var(--beam); cursor:grab;
+}
+input[type=range]:focus-visible{outline:none}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 1px var(--beam), 0 0 0 4px color-mix(in srgb,var(--beam) 35%,transparent)}
+
+.seg{display:flex; gap:0; border:1px solid var(--line); border-radius:3px; overflow:hidden; background:var(--surface)}
+.seg label{
+  flex:1; text-align:center; font-size:12.5px; padding:6px 12px; cursor:pointer;
+  color:var(--ink-2); white-space:nowrap; transition:background .14s,color .14s;
+}
+.seg label + label{border-left:1px solid var(--line)}
+.seg input{position:absolute; opacity:0; pointer-events:none}
+.seg input:checked + span, .seg label:has(input:checked){background:var(--ink); color:var(--bg)}
+.seg label:hover{background:var(--surface-2)}
+.seg label:has(input:focus-visible){outline:2px solid var(--beam); outline-offset:-2px}
+
+.presets{display:flex; flex-wrap:wrap; gap:6px; flex:1 1 100%}
+.presets button{
+  font:inherit; font-size:12px; padding:5px 11px; cursor:pointer;
+  background:var(--surface); color:var(--ink-2);
+  border:1px solid var(--line); border-radius:999px;
+  transition:border-color .14s, color .14s, background .14s;
+}
+.presets button:hover{color:var(--ink); border-color:var(--beam)}
+.presets button:focus-visible{outline:2px solid var(--beam); outline-offset:2px}
+.presets .pl{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); align-self:center; margin-right:4px;
+}
+.switch{display:flex; align-items:center; gap:9px; font-size:13px; color:var(--ink-2); cursor:pointer}
+.switch input{accent-color:var(--beam); width:16px; height:16px; cursor:pointer}
+
+/* readout internals */
+.calc{
+  font-family:var(--mono); font-size:12.5px; line-height:2.1; color:var(--ink-2);
+  border-left:2px solid var(--beam); padding-left:12px; margin:0 0 16px;
+  overflow-x:auto;
+}
+.calc b{color:var(--ink); font-weight:600}
+.calc .step{white-space:nowrap}
+dl.vals{margin:0 0 16px; display:grid; grid-template-columns:auto 1fr; gap:5px 14px; align-items:baseline}
+dl.vals dt{font-size:12.5px; color:var(--ink-3)}
+dl.vals dd{
+  margin:0; text-align:right; font-family:var(--mono); font-size:13.5px;
+  font-variant-numeric:tabular-nums; color:var(--ink);
+}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.chip{
+  font-size:11.5px; padding:3px 9px; border-radius:3px; border:1px solid;
+  font-weight:500; max-width:100%;
+}
+.chip.real{color:var(--img); border-color:color-mix(in srgb,var(--img) 45%,transparent); background:color-mix(in srgb,var(--img) 10%,transparent)}
+.chip.virt{color:var(--img); border-color:color-mix(in srgb,var(--img) 45%,transparent); background:transparent; border-style:dashed}
+.chip.neutral{color:var(--ink-2); border-color:var(--line); background:var(--surface-2)}
+.chip.warn{color:var(--warn); border-color:color-mix(in srgb,var(--warn) 45%,transparent); background:color-mix(in srgb,var(--warn) 10%,transparent)}
+.chip.ok{color:var(--ok); border-color:color-mix(in srgb,var(--ok) 45%,transparent); background:color-mix(in srgb,var(--ok) 10%,transparent)}
+.verdict{
+  font-family:var(--serif); font-size:1.12rem; line-height:1.35; margin:0 0 14px; color:var(--ink);
+}
+.verdict.bad{color:var(--warn)}
+.verdict.good{color:var(--ok)}
+
+/* notes below bench */
+.notes{margin-top:30px; display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.notes h4{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); margin:0 0 12px; font-weight:600;
+}
+.notes ol, .notes ul{margin:0; padding-left:1.25em; color:var(--ink-2); font-size:14.5px}
+.notes li{margin-bottom:7px}
+.notes li b, .notes p b{color:var(--ink)}
+.formula{
+  font-family:var(--mono); background:var(--surface); border:1px solid var(--line);
+  border-radius:3px; padding:12px 14px; font-size:14px; color:var(--ink);
+  display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;
+  margin:0 0 12px;
+}
+.tbl-scroll{overflow-x:auto; border:1px solid var(--line); border-radius:3px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:13.5px; min-width:420px}
+th,td{text-align:left; padding:8px 12px; border-bottom:1px solid var(--line-soft); color:var(--ink-2)}
+th{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:600; background:var(--surface-2);
+}
+tr:last-child td{border-bottom:none}
+td b{color:var(--ink)}
+.trap{
+  border-left:2px solid var(--beam); background:var(--beam-soft);
+  padding:12px 16px; font-size:14.5px; color:var(--ink);
+}
+.trap .t{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--beam); display:block; margin-bottom:5px}
+
+/* fraction + overline typography */
+.frac{display:inline-flex; flex-direction:column; vertical-align:-0.62em; text-align:center; margin:0 .18em}
+.frac > span:first-child{border-bottom:1px solid currentColor; padding:0 .28em; line-height:1.32}
+.frac > span:last-child{padding:0 .28em; line-height:1.32}
+.ov{border-top:1px solid currentColor; padding-top:.5px}
+
+/* écrans étroits : le schéma défile plutôt que de devenir illisible */
+@media (max-width:700px){
+  .stage{overflow-x:auto}
+  .stage svg{min-width:620px}
+  .ctl{flex:1 1 100%}
+  .bench{border-radius:3px}
+}
+
+footer{
+  margin-top:72px; padding-top:22px; border-top:1px solid var(--line);
+  font-size:13px; color:var(--ink-3);
+}
+footer code{font-family:var(--mono); font-size:12px; color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Banc optique interactif</p>
+    <h1>Optique <em>géométrique</em></h1>
+    <p class="dek">
+      Les schémas fixes du cours écrasaient tout dans une image large et plate. Ici chaque
+      figure est <strong>vivante</strong> : tire l'objet le long de l'axe, bouge la focale,
+      change les indices — les rayons se retracent en direct et la formule se remplit avec
+      tes chiffres. Convention adoptée partout : <strong>la lumière va de gauche à droite</strong>,
+      l'origine est au sommet du système, les distances vers la droite sont positives.
+    </p>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="#snell"><span class="k">§2–3</span>Snell &amp; réflexion totale</a>
+    <a href="#lentille"><span class="k">§6</span>Lentilles minces</a>
+    <a href="#miroir"><span class="k">§5</span>Miroirs sphériques</a>
+    <a href="#oeil"><span class="k">§7–8</span>L'œil &amp; les défauts</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ══════════════ STATION 1 : SNELL ══════════════ -->
+<section class="station" id="snell">
+  <div class="station-head">
+    <p class="station-num">Station 01 · chapitres 2 et 3</p>
+    <h2>Snell-Descartes et la réflexion totale</h2>
+    <p class="lede">
+      Un seul curseur suffit à voir les trois régimes s'enchaîner. Augmente l'angle
+      d'incidence dans le sens verre → air : le rayon réfracté s'écarte de la normale,
+      vient raser la surface, puis disparaît complètement. L'angle où il disparaît, c'est λ.
+    </p>
+  </div>
+
+  <div class="bench">
+    <div class="stage">
+      <svg id="sv-snell" viewBox="0 0 760 420" role="img"
+           aria-label="Rayon incident, réfléchi et réfracté à un dioptre plan"></svg>
+      <p class="stage-cap">Tous les angles sont mesurés depuis la normale (pointillés), jamais depuis la surface.</p>
+    </div>
+    <aside class="readout">
+      <h3>Loi de la réfraction</h3>
+      <div class="calc" id="ro-snell-calc"></div>
+      <dl class="vals" id="ro-snell-vals"></dl>
+      <div class="chips" id="ro-snell-chips"></div>
+    </aside>
+  </div>
+
+  <div class="controls">
+    <div class="ctl">
+      <span class="lab"><span>Angle d'incidence <em>i</em>₁</span><span class="val" id="v-i1">50°</span></span>
+      <input type="range" id="c-i1" min="0" max="89" step="1" value="50"
+             aria-label="Angle d'incidence i1 en degrés">
+    </div>
+    <div class="ctl">
+      <span class="lab"><span>Milieu 1 — indice <em>n</em>₁</span><span class="val" id="v-n1">1,50</span></span>
+      <div class="seg" id="c-n1"></div>
+    </div>
+    <div class="ctl">
+      <span class="lab"><span>Milieu 2 — indice <em>n</em>₂</span><span class="val" id="v-n2">1,00</span></span>
+      <div class="seg" id="c-n2"></div>
+    </div>
+    <div class="presets" id="p-snell">
+      <span class="pl">Cas d'école</span>
+      <button data-p="dense">Air → eau</button>
+      <button data-p="rasant">Verre → air, rasant</button>
+      <button data-p="totale">Verre → air, réflexion totale</button>
+      <button data-p="diam">Diamant → air</button>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div>
+      <h4>Les deux lois</h4>
+      <div class="formula"><em>i</em><sub>réfléchi</sub> = <em>i</em>₁</div>
+      <div class="formula"><em>n</em>₁ sin <em>i</em>₁ = <em>n</em>₂ sin <em>i</em>₂</div>
+      <p style="margin:0;font-size:14.5px;color:var(--ink-2)">
+        Réversibilité : la formule est symétrique, donc un rayon renvoyé en sens inverse
+        reprend exactement le même chemin.
+      </p>
+    </div>
+    <div>
+      <h4>Se rapprocher ou s'éloigner</h4>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>Passage</th><th>Le rayon</th><th>Pourquoi</th></tr></thead>
+          <tbody>
+            <tr><td><b>n₁ &lt; n₂</b><br>air → eau</td><td>se <b>rapproche</b> de la normale</td><td>milieu plus lent → il se redresse</td></tr>
+            <tr><td><b>n₁ &gt; n₂</b><br>eau → air</td><td>s'<b>éloigne</b> de la normale</td><td>milieu plus rapide → il s'écarte</td></tr>
+            <tr><td><b>n₁ = n₂</b></td><td>n'est <b>pas dévié</b></td><td>aucun changement de vitesse</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h4>Angle limite</h4>
+      <div class="formula">sin λ = <span class="frac"><span><em>n</em>₂</span><span><em>n</em>₁</span></span></div>
+      <ul>
+        <li><b>i₁ &lt; λ</b> → réfraction (+ réflexion partielle)</li>
+        <li><b>i₁ ≥ λ</b> → <b>réflexion totale</b>, plus aucune lumière ne sort</li>
+        <li>Existe <b>uniquement</b> si n₁ &gt; n₂ (dense → moins dense)</li>
+      </ul>
+      <p style="margin:10px 0 0;font-size:14.5px;color:var(--ink-2)">
+        Verre/air : λ ≈ 41,8°. Diamant/air : λ ≈ 24,4° — la lumière y est piégée,
+        d'où l'éclat. Même principe pour la fibre optique et les prismes de jumelles.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATION 2 : LENTILLE ══════════════ -->
+<section class="station" id="lentille">
+  <div class="station-head">
+    <p class="station-num">Station 02 · chapitre 6</p>
+    <h2>Lentilles minces</h2>
+    <p class="lede">
+      Attrape l'objet vert et fais-le glisser vers la lentille. Les trois rayons de
+      construction se redessinent, l'image bascule de réelle à virtuelle en passant par
+      le foyer, et la relation de conjugaison se recalcule avec tes valeurs.
+    </p>
+  </div>
+
+  <div class="bench">
+    <div class="stage">
+      <svg id="sv-lens" viewBox="0 0 800 400" role="img"
+           aria-label="Construction de l'image par une lentille mince"></svg>
+      <p class="stage-cap" id="cap-lens">Glisse l'objet · trait plein = lumière réelle · pointillés = prolongement virtuel</p>
+    </div>
+    <aside class="readout">
+      <h3>Relation de conjugaison</h3>
+      <div class="calc" id="ro-lens-calc"></div>
+      <dl class="vals" id="ro-lens-vals"></dl>
+      <p class="verdict" id="ro-lens-verdict"></p>
+      <div class="chips" id="ro-lens-chips"></div>
+    </aside>
+  </div>
+
+  <div class="controls">
+    <div class="ctl">
+      <span class="lab"><span>Position de l'objet <span class="ov">OA</span></span><span class="val" id="v-oa">−30,0 cm</span></span>
+      <input type="range" id="c-oa" min="-200" max="-1" step="0.5" value="-30"
+             aria-label="Position de l'objet OA en centimètres">
+    </div>
+    <div class="ctl">
+      <span class="lab"><span>Distance focale <span class="ov">OF′</span> = <em>f</em>′</span><span class="val" id="v-fp">+10,0 cm</span></span>
+      <input type="range" id="c-fp" min="4" max="60" step="0.5" value="10"
+             aria-label="Distance focale de la lentille en centimètres">
+    </div>
+    <div class="ctl" style="flex:0 0 240px">
+      <span class="lab"><span>Type de lentille</span></span>
+      <div class="seg" id="c-lenstype">
+        <label><input type="radio" name="lenstype" value="conv" checked>Convergente</label>
+        <label><input type="radio" name="lenstype" value="div">Divergente</label>
+      </div>
+    </div>
+    <div class="presets" id="p-lens">
+      <span class="pl">Cas types</span>
+      <button data-p="far">Au-delà de 2<em>f</em>′</button>
+      <button data-p="two">À 2<em>f</em>′ (γ = −1)</button>
+      <button data-p="between">Entre <em>f</em>′ et 2<em>f</em>′</button>
+      <button data-p="atf">Objet en F</button>
+      <button data-p="loupe">Entre F et O → loupe</button>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div>
+      <h4>Les 3 rayons de construction</h4>
+      <ol>
+        <li>Rayon <b>parallèle à l'axe</b> → émerge en passant par <b>F′</b></li>
+        <li>Rayon <b>par le centre optique O</b> → <b>non dévié</b></li>
+        <li>Rayon <b>par le foyer objet F</b> → émerge <b>parallèle à l'axe</b></li>
+      </ol>
+      <div class="formula" style="margin-top:14px">
+        <span class="frac"><span>1</span><span><span class="ov">OA′</span></span></span> −
+        <span class="frac"><span>1</span><span><span class="ov">OA</span></span></span> =
+        <span class="frac"><span>1</span><span><em>f</em>′</span></span>
+      </div>
+      <div class="formula">
+        γ = <span class="frac"><span><span class="ov">A′B′</span></span><span><span class="ov">AB</span></span></span> =
+        <span class="frac"><span><span class="ov">OA′</span></span><span><span class="ov">OA</span></span></span>
+      </div>
+      <p style="margin:0;font-size:14.5px;color:var(--ink-2)">
+        Vergence : <b>C = 1/f′</b> en dioptries, avec f′ <b>en mètres</b>.
+        Attention au signe : ici <b>+OA′/OA</b>, alors que pour un miroir c'est <b>−SA′/SA</b>.
+      </p>
+    </div>
+    <div>
+      <h4>Cas types — lentille convergente</h4>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>Objet</th><th>Image</th><th>Nature</th><th>Sens</th><th>Taille</th></tr></thead>
+          <tbody>
+            <tr><td>À l'infini</td><td>En F′</td><td>Réelle</td><td>—</td><td>Ponctuelle</td></tr>
+            <tr><td>Au-delà de 2f′</td><td>Entre F′ et 2f′</td><td>Réelle</td><td>Renversée</td><td>Réduite</td></tr>
+            <tr><td>À 2f′</td><td>À 2f′</td><td>Réelle</td><td>Renversée</td><td>Égale</td></tr>
+            <tr><td>Entre 2f′ et F</td><td>Au-delà de 2f′</td><td>Réelle</td><td>Renversée</td><td>Agrandie</td></tr>
+            <tr><td><b>En F</b></td><td><b>À l'infini</b></td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td><b>Entre F et O</b></td><td>Côté objet</td><td><b>Virtuelle</b></td><td><b>Droite</b></td><td><b>Agrandie</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="trap" style="margin-top:16px">
+        <span class="t">Le cas piège</span>
+        Objet <b>entre F et O</b> : les rayons sortent divergents et ne se croisent jamais
+        réellement. Seuls leurs <b>prolongements arrière</b> se coupent — <span class="ov">OA′</span> devient négatif,
+        l'image est virtuelle, droite, agrandie, et <b>impossible à projeter sur un écran</b>.
+        Aucune lumière n'arrive physiquement là. C'est exactement le principe de la loupe.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATION 3 : MIROIR ══════════════ -->
+<section class="station" id="miroir">
+  <div class="station-head">
+    <p class="station-num">Station 03 · chapitre 5</p>
+    <h2>Miroirs sphériques</h2>
+    <p class="lede">
+      Même jeu, mais la lumière repart en arrière. Le foyer reste toujours au milieu de
+      SC — bouge le rayon de courbure et regarde F suivre à mi-chemin. Le cas piège de
+      l'objet placé exactement au foyer est un bouton.
+    </p>
+  </div>
+
+  <div class="bench">
+    <div class="stage">
+      <svg id="sv-mirror" viewBox="0 0 800 400" role="img"
+           aria-label="Construction de l'image par un miroir sphérique"></svg>
+      <p class="stage-cap">Glisse l'objet · les rayons réfléchis repartent vers la gauche</p>
+    </div>
+    <aside class="readout">
+      <h3>Relation de conjugaison</h3>
+      <div class="calc" id="ro-mir-calc"></div>
+      <dl class="vals" id="ro-mir-vals"></dl>
+      <p class="verdict" id="ro-mir-verdict"></p>
+      <div class="chips" id="ro-mir-chips"></div>
+    </aside>
+  </div>
+
+  <div class="controls">
+    <div class="ctl">
+      <span class="lab"><span>Position de l'objet <span class="ov">SA</span></span><span class="val" id="v-sa">−60,0 cm</span></span>
+      <input type="range" id="c-sa" min="-200" max="-1" step="0.5" value="-60"
+             aria-label="Position de l'objet SA en centimètres">
+    </div>
+    <div class="ctl">
+      <span class="lab"><span>Rayon de courbure |<em>R</em>|</span><span class="val" id="v-R">40,0 cm</span></span>
+      <input type="range" id="c-R" min="10" max="140" step="1" value="40"
+             aria-label="Rayon de courbure du miroir en centimètres">
+    </div>
+    <div class="ctl" style="flex:0 0 240px">
+      <span class="lab"><span>Type de miroir</span></span>
+      <div class="seg" id="c-mirtype">
+        <label><input type="radio" name="mirtype" value="concave" checked>Concave</label>
+        <label><input type="radio" name="mirtype" value="convex">Convexe</label>
+      </div>
+    </div>
+    <div class="presets" id="p-mir">
+      <span class="pl">Cas types</span>
+      <button data-p="beyondC">Au-delà de C</button>
+      <button data-p="atC">En C (γ = −1)</button>
+      <button data-p="CF">Entre C et F</button>
+      <button data-p="atF">Objet en F → projecteur</button>
+      <button data-p="FS">Entre F et S</button>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div>
+      <h4>Les 3 rayons de construction</h4>
+      <ol>
+        <li>Rayon <b>parallèle à l'axe</b> → réfléchi par <b>F</b></li>
+        <li>Rayon <b>par F</b> → réfléchi <b>parallèle à l'axe</b></li>
+        <li>Rayon <b>par C</b> → réfléchi <b>sur lui-même</b> (il arrive perpendiculairement au miroir)</li>
+      </ol>
+      <div class="formula" style="margin-top:14px">
+        <em>f</em> = <span class="ov">SF</span> =
+        <span class="frac"><span><span class="ov">SC</span></span><span>2</span></span> =
+        <span class="frac"><span><em>R</em></span><span>2</span></span>
+      </div>
+      <div class="formula">
+        <span class="frac"><span>1</span><span><span class="ov">SA′</span></span></span> +
+        <span class="frac"><span>1</span><span><span class="ov">SA</span></span></span> =
+        <span class="frac"><span>1</span><span><em>f</em></span></span>
+      </div>
+      <div class="formula">γ = −<span class="frac"><span><span class="ov">SA′</span></span><span><span class="ov">SA</span></span></span></div>
+    </div>
+    <div>
+      <h4>Signes et repères</h4>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>Type</th><th>R</th><th>f</th><th>Comportement</th></tr></thead>
+          <tbody>
+            <tr><td><b>Concave</b></td><td>R &lt; 0 — C devant</td><td>f &lt; 0</td><td><b>Convergent</b></td></tr>
+            <tr><td><b>Convexe</b></td><td>R &gt; 0 — C derrière</td><td>f &gt; 0</td><td><b>Divergent</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul style="margin-top:14px">
+        <li><b>S</b> sommet · <b>C</b> centre de courbure (<span class="ov">SC</span> = R) · <b>F</b> foyer, toujours au milieu de SC</li>
+        <li>γ &lt; 0 renversée · γ &gt; 0 droite · |γ| &gt; 1 agrandie · |γ| &lt; 1 réduite</li>
+        <li>« Miroir concave de rayon 40 cm » ⇒ distance focale <b>20 cm</b></li>
+      </ul>
+      <div class="trap" style="margin-top:16px">
+        <span class="t">Le cas piège</span>
+        Objet <b>exactement au foyer</b> : 1/<span class="ov">SA′</span> = 1/f − 1/<span class="ov">SA</span> = 0, donc <span class="ov">SA′</span> → ∞.
+        Les rayons réfléchis ressortent <b>parallèles</b> entre eux : aucune image observable
+        à distance finie. C'est le principe du <b>projecteur</b> et du <b>phare de voiture</b>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ STATION 4 : L'ŒIL ══════════════ -->
+<section class="station" id="oeil">
+  <div class="station-head">
+    <p class="station-num">Station 04 · chapitres 7 et 8</p>
+    <h2>L'œil, l'accommodation et les défauts</h2>
+    <p class="lede">
+      C'est la figure du cours qui était la plus cassée — ici les trois yeux deviennent
+      un seul œil qu'on règle. Approche l'objet : le cristallin se bombe pour garder
+      l'image sur la rétine, jusqu'au punctum proximum où il abandonne. Change de défaut,
+      puis mets le verre correcteur.
+    </p>
+  </div>
+
+  <div class="bench">
+    <div class="stage">
+      <svg id="sv-eye" viewBox="0 0 800 400" role="img"
+           aria-label="Œil schématique, formation de l'image sur la rétine et correction"></svg>
+      <p class="stage-cap">Écarts image/rétine amplifiés ×8 pour être visibles — les valeurs du panneau sont les vraies.</p>
+    </div>
+    <aside class="readout">
+      <h3>État de l'œil</h3>
+      <p class="verdict" id="ro-eye-verdict"></p>
+      <dl class="vals" id="ro-eye-vals"></dl>
+      <div class="chips" id="ro-eye-chips" style="margin-bottom:16px"></div>
+      <h3>Correction</h3>
+      <div class="calc" id="ro-eye-calc"></div>
+    </aside>
+  </div>
+
+  <div class="controls">
+    <div class="ctl" style="flex:1 1 300px">
+      <span class="lab"><span>Défaut de l'œil</span></span>
+      <div class="seg" id="c-defect">
+        <label><input type="radio" name="defect" value="emme" checked>Emmétrope</label>
+        <label><input type="radio" name="defect" value="myope">Myope</label>
+        <label><input type="radio" name="defect" value="hyper">Hypermétrope</label>
+        <label><input type="radio" name="defect" value="presb">Presbyte</label>
+      </div>
+    </div>
+    <div class="ctl">
+      <span class="lab"><span>Distance de l'objet</span><span class="val" id="v-dobj">5,0 m</span></span>
+      <input type="range" id="c-dobj" min="0" max="101" step="1" value="72"
+             aria-label="Distance de l'objet observé">
+    </div>
+    <div class="ctl">
+      <span class="lab"><span id="lab-sev">Sévérité du défaut</span><span class="val" id="v-sev">0,0 δ</span></span>
+      <input type="range" id="c-sev" min="0" max="8" step="0.25" value="0"
+             aria-label="Sévérité du défaut en dioptries">
+    </div>
+    <div class="ctl" style="flex:0 0 auto; min-width:auto">
+      <span class="lab"><span>Lunettes</span></span>
+      <label class="switch"><input type="checkbox" id="c-corr"> Porter le verre correcteur</label>
+    </div>
+  </div>
+
+  <div class="notes">
+    <div>
+      <h4>L'œil comme système optique</h4>
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>Élément</th><th>Équivalent optique</th></tr></thead>
+          <tbody>
+            <tr><td>Cornée + cristallin</td><td><b>Lentille convergente</b> ≈ 60 δ</td></tr>
+            <tr><td>Iris / pupille</td><td><b>Diaphragme</b></td></tr>
+            <tr><td>Rétine</td><td><b>Écran</b> de projection</td></tr>
+            <tr><td>Nerf optique</td><td>Transmission au cerveau</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:14px 0 0;font-size:14.5px;color:var(--ink-2)">
+        L'image rétinienne est <b>réelle, renversée et réduite</b>. Si tu la perçois droite,
+        c'est <b>physiologique et non optique</b> : le cerveau réinterprète, l'optique ne
+        triche pas. La distance cristallin–rétine étant fixe, c'est le cristallin qui change
+        de forme — <b>aplati</b> pour voir loin (repos), <b>bombé</b> pour voir près
+        (accommodation).
+      </p>
+    </div>
+    <div>
+      <h4>Reconnaître le défaut dans un énoncé</h4>
+      <div class="trap">
+        <span class="t">Méthode</span>
+        « Un patient voit net <b>jusqu'à 2 m</b> » → son <b>punctum remotum est à 2 m</b>
+        au lieu de l'infini → il ne voit pas net <b>au loin</b> → <b>myopie</b> → verre
+        <b>divergent</b>. Le verre doit ramener l'infini sur le PR :
+        C = −1/d<sub>PR</sub> = −1/2 = <b>−0,5 δ</b>.
+      </div>
+      <div class="tbl-scroll" style="margin-top:16px">
+        <table>
+          <thead><tr><th>Défaut</th><th>Image</th><th>PR / PP</th><th>Correction</th></tr></thead>
+          <tbody>
+            <tr><td><b>Myopie</b><br>œil trop long</td><td><b>En avant</b> de la rétine</td><td>PR <b>fini</b></td><td>Lentille <b>divergente</b> (C &lt; 0)</td></tr>
+            <tr><td><b>Hypermétropie</b><br>œil trop court</td><td><b>En arrière</b> de la rétine</td><td>PP éloigné</td><td>Lentille <b>convergente</b> (C &gt; 0)</td></tr>
+            <tr><td><b>Presbytie</b><br>cristallin durci</td><td>En arrière, <b>de près</b></td><td>PP recule (40–50 cm+)</td><td>Lentille <b>convergente</b></td></tr>
+            <tr><td><b>Astigmatisme</b><br>cornée non sphérique</td><td>Deux images à deux distances</td><td>—</td><td>Lentille <b>cylindrique</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin:14px 0 0;font-size:14.5px;color:var(--ink-2)">
+        <b>PP</b> — point le plus proche vu net, accommodation maximale (≈ 25 cm, noté d<sub>m</sub>).
+        <b>PR</b> — point le plus éloigné vu net, œil au repos (à l'infini pour un œil normal).
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Construit à partir de <code>theorie_optique_geometrique.md</code> — stations 01 à 04
+  (chapitres 2, 3, 5, 6, 7, 8). Convention de signe unique dans toute la page :
+  lumière de gauche à droite, origine au sommet du système, positif vers la droite.
+</footer>
+</div>
+
+<script>
+/* ══════════════════ helpers ══════════════════ */
+const RAD = Math.PI / 180;
+const fmt = (x, d = 1) => {
+  if (!isFinite(x)) return "∞";
+  const s = Math.abs(x).toFixed(d).replace(".", ",");
+  return (x < 0 ? "−" : "") + s;
+};
+const sgn = (x, d = 1) => (x >= 0 ? "+" : "−") + Math.abs(x).toFixed(d).replace(".", ",");
+const esc = s => String(s);
+
+/* extend a ray from p along direction d until it leaves the rect */
+function edge(p, d, r) {
+  let t = Infinity;
+  if (d.x > 1e-9) t = Math.min(t, (r.x2 - p.x) / d.x);
+  if (d.x < -1e-9) t = Math.min(t, (r.x1 - p.x) / d.x);
+  if (d.y > 1e-9) t = Math.min(t, (r.y2 - p.y) / d.y);
+  if (d.y < -1e-9) t = Math.min(t, (r.y1 - p.y) / d.y);
+  if (!isFinite(t) || t < 0) t = 0;
+  return { x: p.x + d.x * t, y: p.y + d.y * t };
+}
+const norm = d => { const m = Math.hypot(d.x, d.y) || 1; return { x: d.x / m, y: d.y / m }; };
+const L = (a, b, cls, extra = "") =>
+  `<line x1="${a.x.toFixed(2)}" y1="${a.y.toFixed(2)}" x2="${b.x.toFixed(2)}" y2="${b.y.toFixed(2)}" class="${cls}" ${extra}/>`;
+const T = (x, y, txt, cls, anchor = "middle") =>
+  `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" class="${cls}" text-anchor="${anchor}">${txt}</text>`;
+const DOT = (x, y, cls, r = 4) =>
+  `<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="${r}" class="${cls}"/>`;
+
+/* shared <defs>: markers + svg-local styling */
+function defs(id) {
+  const mk = (name, cls) =>
+    `<marker id="${id}-${name}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+       markerHeight="6" orient="auto-start-reverse">
+       <path d="M0 0 L10 5 L0 10 z" class="mk ${cls}"/></marker>`;
+  return `<defs>
+    ${mk("beam", "mk-beam")}${mk("obj", "mk-obj")}${mk("img", "mk-img")}
+    ${mk("axis", "mk-axis")}${mk("dim", "mk-dim")}
+    <clipPath id="${id}-clip"><rect x="0" y="0" width="800" height="400"/></clipPath>
+  </defs>
+  <style>
+    .mk-beam{fill:var(--beam)} .mk-obj{fill:var(--obj)} .mk-img{fill:var(--img)}
+    .mk-axis{fill:var(--ink-3)} .mk-dim{fill:var(--ink-3)}
+    .axis{stroke:var(--ink-3); stroke-width:1; stroke-dasharray:7 5; opacity:.75}
+    .beam{stroke:var(--beam); stroke-width:1.9; fill:none; stroke-linecap:round}
+    .beam-v{stroke:var(--beam); stroke-width:1.4; fill:none; stroke-dasharray:5 5; opacity:.8}
+    .beam-dim{stroke:var(--beam); stroke-width:1.3; fill:none; opacity:.5}
+    .obj{stroke:var(--obj); stroke-width:2.6; stroke-linecap:round}
+    .img{stroke:var(--img); stroke-width:2.6; stroke-linecap:round}
+    .img-v{stroke:var(--img); stroke-width:2.2; stroke-dasharray:6 4; stroke-linecap:round}
+    .glass{stroke:var(--glass); stroke-width:2; fill:color-mix(in srgb,var(--glass) 14%,transparent)}
+    .glass-l{stroke:var(--glass); stroke-width:1.6; fill:none}
+    .hair{stroke:var(--ink-3); stroke-width:1; opacity:.5}
+    .hair-d{stroke:var(--ink-3); stroke-width:1; stroke-dasharray:3 4; opacity:.55}
+    .arc{stroke:var(--beam); stroke-width:1.2; fill:none; opacity:.85}
+    .dot-obj{fill:var(--obj)} .dot-img{fill:var(--img)} .dot-key{fill:var(--ink-2)}
+    .dot-beam{fill:var(--beam)}
+    text{font-family:var(--sans); font-size:13px; fill:var(--ink-2)}
+    .pt{font-family:var(--serif); font-size:15px; font-style:italic; fill:var(--ink)}
+    .pt-obj{font-family:var(--serif); font-size:15px; font-style:italic; fill:var(--obj)}
+    .pt-img{font-family:var(--serif); font-size:15px; font-style:italic; fill:var(--img)}
+    .tag{font-family:var(--mono); font-size:11.5px; fill:var(--ink-3); letter-spacing:.04em}
+    .tag-b{font-family:var(--mono); font-size:11.5px; fill:var(--beam); letter-spacing:.04em}
+    .tag-o{font-family:var(--mono); font-size:11.5px; fill:var(--obj); letter-spacing:.04em}
+    .tag-i{font-family:var(--mono); font-size:11.5px; fill:var(--img); letter-spacing:.04em}
+    .tag-w{font-family:var(--mono); font-size:11.5px; fill:var(--warn); letter-spacing:.04em}
+    .ang{font-family:var(--serif); font-size:14px; font-style:italic; fill:var(--beam)}
+    .med{font-family:var(--mono); font-size:12px; fill:var(--ink-3)}
+    .zone-1{fill:var(--glass); opacity:.07}
+    .zone-2{fill:var(--beam); opacity:.05}
+    .warnfill{fill:var(--warn); opacity:.85}
+  </style>`;
+}
+
+/* ══════════════════ 1. SNELL ══════════════════ */
+(function () {
+  const svg = document.getElementById("sv-snell");
+  const MEDIA = [
+    { n: 1.0, name: "Air" }, { n: 1.33, name: "Eau" },
+    { n: 1.5, name: "Verre" }, { n: 2.42, name: "Diamant" }
+  ];
+  const st = { i1: 50, n1: 2, n2: 0 };
+
+  /* build the two medium selectors */
+  ["n1", "n2"].forEach(key => {
+    document.getElementById("c-" + key).innerHTML = MEDIA.map((m, i) =>
+      `<label><input type="radio" name="${key}" value="${i}" ${st[key] === i ? "checked" : ""}>${m.name}</label>`
+    ).join("");
+    document.getElementById("c-" + key).addEventListener("change", e => {
+      st[key] = +e.target.value; render();
+    });
+  });
+  document.getElementById("c-i1").addEventListener("input", e => { st.i1 = +e.target.value; render(); });
+  document.getElementById("p-snell").addEventListener("click", e => {
+    const p = e.target.closest("button"); if (!p) return;
+    const set = { dense: [30, 0, 1], rasant: [41, 2, 0], totale: [58, 2, 0], diam: [35, 3, 0] }[p.dataset.p];
+    st.i1 = set[0]; st.n1 = set[1]; st.n2 = set[2];
+    document.getElementById("c-i1").value = st.i1;
+    document.querySelector(`input[name=n1][value="${st.n1}"]`).checked = true;
+    document.querySelector(`input[name=n2][value="${st.n2}"]`).checked = true;
+    render();
+  });
+
+  const Ix = 380, Iy = 200;
+  const BOX = { x1: 16, y1: 16, x2: 744, y2: 404 };
+  /* direction unitaire à l'angle a depuis la normale, vers le haut (up) ou le bas */
+  const dir = (a, up) => ({ x: Math.sin(a * RAD) * (up ? 1 : 1), y: up ? -Math.cos(a * RAD) : Math.cos(a * RAD) });
+  /* point situé à la fraction t du segment I→bord, décalé de (ox,oy) */
+  const along = (p, d, t, ox = 0, oy = 0) => {
+    const e = edge(p, d, BOX);
+    return { x: p.x + (e.x - p.x) * t + ox, y: p.y + (e.y - p.y) * t + oy };
+  };
+
+  function render() {
+    const n1 = MEDIA[st.n1].n, n2 = MEDIA[st.n2].n, i1 = st.i1;
+    const sin2 = n1 * Math.sin(i1 * RAD) / n2;
+    const total = sin2 > 1;
+    const i2 = total ? null : Math.asin(sin2) / RAD;
+    const lam = n1 > n2 ? Math.asin(n2 / n1) / RAD : null;
+
+    const I = { x: Ix, y: Iy };
+    const dInc = dir(i1, true);                                  /* I → source */
+    const dRefl = { x: Math.sin(i1 * RAD), y: -Math.cos(i1 * RAD) };
+    const inc = edge(I, { x: -dInc.x, y: dInc.y }, BOX);          /* point de départ, en haut à gauche */
+    const refl = edge(I, dRefl, BOX);
+
+    let g = defs("sn");
+    /* media zones + interface */
+    g += `<rect class="zone-1" x="0" y="0" width="760" height="${Iy}"/>`;
+    g += `<rect class="zone-2" x="0" y="${Iy}" width="760" height="${420 - Iy}"/>`;
+    g += L({ x: 20, y: Iy }, { x: 740, y: Iy }, "", 'stroke="var(--ink-2)" stroke-width="2"');
+    /* hatching under the interface */
+    for (let x = 24; x < 740; x += 22)
+      g += L({ x, y: Iy }, { x: x - 9, y: Iy + 9 }, "hair");
+    /* normal */
+    g += L({ x: Ix, y: 22 }, { x: Ix, y: 408 }, "axis");
+    g += T(Ix + 8, 34, "normale", "tag", "start");
+
+    /* media labels */
+    g += T(30, Iy - 22, `milieu 1 — ${MEDIA[st.n1].name}`, "med", "start");
+    g += T(30, Iy - 6, `n₁ = ${fmt(n1, 2)}`, "med", "start");
+    g += T(30, Iy + 22, `milieu 2 — ${MEDIA[st.n2].name}`, "med", "start");
+    g += T(30, Iy + 38, `n₂ = ${fmt(n2, 2)}`, "med", "start");
+
+    /* rays — toujours prolongés jusqu'au bord du cadre, jamais tronqués */
+    g += L(inc, I, "beam", `marker-end="url(#sn-beam)"`);
+    g += L(I, refl, total ? "beam" : "beam-dim", `marker-end="url(#sn-beam)"`);
+    {
+      const p = along(I, dRefl, 0.78, i1 > 55 ? 0 : 14, i1 > 55 ? -14 : 4);
+      g += T(p.x, p.y, "réfléchi", total ? "tag-b" : "tag", "start");
+    }
+    if (!total) {
+      const d2 = { x: Math.sin(i2 * RAD), y: Math.cos(i2 * RAD) };
+      g += L(I, edge(I, d2, BOX), "beam", `marker-end="url(#sn-beam)"`);
+      const p = along(I, d2, 0.66, i2 > 50 ? 0 : 16, i2 > 50 ? 20 : 4);
+      g += T(p.x, p.y, `i₂ = ${fmt(i2)}°`, "tag-b", "start");
+    }
+    g += DOT(Ix, Iy, "dot-beam", 4.5);
+    g += T(Ix - 12, Iy + 20, "I", "pt", "end");
+
+    /* angle arcs */
+    const arc = (a0, a1, r, cls) => {
+      const p = a => ({ x: Ix + r * Math.sin(a * RAD), y: Iy - r * Math.cos(a * RAD) });
+      const A = p(a0), B = p(a1);
+      return `<path d="M${A.x.toFixed(1)} ${A.y.toFixed(1)} A ${r} ${r} 0 0 ${a1 > a0 ? 1 : 0} ${B.x.toFixed(1)} ${B.y.toFixed(1)}" class="${cls}"/>`;
+    };
+    g += arc(0, -i1, 62, "arc");
+    g += T(Ix - 34 - 8 * Math.sin(i1 * RAD / 2), Iy - 66, `i₁`, "ang", "end");
+    if (!total) {
+      const p = a => ({ x: Ix + 62 * Math.sin(a * RAD), y: Iy + 62 * Math.cos(a * RAD) });
+      const A = p(0), B = p(i2);
+      g += `<path d="M${A.x.toFixed(1)} ${A.y.toFixed(1)} A 62 62 0 0 0 ${B.x.toFixed(1)} ${B.y.toFixed(1)}" class="arc"/>`;
+      g += T(Ix + 34, Iy + 78, `i₂`, "ang", "start");
+    }
+    /* repère de l'angle limite λ, du côté du rayon incident */
+    if (lam !== null) {
+      const dL = { x: -Math.sin(lam * RAD), y: -Math.cos(lam * RAD) };
+      g += L(I, edge(I, dL, BOX), "hair-d");
+      const p = along(I, dL, 0.72, -8, -8);
+      g += T(p.x, p.y, `λ = ${fmt(lam)}°`, "tag", "end");
+    }
+    /* bandeau d'état */
+    if (total) {
+      g += T(Ix + 34, Iy + 56, "RÉFLEXION TOTALE", "tag-w", "start");
+      g += T(Ix + 34, Iy + 74, "aucun rayon réfracté", "tag", "start");
+    }
+    svg.innerHTML = g;
+
+    /* readouts */
+    document.getElementById("v-i1").textContent = i1 + "°";
+    document.getElementById("v-n1").textContent = fmt(n1, 2);
+    document.getElementById("v-n2").textContent = fmt(n2, 2);
+
+    const calc = document.getElementById("ro-snell-calc");
+    let c = `<div class="step">n₁ sin i₁ = n₂ sin i₂</div>`;
+    c += `<div class="step">${fmt(n1, 2)} × sin ${i1}° = ${fmt(n2, 2)} × sin i₂</div>`;
+    c += `<div class="step">sin i₂ = <b>${fmt(sin2, 3)}</b></div>`;
+    c += total
+      ? `<div class="step">sin i₂ &gt; 1 → <b>impossible</b></div>`
+      : `<div class="step">i₂ = <b>${fmt(i2)}°</b></div>`;
+    calc.innerHTML = c;
+
+    let v = `<dt>Angle d'incidence i₁</dt><dd>${fmt(i1, 0)}°</dd>`;
+    v += `<dt>Angle réfléchi</dt><dd>${fmt(i1, 0)}°</dd>`;
+    v += `<dt>Angle réfracté i₂</dt><dd>${total ? "—" : fmt(i2) + "°"}</dd>`;
+    v += `<dt>Angle limite λ</dt><dd>${lam === null ? "n'existe pas" : fmt(lam) + "°"}</dd>`;
+    document.getElementById("ro-snell-vals").innerHTML = v;
+
+    const chips = [];
+    if (n1 < n2) chips.push(`<span class="chip neutral">se rapproche de la normale</span>`);
+    else if (n1 > n2) chips.push(`<span class="chip neutral">s'éloigne de la normale</span>`);
+    else chips.push(`<span class="chip neutral">aucune déviation</span>`);
+    if (total) chips.push(`<span class="chip warn">réflexion totale — i₁ ≥ λ</span>`);
+    else if (lam !== null && i1 >= lam - 1.5) chips.push(`<span class="chip warn">réfraction rasante — i₂ → 90°</span>`);
+    else chips.push(`<span class="chip ok">réfraction + réflexion partielle</span>`);
+    if (lam === null && n1 < n2) chips.push(`<span class="chip neutral">pas de réflexion totale possible dans ce sens</span>`);
+    document.getElementById("ro-snell-chips").innerHTML = chips.join("");
+  }
+  render();
+})();
+
+/* ══════════════════ 2. LENTILLE MINCE ══════════════════ */
+(function () {
+  const svg = document.getElementById("sv-lens");
+  const st = { OA: -30, fp: 10, conv: true };
+  const Ox = 400, y0 = 195, HOBJ = 52, CLIP = { x1: 4, y1: 4, x2: 796, y2: 396 };
+
+  const cOA = document.getElementById("c-oa"), cFP = document.getElementById("c-fp");
+  cOA.addEventListener("input", e => { st.OA = +e.target.value; render(); });
+  cFP.addEventListener("input", e => { st.fp = +e.target.value; render(); });
+  document.getElementById("c-lenstype").addEventListener("change", e => {
+    st.conv = e.target.value === "conv"; render();
+  });
+  document.getElementById("p-lens").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (!st.conv) { st.conv = true; document.querySelector('input[name=lenstype][value=conv]').checked = true; }
+    const f = st.fp;
+    st.OA = { far: -3.1 * f, two: -2 * f, between: -1.5 * f, atf: -f, loupe: -0.55 * f }[b.dataset.p];
+    st.OA = Math.max(-200, Math.min(-1, Math.round(st.OA * 2) / 2));
+    cOA.value = st.OA; render();
+  });
+
+  /* drag the object along the axis */
+  svg.addEventListener("pointerdown", e => {
+    const cm = toCm(e);
+    if (Math.abs(cm - st.OA) > 22 / scale) return;
+    svg.setPointerCapture(e.pointerId);
+    svg.dataset.drag = "1"; e.preventDefault();
+  });
+  svg.addEventListener("pointermove", e => {
+    if (svg.dataset.drag !== "1") return;
+    st.OA = Math.max(-200, Math.min(-1, Math.round(toCm(e) * 2) / 2));
+    cOA.value = st.OA; render();
+  });
+  const stop = e => { svg.dataset.drag = "0"; };
+  svg.addEventListener("pointerup", stop); svg.addEventListener("pointercancel", stop);
+  function toCm(e) {
+    const r = svg.getBoundingClientRect();
+    return ((e.clientX - r.left) / r.width * 800 - Ox) / scale;
+  }
+
+  let scale = 4;
+
+  function render() {
+    const fp = st.conv ? st.fp : -st.fp;
+    const OA = st.OA;
+    const invOAp = 1 / fp + 1 / OA;
+    const atInf = Math.abs(invOAp) < 1e-6;
+    const OAp = atInf ? Infinity : 1 / invOAp;
+    const gam = atInf ? Infinity : OAp / OA;
+
+    /* échelle adaptative : objet, foyers et image finie tiennent dans le cadre */
+    let ext = Math.max(Math.abs(OA), 2.2 * Math.abs(fp));
+    if (isFinite(OAp) && Math.abs(OAp) <= 140) ext = Math.max(ext, Math.abs(OAp));
+    ext *= 1.16;
+    scale = Math.max(0.4, Math.min(26, 372 / ext));
+    const X = cm => Ox + cm * scale;
+
+    const xA = X(OA), xFp = X(fp), xF = X(-fp);
+    const B = { x: xA, y: y0 - HOBJ };
+
+    let g = defs("ln");
+    /* axis */
+    g += L({ x: 10, y: y0 }, { x: 792, y: y0 }, "hair");
+    /* lens body */
+    const lh = 128, bulge = 26;
+    if (st.conv) {
+      g += `<path d="M${Ox} ${y0 - lh} C ${Ox + bulge} ${y0 - lh * .4} ${Ox + bulge} ${y0 + lh * .4} ${Ox} ${y0 + lh}
+                     C ${Ox - bulge} ${y0 + lh * .4} ${Ox - bulge} ${y0 - lh * .4} ${Ox} ${y0 - lh} z" class="glass"/>`;
+    } else {
+      const w = 15;
+      g += `<path d="M${Ox - w} ${y0 - lh} C ${Ox + 10} ${y0 - 30} ${Ox + 10} ${y0 + 30} ${Ox - w} ${y0 + lh}
+                     L ${Ox + w} ${y0 + lh} C ${Ox - 10} ${y0 + 30} ${Ox - 10} ${y0 - 30} ${Ox + w} ${y0 - lh} z" class="glass"/>`;
+    }
+    g += L({ x: Ox, y: y0 - lh - 14 }, { x: Ox, y: y0 + lh + 14 }, "hair-d");
+
+    /* key points */
+    const key = (x, label, sub) => {
+      let s = DOT(x, y0, "dot-key", 3.5) + T(x, y0 + 22, label, "pt");
+      if (sub) s += T(x, y0 + 38, sub, "tag");
+      return s;
+    };
+    g += key(Ox, "O", "");
+    g += key(xFp, "F′", `${sgn(fp)} cm`);
+    g += key(xF, "F", `${sgn(-fp)} cm`);
+
+    /* objet — la lettre se place à côté de l'axe pour ne jamais heurter F / O / F′ */
+    g += L({ x: xA, y: y0 }, B, "obj", `marker-end="url(#ln-obj)"`);
+    g += DOT(xA, y0, "dot-obj", 4);
+    g += T(xA - 10, y0 - 7, "A", "pt-obj", "end");
+    g += T(B.x, B.y - 12, "B", "pt-obj");
+    g += `<circle cx="${xA}" cy="${y0 - HOBJ / 2}" r="17" fill="transparent" style="cursor:grab"/>`;
+
+    /* ---- the three construction rays ---- */
+    let rays = "";
+    /* 1 · parallel to axis → through F′ */
+    const P1 = { x: Ox, y: B.y };
+    rays += L(B, P1, "beam", `marker-mid="url(#ln-beam)"`);
+    const dirF = { x: xFp - P1.x, y: y0 - P1.y };
+    const d1 = norm(dirF.x > 0 ? dirF : { x: -dirF.x, y: -dirF.y });
+    rays += L(P1, edge(P1, d1, CLIP), "beam", `marker-end="url(#ln-beam)"`);
+    if (!st.conv) rays += L(P1, edge(P1, { x: -d1.x, y: -d1.y }, CLIP), "beam-v");
+
+    /* 2 · through the optical centre → undeviated */
+    const O = { x: Ox, y: y0 };
+    const d2 = norm({ x: O.x - B.x, y: O.y - B.y });
+    rays += L(B, O, "beam");
+    rays += L(O, edge(O, d2, CLIP), "beam", `marker-end="url(#ln-beam)"`);
+
+    /* 3 · through F → emerges parallel */
+    if (Math.abs(xA - xF) > 1.5) {
+      const y3 = B.y + (Ox - B.x) * (y0 - B.y) / (xF - B.x);
+      const P3 = { x: Ox, y: y3 };
+      if (Math.abs(y3 - y0) < 900) {
+        rays += L(B, P3, "beam-dim");
+        rays += L(P3, edge(P3, { x: 1, y: 0 }, CLIP), "beam-dim", `marker-end="url(#ln-beam)"`);
+      }
+    }
+    g += `<g clip-path="url(#ln-clip)">${rays}</g>`;
+
+    /* ---- image ---- */
+    if (atInf) {
+      g += T(640, y0 - 128, "les rayons sortent parallèles", "tag-b", "middle");
+      g += T(640, y0 - 110, "image à l'infini", "tag-b", "middle");
+    } else {
+      const xAp = X(OAp);
+      let hp = gam * HOBJ, clamped = false;
+      if (Math.abs(hp) > 168) { hp = Math.sign(hp) * 168; clamped = true; }
+      const real = OAp > 0;
+      const onScreen = xAp > 8 && xAp < 792;
+      if (onScreen) {
+        g += L({ x: xAp, y: y0 }, { x: xAp, y: y0 - hp }, real ? "img" : "img-v",
+          `marker-end="url(#ln-img)"`);
+        g += DOT(xAp, y0, "dot-img", 4);
+        g += T(xAp + 10, y0 - 7, "A′", "pt-img", "start");
+        g += T(xAp + (real ? 14 : -14), y0 - hp + (hp > 0 ? -6 : 16), "B′", "pt-img", real ? "start" : "end");
+        /* dashed back-extensions that build a virtual image */
+        if (!real) {
+          const vg = [];
+          vg.push(L({ x: Ox, y: B.y }, { x: xAp, y: y0 - hp }, "beam-v"));
+          vg.push(L({ x: Ox, y: y0 }, { x: xAp, y: y0 - hp }, "beam-v"));
+          g += `<g clip-path="url(#ln-clip)">${vg.join("")}</g>`;
+        }
+        if (clamped) g += T(xAp, y0 - hp - (hp > 0 ? 24 : -34), "(hauteur tronquée)", "tag");
+      } else {
+        g += T(784, 34, `image hors cadre : ${sgn(OAp)} cm`, "tag-i", "end");
+      }
+    }
+    svg.innerHTML = g;
+
+    /* ---- readouts ---- */
+    document.getElementById("v-oa").textContent = sgn(OA) + " cm";
+    document.getElementById("v-fp").textContent = sgn(fp) + " cm";
+
+    let c = `<div class="step">1/OA′ − 1/OA = 1/f′</div>`;
+    c += `<div class="step">1/OA′ = 1/(${sgn(fp)}) + 1/(${sgn(OA)})</div>`;
+    c += `<div class="step">1/OA′ = ${fmt(invOAp, 4)} cm⁻¹</div>`;
+    c += atInf
+      ? `<div class="step">OA′ → <b>∞</b></div>`
+      : `<div class="step">OA′ = <b>${sgn(OAp)} cm</b></div>`;
+    if (!atInf) c += `<div class="step">γ = OA′/OA = <b>${sgn(gam, 2)}</b></div>`;
+    document.getElementById("ro-lens-calc").innerHTML = c;
+
+    let v = `<dt>Objet <span class="ov">OA</span></dt><dd>${sgn(OA)} cm</dd>`;
+    v += `<dt>Image <span class="ov">OA′</span></dt><dd>${atInf ? "∞" : sgn(OAp) + " cm"}</dd>`;
+    v += `<dt>Grandissement γ</dt><dd>${atInf ? "—" : sgn(gam, 2)}</dd>`;
+    v += `<dt>Vergence C</dt><dd>${sgn(100 / fp, 2)} δ</dd>`;
+    document.getElementById("ro-lens-vals").innerHTML = v;
+
+    const vd = document.getElementById("ro-lens-verdict");
+    const chips = [];
+    if (atInf) {
+      vd.className = "verdict"; vd.textContent = "Objet au foyer : aucune image à distance finie.";
+      chips.push(`<span class="chip warn">image à l'infini</span>`);
+    } else {
+      const real = OAp > 0, up = gam > 0, big = Math.abs(gam) > 1.001, same = Math.abs(Math.abs(gam) - 1) < 0.001;
+      vd.className = "verdict";
+      vd.textContent = `Image ${real ? "réelle" : "virtuelle"}, ${up ? "droite" : "renversée"}, ` +
+        (same ? "de même taille" : big ? "agrandie" : "réduite") + ".";
+      chips.push(`<span class="chip ${real ? "real" : "virt"}">${real ? "réelle — projetable" : "virtuelle — non projetable"}</span>`);
+      chips.push(`<span class="chip neutral">${up ? "droite" : "renversée"}</span>`);
+      chips.push(`<span class="chip neutral">|γ| = ${Math.abs(gam).toFixed(2).replace(".", ",")}</span>`);
+      if (!real && st.conv) chips.push(`<span class="chip neutral">principe de la loupe</span>`);
+      if (!st.conv) chips.push(`<span class="chip neutral">divergente : jamais d'image réelle</span>`);
+    }
+    document.getElementById("ro-lens-chips").innerHTML = chips.join("");
+  }
+  render();
+})();
+
+/* ══════════════════ 3. MIROIR SPHÉRIQUE ══════════════════ */
+(function () {
+  const svg = document.getElementById("sv-mirror");
+  const st = { SA: -60, R: 40, concave: true };
+  const Sx = 560, y0 = 195, HOBJ = 52, CLIP = { x1: 4, y1: 4, x2: 796, y2: 396 };
+  const ROOM_L = Sx - 46, ROOM_R = 800 - Sx - 44;
+  let scale = 4;
+
+  const cSA = document.getElementById("c-sa"), cR = document.getElementById("c-R");
+  cSA.addEventListener("input", e => { st.SA = +e.target.value; render(); });
+  cR.addEventListener("input", e => { st.R = +e.target.value; render(); });
+  document.getElementById("c-mirtype").addEventListener("change", e => {
+    st.concave = e.target.value === "concave"; render();
+  });
+  document.getElementById("p-mir").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (!st.concave) { st.concave = true; document.querySelector('input[name=mirtype][value=concave]').checked = true; }
+    const R = st.R, f = R / 2;
+    st.SA = { beyondC: -1.7 * R, atC: -R, CF: -0.75 * R, atF: -f, FS: -0.55 * f }[b.dataset.p];
+    st.SA = Math.max(-200, Math.min(-1, Math.round(st.SA * 2) / 2));
+    cSA.value = st.SA; render();
+  });
+  svg.addEventListener("pointerdown", e => {
+    if (Math.abs(toCm(e) - st.SA) > 22 / scale) return;
+    svg.setPointerCapture(e.pointerId); svg.dataset.drag = "1"; e.preventDefault();
+  });
+  svg.addEventListener("pointermove", e => {
+    if (svg.dataset.drag !== "1") return;
+    st.SA = Math.max(-200, Math.min(-1, Math.round(toCm(e) * 2) / 2));
+    cSA.value = st.SA; render();
+  });
+  const stop = () => { svg.dataset.drag = "0"; };
+  svg.addEventListener("pointerup", stop); svg.addEventListener("pointercancel", stop);
+  function toCm(e) {
+    const r = svg.getBoundingClientRect();
+    return ((e.clientX - r.left) / r.width * 800 - Sx) / scale;
+  }
+
+  function render() {
+    const R = st.concave ? -st.R : st.R;
+    const f = R / 2, SA = st.SA;
+    const invSAp = 1 / f - 1 / SA;
+    const atInf = Math.abs(invSAp) < 1e-6;
+    const SAp = atInf ? Infinity : 1 / invSAp;
+    const gam = atInf ? Infinity : -SAp / SA;
+
+    /* deux extensions distinctes : devant le miroir (gauche) et derrière (droite) */
+    let extL = Math.abs(SA);
+    if (R < 0) extL = Math.max(extL, Math.abs(R));
+    if (isFinite(SAp) && SAp < 0 && Math.abs(SAp) <= 140) extL = Math.max(extL, Math.abs(SAp));
+    let extR = 2;
+    if (R > 0) extR = Math.max(extR, R);
+    if (isFinite(SAp) && SAp > 0 && SAp <= 140) extR = Math.max(extR, SAp);
+    scale = Math.max(0.4, Math.min(26, Math.min(ROOM_L / (extL * 1.14), ROOM_R / (extR * 1.12))));
+    const X = cm => Sx + cm * scale;
+
+    const xC = X(R), xF = X(f), xA = X(SA);
+    const B = { x: xA, y: y0 - HOBJ };
+
+    let g = defs("mr");
+    g += L({ x: 8, y: y0 }, { x: 780, y: y0 }, "hair");
+
+    /* mirror surface as a quadratic whose vertex sits exactly on S */
+    const half = 132;
+    const Rpx = Math.abs(R) * scale;
+    let dx = Rpx > half ? Rpx - Math.sqrt(Rpx * Rpx - half * half) : Rpx;
+    dx = Math.min(dx, 76);
+    const xEdge = st.concave ? Sx - dx : Sx + dx;
+    const ctrl = 2 * Sx - xEdge;
+    const path = `M${xEdge} ${y0 - half} Q${ctrl} ${y0} ${xEdge} ${y0 + half}`;
+    /* face argentée : toujours du côté opposé à la lumière, donc à droite */
+    const off = 7;
+    g += `<path d="M${xEdge + off} ${y0 - half} Q${ctrl + off} ${y0} ${xEdge + off} ${y0 + half}"
+            fill="none" stroke="var(--glass)" stroke-width="7" opacity=".22"/>`;
+    g += `<path d="${path}" fill="none" stroke="var(--glass)" stroke-width="2.4"/>`;
+    g += L({ x: Sx, y: y0 - half - 16 }, { x: Sx, y: y0 + half + 16 }, "hair-d");
+
+    const key = (x, label, sub) => DOT(x, y0, "dot-key", 3.5) + T(x, y0 + 22, label, "pt") +
+      (sub ? T(x, y0 + 38, sub, "tag") : "");
+    g += key(Sx, "S", "");
+    g += key(xF, "F", `${sgn(f)} cm`);
+    g += key(xC, "C", `${sgn(R)} cm`);
+
+    /* objet */
+    g += L({ x: xA, y: y0 }, B, "obj", `marker-end="url(#mr-obj)"`);
+    g += DOT(xA, y0, "dot-obj", 4);
+    g += T(xA - 10, y0 - 7, "A", "pt-obj", "end");
+    g += T(B.x, B.y - 12, "B", "pt-obj");
+    g += `<circle cx="${xA}" cy="${y0 - HOBJ / 2}" r="17" fill="transparent" style="cursor:grab"/>`;
+
+    /* rays — paraxial: reflect at the plane x = Sx */
+    let rays = "";
+    /* 1 · parallel → through F */
+    const P1 = { x: Sx, y: B.y };
+    rays += L(B, P1, "beam");
+    const dF = { x: xF - P1.x, y: y0 - P1.y };
+    const d1 = norm(dF.x < 0 ? dF : { x: -dF.x, y: -dF.y });
+    rays += L(P1, edge(P1, d1, CLIP), "beam", `marker-end="url(#mr-beam)"`);
+    if (!st.concave) rays += L(P1, edge(P1, { x: -d1.x, y: -d1.y }, CLIP), "beam-v");
+
+    /* 2 · through F → reflected parallel */
+    if (Math.abs(xA - xF) > 1.5) {
+      const y2 = B.y + (Sx - B.x) * (y0 - B.y) / (xF - B.x);
+      if (Math.abs(y2 - y0) < 900) {
+        const P2 = { x: Sx, y: y2 };
+        rays += L(B, P2, "beam-dim");
+        rays += L(P2, edge(P2, { x: -1, y: 0 }, CLIP), "beam-dim", `marker-end="url(#mr-beam)"`);
+      }
+    }
+    /* 3 · through C → back on itself */
+    if (Math.abs(xA - xC) > 1.5) {
+      const y3 = B.y + (Sx - B.x) * (y0 - B.y) / (xC - B.x);
+      if (Math.abs(y3 - y0) < 900) {
+        const P3 = { x: Sx, y: y3 };
+        rays += L(B, P3, "beam", `marker-start="url(#mr-beam)" marker-end="url(#mr-beam)"`);
+        rays += L({ x: xC, y: y0 }, P3, "hair-d");
+      }
+    }
+    g += `<g clip-path="url(#mr-clip)">${rays}</g>`;
+
+    /* image */
+    if (atInf) {
+      g += T(300, y0 - 150, "rayons réfléchis parallèles → image à l'infini", "tag-b");
+      g += T(300, y0 - 132, "c'est le projecteur / le phare de voiture", "tag");
+    } else {
+      const xAp = X(SAp);
+      let hp = gam * HOBJ, clamped = false;
+      if (Math.abs(hp) > 168) { hp = Math.sign(hp) * 168; clamped = true; }
+      const real = SAp < 0;                     /* in front of the mirror = real */
+      if (xAp > 8 && xAp < 792) {
+        g += L({ x: xAp, y: y0 }, { x: xAp, y: y0 - hp }, real ? "img" : "img-v",
+          `marker-end="url(#mr-img)"`);
+        g += DOT(xAp, y0, "dot-img", 4);
+        g += T(xAp + 10, y0 - 7, "A′", "pt-img", "start");
+        const bo = Math.abs(hp) < 26 ? 16 : 6;   /* petite image : on écarte l'étiquette */
+        g += T(xAp + 14, y0 - hp + (hp > 0 ? -bo : bo + 10), "B′", "pt-img", "start");
+        if (!real) {
+          const vg = [L({ x: Sx, y: B.y }, { x: xAp, y: y0 - hp }, "beam-v")];
+          vg.push(L({ x: Sx, y: y0 }, { x: xAp, y: y0 - hp }, "beam-v"));
+          g += `<g clip-path="url(#mr-clip)">${vg.join("")}</g>`;
+        }
+        if (clamped) g += T(xAp, y0 - hp - (hp > 0 ? 24 : -34), "(hauteur tronquée)", "tag");
+      } else {
+        g += T(784, 34, `image hors cadre : ${sgn(SAp)} cm`, "tag-i", "end");
+      }
+    }
+    svg.innerHTML = g;
+
+    /* readouts */
+    document.getElementById("v-sa").textContent = sgn(SA) + " cm";
+    document.getElementById("v-R").textContent = fmt(st.R) + " cm";
+
+    let c = `<div class="step">1/SA′ + 1/SA = 1/f&nbsp;&nbsp;avec f = R/2</div>`;
+    c += `<div class="step">f = ${sgn(R)}/2 = <b>${sgn(f)} cm</b></div>`;
+    c += `<div class="step">1/SA′ = 1/(${sgn(f)}) − 1/(${sgn(SA)})</div>`;
+    c += atInf
+      ? `<div class="step">1/SA′ = 0 → SA′ → <b>∞</b></div>`
+      : `<div class="step">SA′ = <b>${sgn(SAp)} cm</b></div>`;
+    if (!atInf) c += `<div class="step">γ = −SA′/SA = <b>${sgn(gam, 2)}</b></div>`;
+    document.getElementById("ro-mir-calc").innerHTML = c;
+
+    let v = `<dt>Rayon <span class="ov">SC</span> = R</dt><dd>${sgn(R)} cm</dd>`;
+    v += `<dt>Focale f = R/2</dt><dd>${sgn(f)} cm</dd>`;
+    v += `<dt>Objet <span class="ov">SA</span></dt><dd>${sgn(SA)} cm</dd>`;
+    v += `<dt>Image <span class="ov">SA′</span></dt><dd>${atInf ? "∞" : sgn(SAp) + " cm"}</dd>`;
+    v += `<dt>Grandissement γ</dt><dd>${atInf ? "—" : sgn(gam, 2)}</dd>`;
+    document.getElementById("ro-mir-vals").innerHTML = v;
+
+    const vd = document.getElementById("ro-mir-verdict");
+    const chips = [`<span class="chip neutral">${st.concave ? "concave — convergent" : "convexe — divergent"}</span>`];
+    if (atInf) {
+      vd.className = "verdict"; vd.textContent = "Objet au foyer : les rayons ressortent parallèles.";
+      chips.push(`<span class="chip warn">image à l'infini</span>`);
+    } else {
+      const real = SAp < 0, up = gam > 0, same = Math.abs(Math.abs(gam) - 1) < 0.001;
+      vd.className = "verdict";
+      vd.textContent = `Image ${real ? "réelle" : "virtuelle"}, ${up ? "droite" : "renversée"}, ` +
+        (same ? "de même taille" : Math.abs(gam) > 1 ? "agrandie" : "réduite") + ".";
+      chips.push(`<span class="chip ${real ? "real" : "virt"}">${real ? "réelle — devant le miroir" : "virtuelle — derrière le miroir"}</span>`);
+      chips.push(`<span class="chip neutral">${up ? "droite" : "renversée"}</span>`);
+      chips.push(`<span class="chip neutral">|γ| = ${Math.abs(gam).toFixed(2).replace(".", ",")}</span>`);
+    }
+    document.getElementById("ro-mir-chips").innerHTML = chips.join("");
+  }
+  render();
+})();
+
+/* ══════════════════ 4. L'ŒIL ══════════════════ */
+(function () {
+  const svg = document.getElementById("sv-eye");
+  const st = { defect: "emme", dslider: 72, sev: 0, corr: false };
+
+  const L_M = 0.017;            /* longueur axiale de l'œil, en mètres */
+  const AMP_NORM = 4;           /* amplitude d'accommodation, en dioptries */
+  const AMP_PRESB = 2;
+
+  const Lx = 470, Rx = 646, y0 = 200;   /* plan du cristallin / rétine */
+  const PUP = 30;                        /* demi-ouverture de la pupille, px */
+  const PXMM = (Rx - Lx) / (L_M * 1000); /* px par mm à l'intérieur de l'œil */
+  const K = 8;                           /* amplification des écarts */
+
+  const sliderToM = v => (v > 100 ? Infinity : 0.10 * Math.pow(1.0475, v));
+
+  document.getElementById("c-defect").addEventListener("change", e => {
+    st.defect = e.target.value;
+    st.sev = st.defect === "myope" ? 2 : st.defect === "hyper" ? 2 : 0;
+    document.getElementById("c-sev").value = st.sev;
+    render();
+  });
+  document.getElementById("c-dobj").addEventListener("input", e => { st.dslider = +e.target.value; render(); });
+  document.getElementById("c-sev").addEventListener("input", e => { st.sev = +e.target.value; render(); });
+  document.getElementById("c-corr").addEventListener("change", e => { st.corr = e.target.checked; render(); });
+
+  function render() {
+    /* D > 0 : œil trop convergent (myope) — D < 0 : pas assez (hypermétrope) */
+    const D = st.defect === "myope" ? st.sev : st.defect === "hyper" ? -st.sev : 0;
+    const AMP = st.defect === "presb" ? AMP_PRESB : AMP_NORM;
+    const V0 = 1 / L_M + D;                 /* vergence au repos */
+    const dObj = sliderToM(st.dslider);
+
+    /* verre correcteur : annule le défaut, ou rend l'accommodation manquante */
+    const Vc = st.corr ? (Math.abs(D) > 1e-6 ? -D : Math.max(0, AMP_NORM - AMP)) : 0;
+    const Vmin = V0 + Vc, Vmax = V0 + Vc + AMP;
+
+    /* vergence nécessaire pour poser l'image sur la rétine */
+    const Vneed = 1 / L_M + (isFinite(dObj) ? 1 / dObj : 0);
+    const V = Math.min(Vmax, Math.max(Vmin, Vneed));
+    const acc = V - Vmin;                    /* accommodation utilisée */
+    const sharp = Math.abs(V - Vneed) < 1e-4;
+
+    /* distance image réelle, en mm */
+    const objVerg = isFinite(dObj) ? 1 / dObj : 0;
+    const imgM = 1 / (V - objVerg);
+    const imgMM = imgM * 1000;
+    const devMM = imgMM - L_M * 1000;        /* + : derrière la rétine */
+
+    /* punctum remotum / proximum */
+    const dPR = Vmin - 1 / L_M > 1e-6 ? 1 / (Vmin - 1 / L_M) : Infinity;
+    const behindPR = Vmin - 1 / L_M < -1e-6;
+    const dPP = 1 / (Vmax - 1 / L_M);
+
+    /* ---------- dessin ---------- */
+    let g = defs("ey");
+    const cx = Lx + 88, cy = y0, Rg = 92;
+
+    /* globe + rétine + cristallin */
+    g += `<circle cx="${cx}" cy="${cy}" r="${Rg}" fill="var(--surface-2)" stroke="var(--ink-3)" stroke-width="1.6" opacity=".95"/>`;
+    g += `<path d="M ${cx + Rg * Math.cos(-1.15)} ${cy + Rg * Math.sin(-1.15)}
+                  A ${Rg} ${Rg} 0 0 1 ${cx + Rg * Math.cos(1.15)} ${cy + Rg * Math.sin(1.15)}"
+            fill="none" stroke="var(--warn)" stroke-width="4.5" opacity=".9"/>`;
+    g += T(cx + Rg + 14, cy - 62, "rétine", "tag-w", "start");
+    /* cornée */
+    g += `<path d="M ${Lx - 6} ${cy - 66} A 78 78 0 0 0 ${Lx - 6} ${cy + 66}"
+            fill="none" stroke="var(--glass)" stroke-width="3" opacity=".55"/>`;
+    /* cristallin : se bombe avec l'accommodation */
+    const bulge = 13 + 15 * (AMP > 0 ? acc / AMP : 0);
+    g += `<path d="M${Lx} ${cy - 52} C ${Lx + bulge} ${cy - 20} ${Lx + bulge} ${cy + 20} ${Lx} ${cy + 52}
+                   C ${Lx - bulge} ${cy + 20} ${Lx - bulge} ${cy - 20} ${Lx} ${cy - 52} z" class="glass"/>`;
+    g += T(Lx - 4, cy + 116, "cristallin", "tag", "middle");
+    g += T(Lx - 4, cy + 132, acc > 0.4 ? "bombé — accommode" : "aplati — au repos", "tag", "middle");
+    /* axe optique */
+    g += L({ x: 20, y: y0 }, { x: cx + Rg + 6, y: y0 }, "hair");
+
+    /* verre correcteur */
+    const Gx = Lx - 150;
+    if (st.corr && Math.abs(Vc) > 1e-6) {
+      const conv = Vc > 0, h = 62;
+      g += conv
+        ? `<path d="M${Gx} ${cy - h} C ${Gx + 13} ${cy - 22} ${Gx + 13} ${cy + 22} ${Gx} ${cy + h}
+                    C ${Gx - 13} ${cy + 22} ${Gx - 13} ${cy - 22} ${Gx} ${cy - h} z"
+             stroke="var(--img)" stroke-width="2" fill="color-mix(in srgb,var(--img) 14%,transparent)"/>`
+        : `<path d="M${Gx - 11} ${cy - h} C ${Gx + 8} ${cy - 22} ${Gx + 8} ${cy + 22} ${Gx - 11} ${cy + h}
+                    L ${Gx + 11} ${cy + h} C ${Gx - 8} ${cy + 22} ${Gx - 8} ${cy - 22} ${Gx + 11} ${cy - h} z"
+             stroke="var(--img)" stroke-width="2" fill="color-mix(in srgb,var(--img) 14%,transparent)"/>`;
+      g += T(Gx, cy + h + 20, "verre", "tag-i", "middle");
+      g += T(Gx, cy + h + 36, `${sgn(Vc, 2)} δ · ${Vc > 0 ? "convergent" : "divergent"}`, "tag-i", "middle");
+    }
+
+    /* objet */
+    const Ax = 60;
+    if (isFinite(dObj)) {
+      g += L({ x: Ax, y: y0 }, { x: Ax, y: y0 - 46 }, "obj", `marker-end="url(#ey-obj)"`);
+      g += DOT(Ax, y0, "dot-obj", 4);
+      g += T(Ax, y0 + 24, `objet à ${dObj < 1 ? fmt(dObj * 100, 0) + " cm" : fmt(dObj, 2) + " m"}`, "tag-o", "middle");
+    } else {
+      g += T(Ax + 6, y0 - 54, "objet à l'infini", "tag-o", "start");
+      g += T(Ax + 6, y0 - 38, "rayons parallèles", "tag", "start");
+    }
+
+    /* point image, position exagérée */
+    let Ix = Rx + K * devMM * PXMM;
+    Ix = Math.max(Lx + 26, Math.min(cx + Rg + 118, Ix));
+
+    /* faisceau : objet → (verre) → pupille → point image → rétine */
+    const rays = [];
+    const worn = st.corr && Math.abs(Vc) > 1e-6;
+    /* le verre casse la trajectoire : convergent → le rayon rentre vers l'axe,
+       divergent → il s'en écarte avant d'atteindre la pupille */
+    const kink = Vc > 0 ? 1.24 : 0.78;
+    [-PUP, 0, PUP].forEach(dy => {
+      const P = { x: Lx, y: y0 + dy };
+      const start = isFinite(dObj) ? { x: Ax, y: y0 } : { x: 20, y: y0 + dy * (worn ? kink : 1) };
+      if (worn) {
+        const Gp = { x: Gx, y: y0 + dy * kink };
+        rays.push(L(start, Gp, "beam"));
+        rays.push(L(Gp, P, "beam"));
+      } else {
+        rays.push(L(start, P, "beam"));
+      }
+      /* dans l'œil : vers le point image, puis prolongement jusqu'à la rétine */
+      const dir = norm({ x: Ix - P.x, y: y0 - P.y });
+      const tRet = (Rx - P.x) / dir.x;
+      const tImg = (Ix - P.x) / dir.x;
+      const tEnd = Math.min(tRet, tImg) > 0 ? Math.min(tRet, tImg) : tRet;
+      const E = { x: P.x + dir.x * tEnd, y: P.y + dir.y * tEnd };
+      rays.push(L(P, E, "beam"));
+      if (tImg < tRet) {
+        const E2 = { x: P.x + dir.x * tRet, y: P.y + dir.y * tRet };
+        rays.push(L(E, E2, "beam"));
+      }
+    });
+    g += `<g clip-path="url(#ey-clip)">${rays.join("")}</g>`;
+
+    /* tache image sur la rétine */
+    const blur = PUP * Math.abs(Rx - Ix) / Math.max(1, Ix - Lx);
+    /* verdict en haut à droite, étiquette courte près de la rétine */
+    if (sharp) {
+      g += DOT(Rx, y0, "dot-beam", 5);
+      g += T(788, 40, "image nette, pile sur la rétine", "tag-b", "end");
+      g += T(Rx + 14, y0 - 12, "image nette", "tag-b", "start");
+    } else {
+      const bh = Math.max(5, blur);      /* toujours visible, même pour un écart minime */
+      g += `<rect x="${Rx - 4}" y="${(y0 - bh).toFixed(1)}" width="8" height="${(2 * bh).toFixed(1)}"
+              rx="4" class="warnfill" stroke="var(--sunk)" stroke-width="1.5"/>`;
+      g += DOT(Ix, y0, "dot-beam", 4.5);
+      g += L({ x: Ix, y: y0 - 10 }, { x: Ix, y: y0 - 30 }, "hair-d");
+      g += T(788, 40, `image ${devMM < 0 ? "en avant" : "en arrière"} de la rétine`, "tag-w", "end");
+      g += T(788, 58, `${sgn(devMM, 2)} mm`, "tag-w", "end");
+      g += T(Rx + 14, y0 - 12, "tache floue", "tag-w", "start");
+    }
+
+    /* règle PP / PR */
+    const ry = 372;
+    g += L({ x: 40, y: ry }, { x: 700, y: ry }, "hair");
+    g += T(40, ry - 26, "zone de vision nette", "tag", "start");
+    /* PP et PR sous la règle, l'objet au-dessus : aucune superposition possible */
+    const mark = (frac, label, cls) => {
+      const x = 40 + frac * 660;
+      return L({ x, y: ry - 6 }, { x, y: ry + 6 }, cls === "w" ? "img-v" : "obj") +
+        T(x, cls === "w" ? ry + 22 : ry - 11, label, cls === "w" ? "tag-i" : "tag-o", "middle");
+    };
+    const posOf = d => !isFinite(d) ? 1 : Math.max(0, Math.min(1,
+      Math.log(Math.max(0.05, d) / 0.05) / Math.log(30 / 0.05)));
+    g += mark(posOf(dPP), `PP ${dPP > 0 ? (dPP < 1 ? fmt(dPP * 100, 0) + " cm" : fmt(dPP, 2) + " m") : "—"}`, "w");
+    g += mark(posOf(dPR), behindPR ? "PR virtuel" : (isFinite(dPR) ? `PR ${dPR < 1 ? fmt(dPR * 100, 0) + " cm" : fmt(dPR, 2) + " m"}` : "PR ∞"), "w");
+    if (isFinite(dObj)) g += mark(posOf(dObj), "objet", "o");
+    else g += mark(1, "objet ∞", "o");
+
+    svg.innerHTML = g;
+
+    /* ---------- panneau ---------- */
+    document.getElementById("v-dobj").textContent =
+      isFinite(dObj) ? (dObj < 1 ? fmt(dObj * 100, 0) + " cm" : fmt(dObj, 2) + " m") : "∞";
+    document.getElementById("v-sev").textContent = fmt(st.sev, 2) + " δ";
+    document.getElementById("lab-sev").textContent =
+      st.defect === "presb" ? "Sévérité (sans effet : presbytie)" :
+      st.defect === "emme" ? "Sévérité (sans effet : œil normal)" : "Sévérité du défaut";
+    document.getElementById("c-sev").disabled = (st.defect === "emme" || st.defect === "presb");
+
+    const vd = document.getElementById("ro-eye-verdict");
+    vd.className = "verdict " + (sharp ? "good" : "bad");
+    vd.textContent = sharp
+      ? "Image nette sur la rétine."
+      : `Image floue — elle se forme ${devMM < 0 ? "en avant" : "en arrière"} de la rétine (${sgn(devMM, 2)} mm).`;
+
+    let v = `<dt>Vergence au repos</dt><dd>${fmt(Vmin, 1)} δ</dd>`;
+    v += `<dt>Accommodation utilisée</dt><dd>${fmt(acc, 2)} / ${fmt(AMP, 1)} δ</dd>`;
+    v += `<dt>Vergence nécessaire</dt><dd>${fmt(Vneed, 1)} δ</dd>`;
+    v += `<dt>Punctum remotum</dt><dd>${behindPR ? "virtuel" : (isFinite(dPR) ? (dPR < 1 ? fmt(dPR * 100, 0) + " cm" : fmt(dPR, 2) + " m") : "∞")}</dd>`;
+    v += `<dt>Punctum proximum</dt><dd>${dPP > 0 ? (dPP < 1 ? fmt(dPP * 100, 0) + " cm" : fmt(dPP, 2) + " m") : "—"}</dd>`;
+    document.getElementById("ro-eye-vals").innerHTML = v;
+
+    const chips = [];
+    const NAME = { emme: "emmétrope", myope: "myope", hyper: "hypermétrope", presb: "presbyte" };
+    chips.push(`<span class="chip neutral">${NAME[st.defect]}</span>`);
+    if (st.corr && Math.abs(Vc) > 1e-6) chips.push(`<span class="chip real">verre ${sgn(Vc, 2)} δ porté</span>`);
+    if (!sharp) {
+      if (acc >= AMP - 1e-4 && devMM > 0) chips.push(`<span class="chip warn">objet plus près que le PP</span>`);
+      else if (devMM < 0) chips.push(`<span class="chip warn">objet au-delà du PR — flou de loin</span>`);
+    } else if (acc > AMP * 0.75) chips.push(`<span class="chip neutral">net, mais accommodation forcée</span>`);
+    else chips.push(`<span class="chip ok">confortable</span>`);
+    document.getElementById("ro-eye-chips").innerHTML = chips.join("");
+
+    const calc = document.getElementById("ro-eye-calc");
+    let c = "";
+    if (st.defect === "myope") {
+      c += `<div class="step">PR fini à ${isFinite(dPR0()) ? fmt(dPR0(), 2) + " m" : "∞"} → myopie</div>`;
+      c += `<div class="step">C = −1/d<sub>PR</sub> = −1/${fmt(dPR0(), 2)}</div>`;
+      c += `<div class="step">C = <b>${sgn(-D, 2)} δ</b> → verre <b>divergent</b></div>`;
+    } else if (st.defect === "hyper") {
+      c += `<div class="step">PR virtuel → hypermétropie</div>`;
+      c += `<div class="step">il manque ${fmt(Math.abs(D), 2)} δ</div>`;
+      c += `<div class="step">C = <b>${sgn(-D, 2)} δ</b> → verre <b>convergent</b></div>`;
+    } else if (st.defect === "presb") {
+      c += `<div class="step">amplitude tombée à ${fmt(AMP_PRESB, 1)} δ</div>`;
+      c += `<div class="step">PP à ${fmt(1 / (V0 + AMP_PRESB - 1 / L_M) * 100, 0)} cm au lieu de 25 cm</div>`;
+      c += `<div class="step">C = <b>${sgn(AMP_NORM - AMP_PRESB, 2)} δ</b> → lunettes de <b>lecture</b></div>`;
+    } else {
+      c += `<div class="step">PR à l'infini, PP à 25 cm</div>`;
+      c += `<div class="step"><b>aucune correction nécessaire</b></div>`;
+    }
+    calc.innerHTML = c;
+
+    function dPR0() { const q = V0 - 1 / L_M; return q > 1e-6 ? 1 / q : Infinity; }
+  }
+  render();
+})();
+</script>
