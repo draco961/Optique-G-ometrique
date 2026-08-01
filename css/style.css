@@ -522,8 +522,21 @@ details.sol{margin:16px 0 0; border-top:1px dashed var(--line)}
 .fc-done .fc-actions{margin-top:20px}
 
 @media (max-width:720px){
+  /* les pastilles de filtre deviennent une rangée qui défile au doigt,
+     bord à bord de l'écran, comme la barre de navigation */
+  .fc-filter{
+    flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none;
+    margin:28px -16px 0; padding:2px 16px;
+  }
+  .fc-filter::-webkit-scrollbar{display:none}
+  .fc-filter button{flex:none; white-space:nowrap; padding:8px 14px}
+
+  .fc-top{gap:10px}
   .fcard{min-height:380px}
   .fc-face{padding:20px 18px}
   .fc-q{font-size:1.22rem}
+  .fc-actions{gap:8px}
+  .fc-btn{flex:1 1 40%; padding:12px 10px; text-align:center}
+  .fc-done .fc-actions{flex-direction:column}
   .fc-kbd{display:none}
 }
