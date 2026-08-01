@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12. Le principe de Fermat — Optique géométrique</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="../index.html">Accueil</a>
+    <a href="01-bases.html"><b>1</b>Bases</a>
+    <a href="02-snell-descartes.html"><b>2</b>Snell-Descartes</a>
+    <a href="03-reflexion-totale.html"><b>3</b>Réflexion totale</a>
+    <a href="04-miroir-plan.html"><b>4</b>Miroir plan</a>
+    <a href="05-miroirs-spheriques.html"><b>5</b>Miroirs sphériques</a>
+    <a href="06-lentilles-minces.html"><b>6</b>Lentilles minces</a>
+    <a href="07-oeil.html"><b>7</b>L'œil</a>
+    <a href="08-defauts-visuels.html"><b>8</b>Défauts visuels</a>
+    <a href="09-loupe.html"><b>9</b>La loupe</a>
+    <a href="10-appareil-photo.html"><b>10</b>Appareil photo</a>
+    <a href="11-microscope.html"><b>11</b>Microscope</a>
+    <a href="12-fermat.html" class="live"><b>12</b>Fermat</a>
+    <a href="13-formulaire.html"><b>13</b>Formulaire</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="ch" id="c12">
+  <div class="ch-head">
+    <p class="ch-num">Chapitre 12</p>
+    <h2>Le principe de Fermat</h2>
+    <p class="lede">Le principe qui contient tous les autres : les lois de Snell-Descartes n'en
+      sont que des conséquences.</p>
+  </div>
+
+  <h3 data-n="12.1">Énoncé</h3>
+  <div class="callout">
+    <span class="t">Principe de Fermat</span>
+    Le trajet suivi par la lumière entre deux points est celui dont le <b>temps de parcours est
+    extrémal</b> — le plus souvent minimal.
+  </div>
+  <p>On introduit le <strong>chemin optique</strong> :</p>
+  <div class="formula big">
+    L = <span class="sym">n</span> × <span class="sym">d</span>
+    &nbsp;&nbsp;et&nbsp;&nbsp;
+    <span class="sym">t</span> = <span class="frac"><span>L</span><span><span class="sym">c</span></span></span>
+    <span class="why">minimiser le temps revient donc<br>à minimiser le chemin optique</span>
+  </div>
+
+  <h3 data-n="12.2">Ce que le principe explique</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 640" font-kerning="normal" role="img"><defs><marker id="arf19varfbeam" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-beam)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">PRINCIPE DE FERMAT · LA LUMIÈRE SUIT LE TRAJET LE PLUS RAPIDE</text><text xml:space="preserve" x="30.0" y="74.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-ink)" text-anchor="start" font-weight="700" opacity="1.0">a)  RÉFLEXION  —  le chemin le plus court impose i = r</text><line x1="60.0" y1="190.0" x2="700.0" y2="190.0" stroke="var(--f-glass)" stroke-width="2.6" stroke-linecap="round" opacity="1.0"/><line x1="71.0" y1="190.0" x2="61.0" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="93.1" y1="190.0" x2="83.1" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="115.2" y1="190.0" x2="105.2" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="137.2" y1="190.0" x2="127.2" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="159.3" y1="190.0" x2="149.3" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="181.4" y1="190.0" x2="171.4" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="203.4" y1="190.0" x2="193.4" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="225.5" y1="190.0" x2="215.5" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="247.6" y1="190.0" x2="237.6" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="269.7" y1="190.0" x2="259.7" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="291.7" y1="190.0" x2="281.7" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="313.8" y1="190.0" x2="303.8" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="335.9" y1="190.0" x2="325.9" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="357.9" y1="190.0" x2="347.9" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="380.0" y1="190.0" x2="370.0" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="402.1" y1="190.0" x2="392.1" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="424.1" y1="190.0" x2="414.1" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="446.2" y1="190.0" x2="436.2" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="468.3" y1="190.0" x2="458.3" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="490.3" y1="190.0" x2="480.3" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="512.4" y1="190.0" x2="502.4" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="534.5" y1="190.0" x2="524.5" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="556.6" y1="190.0" x2="546.6" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="578.6" y1="190.0" x2="568.6" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="600.7" y1="190.0" x2="590.7" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="622.8" y1="190.0" x2="612.8" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="644.8" y1="190.0" x2="634.8" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="666.9" y1="190.0" x2="656.9" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><line x1="689.0" y1="190.0" x2="679.0" y2="180.0" stroke="var(--f-glass)" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/><circle cx="190.0" cy="114.0" r="5" fill="var(--f-obj)"/><text xml:space="preserve" x="184.0" y="102.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-obj)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">A</text><circle cx="520.0" cy="138.0" r="5" fill="var(--f-img)"/><text xml:space="preserve" x="530.0" y="130.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-img)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">B</text><line x1="190.0" y1="114.0" x2="385.9" y2="190.0" stroke="var(--f-beam)" stroke-width="2.2" stroke-linecap="round" opacity="1.0" marker-end="url(#arf19varfbeam)"/><line x1="385.9" y1="190.0" x2="520.0" y2="138.0" stroke="var(--f-beam)" stroke-width="2.2" stroke-linecap="round" opacity="1.0" marker-end="url(#arf19varfbeam)"/><circle cx="385.9" cy="190.0" r="4.6" fill="var(--f-beam)"/><text xml:space="preserve" x="385.9" y="214.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">I</text><line x1="190.0" y1="114.0" x2="190.0" y2="266.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.7" stroke-dasharray="4 4"/><circle cx="190.0" cy="266.0" r="4" fill="var(--f-ink3)"/><text xml:space="preserve" x="184.0" y="288.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink3)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">A′</text><text xml:space="preserve" x="168.0" y="271.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-ink3)" text-anchor="end" font-weight="500" opacity="1.0">symétrique de A</text><line x1="190.0" y1="266.0" x2="520.0" y2="138.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.8" stroke-dasharray="6 5"/><line x1="385.9" y1="120.0" x2="385.9" y2="256.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.7" stroke-dasharray="6 5"/><path d="M385.9 148.0 A 42 42 0 0 0 346.8 174.8" fill="none" stroke="var(--f-beam)" stroke-width="1.3" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="352.0" y="145.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i</text><path d="M385.9 148.0 A 42 42 0 0 1 425.1 174.8" fill="none" stroke="var(--f-beam)" stroke-width="1.3" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="419.8" y="145.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">r</text><polyline points="190.0,114.0 235.9,190.0 520.0,138.0" fill="none" stroke="var(--f-ink3)" stroke-width="1.3" stroke-linecap="round" opacity="0.75" stroke-dasharray="5 4"/><text xml:space="preserve" x="225.9" y="176.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-ink3)" text-anchor="end" font-weight="500" opacity="1.0">trajet plus long</text><text xml:space="preserve" x="556.0" y="104.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">A′, I et B alignés</text><text xml:space="preserve" x="556.0" y="123.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">⇒ chemin minimal</text><text xml:space="preserve" x="556.0" y="142.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">⇒ i = r</text><line x1="24.0" y1="300.0" x2="736.0" y2="300.0" stroke="var(--f-line)" stroke-width="1" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="30.0" y="336.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-ink)" text-anchor="start" font-weight="700" opacity="1.0">b)  RÉFRACTION  —  l'analogie du sauveteur</text><rect x="1.0" y="356.0" width="758.0" height="140.0" rx="0" fill="var(--f-zone2)" opacity="1.0"/><rect x="1.0" y="496.0" width="758.0" height="143.0" rx="0" fill="var(--f-zone1)" opacity="1.0"/><line x1="20.0" y1="496.0" x2="740.0" y2="496.0" stroke="var(--f-ink2)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="400.0" y="374.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink2)" text-anchor="start" font-weight="500" opacity="1.0">plage  ·  n₁ = 1  ·  il court VITE</text><text xml:space="preserve" x="36.0" y="518.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink2)" text-anchor="start" font-weight="500" opacity="1.0">eau  ·  n₂ = 1,5  ·  il nage LENTEMENT</text><polyline points="120.0,396.0 340.0,496.0 560.0,596.0" fill="none" stroke="var(--f-ink3)" stroke-width="1.4" stroke-linecap="round" opacity="0.7" stroke-dasharray="5 4"/><line x1="340.0" y1="489.0" x2="340.0" y2="503.0" stroke="var(--f-ink3)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/><polyline points="120.0,396.0 476.0,496.0 560.0,596.0" fill="none" stroke="var(--f-beam)" stroke-width="2.4" stroke-linecap="round" opacity="1"/><line x1="476.0" y1="489.0" x2="476.0" y2="503.0" stroke="var(--f-beam)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/><polyline points="120.0,396.0 550.0,496.0 560.0,596.0" fill="none" stroke="var(--f-ink3)" stroke-width="1.4" stroke-linecap="round" opacity="0.7" stroke-dasharray="5 4"/><line x1="550.0" y1="489.0" x2="550.0" y2="503.0" stroke="var(--f-ink3)" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/><circle cx="120.0" cy="396.0" r="5" fill="var(--f-obj)"/><text xml:space="preserve" x="110.0" y="388.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-obj)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">A</text><circle cx="560.0" cy="596.0" r="5" fill="var(--f-img)"/><text xml:space="preserve" x="572.0" y="602.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-img)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">B</text><circle cx="476.0" cy="496.0" r="5" fill="var(--f-beam)"/><line x1="476.0" y1="440.0" x2="476.0" y2="552.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.7" stroke-dasharray="6 5"/><path d="M476.0 458.0 A 38 38 0 0 0 439.4 485.7" fill="none" stroke="var(--f-beam)" stroke-width="1.3" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="442.2" y="456.4" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i₁</text><path d="M476.0 534.0 A 38 38 0 0 0 500.4 525.1" fill="none" stroke="var(--f-beam)" stroke-width="1.3" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="495.2" y="553.6" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i₂</text><line x1="32.0" y1="542.0" x2="64.0" y2="542.0" stroke="var(--f-ink3)" stroke-width="1.4" stroke-linecap="round" opacity="0.7" stroke-dasharray="5 4"/><text xml:space="preserve" x="72.0" y="546.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-ink3)" text-anchor="start" font-weight="400" opacity="1.0">ligne droite · +6,8 % de temps</text><line x1="32.0" y1="564.0" x2="64.0" y2="564.0" stroke="var(--f-beam)" stroke-width="2.2" stroke-linecap="round" opacity="1"/><text xml:space="preserve" x="72.0" y="568.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-ink2)" text-anchor="start" font-weight="600" opacity="1.0">trajet réel de la lumière · temps minimal</text><line x1="32.0" y1="586.0" x2="64.0" y2="586.0" stroke="var(--f-ink3)" stroke-width="1.4" stroke-linecap="round" opacity="0.7" stroke-dasharray="5 4"/><text xml:space="preserve" x="72.0" y="590.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-ink3)" text-anchor="start" font-weight="400" opacity="1.0">trop coudé · +4,7 % de temps</text><text xml:space="preserve" x="400.0" y="604.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink2)" text-anchor="start" font-weight="500" opacity="1.0">le temps minimal donne</text><text xml:space="preserve" x="400.0" y="626.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-ink)" text-anchor="start" font-weight="700" opacity="1.0">n₁ sin i₁ = n₂ sin i₂</text></svg></div>
+<figcaption><b>Figure 12.2</b>Le principe de Fermat appliqué à la réflexion et à la réfraction</figcaption>
+</figure>
+  <h4>a) Propagation rectiligne</h4>
+  <p>Dans un milieu homogène (n constant), le trajet le plus rapide entre deux points
+    est… la ligne droite.</p>
+  <h4>b) Loi de la réflexion (i = r)</h4>
+  <p>Parmi tous les trajets A → I → B, le plus court est celui où <strong>A′, I et B sont
+    alignés</strong>, A′ étant le symétrique de A par rapport au miroir, car la ligne droite
+    A′B est le plus court chemin. Cet alignement impose géométriquement <strong>i = r</strong>.</p>
+  <h4>c) Loi de la réfraction (n₁ sin i₁ = n₂ sin i₂)</h4>
+  <div class="callout info">
+    <span class="t">L'analogie du sauveteur</span>
+    Un sauveteur sur la plage doit atteindre un nageur en mer. Il court <b>vite</b> sur le sable
+    et nage <b>lentement</b> dans l'eau. Il ne prend donc <b>pas</b> la ligne droite : il
+    rallonge son trajet sur le sable pour raccourcir sa nage. C'est exactement ce que fait la
+    lumière.
+  </div>
+  <p>En cherchant le point I qui <strong>minimise le temps total</strong> de parcours — et non
+    la distance — le calcul donne exactement n₁ sin i₁ = n₂ sin i₂.</p>
+  <div class="callout">
+    <span class="t">Idée à retenir</span>
+    Les lois de Snell-Descartes ne sont pas des règles arbitraires. Ce sont des
+    <b>conséquences</b> d'un principe unique et plus profond.
+  </div>
+
+  <div class="bench-wrap">
+    <p class="bench-title">Banc 09 <span>Déplace le point de passage toi-même : la courbe du temps te dit quand tu es au minimum, et Snell-Descartes se vérifie tout seul.</span></p>
+    <div class="bench">
+      <div class="stage">
+        <svg id="sv-fermat" viewBox="0 0 800 430" role="img"
+             aria-label="Recherche du trajet de temps minimal entre deux milieux"></svg>
+        <p class="stage-cap">Glisse le point I sur l'interface · la courbe du bas est le temps de parcours total</p>
+      </div>
+      <aside class="readout">
+        <h3>Temps de parcours</h3>
+        <div class="calc" id="ro-fm-calc"></div>
+        <dl class="vals" id="ro-fm-vals"></dl>
+        <p class="verdict" id="ro-fm-verdict"></p>
+        <div class="chips" id="ro-fm-chips"></div>
+      </aside>
+    </div>
+    <div class="controls">
+      <div class="ctl">
+        <span class="lab"><span>Point de passage I</span><span class="val" id="v-fmx">0 %</span></span>
+        <input type="range" id="c-fmx" min="0" max="100" step="0.5" value="30" aria-label="Position du point de passage">
+      </div>
+      <div class="ctl">
+        <span class="lab"><span>Indice du milieu 2 — <span class="sym">n</span>₂</span><span class="val" id="v-fmn">1,50</span></span>
+        <input type="range" id="c-fmn" min="100" max="250" step="1" value="150" aria-label="Indice du second milieu">
+      </div>
+      <div class="presets" id="p-fm">
+        <span class="pl">Repères</span>
+        <button data-p="min">Se placer au minimum</button>
+        <button data-p="droite">Suivre la ligne droite</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pager">
+  <a class="prev" href="11-microscope.html"><span>&larr; Chapitre 11</span><b>Le microscope</b></a>
+  <a class="next" href="13-formulaire.html"><span>Chapitre 13 &rarr;</span><b>Formulaire et méthode</b></a>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
+    interactifs. Convention de signe unique dans tout le cours :
+    la lumière va de gauche à droite, l'origine est au sommet du système,
+    les distances vers la droite sont positives.
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

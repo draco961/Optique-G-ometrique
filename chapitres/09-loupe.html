@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9. La loupe — Optique géométrique</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="../index.html">Accueil</a>
+    <a href="01-bases.html"><b>1</b>Bases</a>
+    <a href="02-snell-descartes.html"><b>2</b>Snell-Descartes</a>
+    <a href="03-reflexion-totale.html"><b>3</b>Réflexion totale</a>
+    <a href="04-miroir-plan.html"><b>4</b>Miroir plan</a>
+    <a href="05-miroirs-spheriques.html"><b>5</b>Miroirs sphériques</a>
+    <a href="06-lentilles-minces.html"><b>6</b>Lentilles minces</a>
+    <a href="07-oeil.html"><b>7</b>L'œil</a>
+    <a href="08-defauts-visuels.html"><b>8</b>Défauts visuels</a>
+    <a href="09-loupe.html" class="live"><b>9</b>La loupe</a>
+    <a href="10-appareil-photo.html"><b>10</b>Appareil photo</a>
+    <a href="11-microscope.html"><b>11</b>Microscope</a>
+    <a href="12-fermat.html"><b>12</b>Fermat</a>
+    <a href="13-formulaire.html"><b>13</b>Formulaire</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="ch" id="c9">
+  <div class="ch-head">
+    <p class="ch-num">Chapitre 9</p>
+    <h2>La loupe</h2>
+    <p class="lede">Une lentille convergente de courte focale, utilisée dans son « cas piège » :
+      l'objet entre F et O.</p>
+  </div>
+
+  <h3 data-n="9.1">Principe</h3>
+  <p>Une loupe est une <strong>lentille convergente de courte focale</strong> utilisée avec
+    l'objet placé <strong>entre le foyer objet F et la lentille</strong> — voir le §6.6 — ou
+    idéalement <strong>exactement en F</strong>.</p>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-kerning="normal" role="img"><defs><marker id="arf15varfbeam" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-beam)"/></marker><marker id="arf15varfobj" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-obj)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">LOUPE RÉGLÉE POUR LE CONFORT VISUEL · OBJET EXACTEMENT EN F</text><line x1="30.0" y1="226.0" x2="730.0" y2="226.0" stroke="var(--f-ink3)" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/><path d="M330 128 C 347 184.84 347 267.15999999999997 330 324 C 313 267.15999999999997 313 184.84 330 128 Z" fill="var(--f-glass-fill)" stroke="var(--f-glass)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="330.0" y1="116.0" x2="330.0" y2="336.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.55" stroke-dasharray="3 4"/><circle cx="330.0" cy="226.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="330.0" y="250.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">O</text><circle cx="180.0" cy="226.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="180.0" y="250.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">F</text><circle cx="480.0" cy="226.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="480.0" y="250.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">F′</text><line x1="180.0" y1="226.0" x2="180.0" y2="174.0" stroke="var(--f-obj)" stroke-width="2.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf15varfobj)"/><circle cx="180.0" cy="226.0" r="4.2" fill="var(--f-obj)"/><text xml:space="preserve" x="168.0" y="218.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-obj)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">A</text><text xml:space="preserve" x="178.0" y="162.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-obj)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">B</text><text xml:space="preserve" x="180.0" y="272.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-obj)" text-anchor="middle" font-weight="600" opacity="1.0">objet en F</text><line x1="180.0" y1="174.0" x2="330.0" y2="174.0" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="330.0" y1="174.0" x2="651.2" y2="285.4" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf15varfbeam)"/><line x1="180.0" y1="174.0" x2="330.0" y2="226.0" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="330.0" y1="226.0" x2="651.2" y2="337.4" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf15varfbeam)"/><line x1="180.0" y1="174.0" x2="330.0" y2="270.0" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="330.0" y1="270.0" x2="651.2" y2="381.4" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf15varfbeam)"/><circle cx="640" cy="292" r="40" fill="var(--f-eye-fill)" stroke="var(--f-ink3)" stroke-width="1.5"/><path d="M 657.4 256.0 A 40 40 0 0 1 657.4 328.0" fill="none" stroke="var(--f-warn)" stroke-width="4" stroke-linecap="round" opacity="0.85"/><path d="M 615.0 263.2 A 36.0 36.0 0 0 0 615.0 320.8" fill="none" stroke="var(--f-glass)" stroke-width="2.4" stroke-linecap="round" opacity="0.5"/><path d="M618.0 270.0 C 627.0 284.0 627.0 300.0 618.0 314.0 C 609.0 300.0 609.0 284.0 618.0 270.0 Z" fill="var(--f-glass-fill)" stroke="var(--f-glass)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="640.0" y="350.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="middle" font-weight="600" opacity="1.0">œil au repos</text><text xml:space="preserve" x="640.0" y="368.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink3)" text-anchor="middle" font-weight="500" opacity="1.0">aucune accommodation</text><text xml:space="preserve" x="560.0" y="142.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-beam)" text-anchor="middle" font-weight="700" opacity="1.0">les rayons sortent PARALLÈLES</text><text xml:space="preserve" x="560.0" y="162.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-img)" text-anchor="middle" font-weight="600" opacity="1.0">→ image virtuelle à l'infini</text><rect x="30.0" y="84.0" width="300.0" height="78.0" rx="4" fill="var(--f-beam-fill)" stroke="var(--f-beam)" stroke-width="1.3" opacity="1.0"/><text xml:space="preserve" x="46.0" y="110.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="16" fill="var(--f-ink)" text-anchor="start" font-weight="700" opacity="1.0">G = dₘ / f′ = 0,25 / f′</text><text xml:space="preserve" x="46.0" y="134.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="500" opacity="1.0">f′ = 5 cm  →  G = 0,25/0,05 = ×5</text><text xml:space="preserve" x="46.0" y="152.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink3)" text-anchor="start" font-weight="500" opacity="1.0">f′ en mètres · dₘ = 25 cm</text><text xml:space="preserve" x="30.0" y="380.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">Image virtuelle, droite, agrandie — donc non projetable.</text><text xml:space="preserve" x="30.0" y="399.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">Objet un peu avant F : image à distance finie, l'œil doit accommoder un peu.</text></svg></div>
+<figcaption><b>Figure 9.1</b>Loupe réglée pour un confort visuel optimal : objet au foyer</figcaption>
+</figure>
+
+  <h3 data-n="9.2">Grossissement</h3>
+  <p>Le <strong>grossissement commercial</strong> — le nombre gravé sur la loupe : ×5, ×10… —
+    se calcule pour un œil normal observant à la distance minimale de vision distincte
+    dₘ = 25 cm :</p>
+  <div class="formula big">
+    G = <span class="frac"><span><span class="sym">d</span><sub>m</sub></span><span><span class="sym">f</span>′</span></span> =
+    <span class="frac"><span>0,25</span><span><span class="sym">f</span>′</span></span>
+    <span class="why">f′ en <b>mètres</b><br>f′ = 5 cm ⇒ G = 0,25/0,05 = <b>×5</b></span>
+  </div>
+
+  <h3 data-n="9.3">Où placer l'objet ?</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Position de l'objet</th><th>Position de l'image</th><th>Confort</th></tr></thead>
+      <tbody>
+        <tr><td><b>Exactement en F</b></td><td>À l'<b>infini</b></td><td><b>Optimal</b> : œil totalement au repos, aucune accommodation, pas de fatigue</td></tr>
+        <tr><td>Un peu <b>avant</b> F (entre F et O)</td><td>À distance finie, virtuelle</td><td>Correct, mais demande une légère accommodation</td></tr>
+        <tr><td>Image ramenée au PP (25 cm)</td><td>Grossissement maximal</td><td>Fatigant sur la durée</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <span class="t">La réponse attendue pour « confort visuel »</span>
+    Placer l'objet <b>au foyer objet F</b>, pour que l'image se forme à l'infini et que l'œil
+    n'accommode pas.
+  </div>
+
+  <h3 data-n="9.4">Nature de l'image</h3>
+  <p><strong>Virtuelle</strong>, <strong>droite</strong>, <strong>agrandie</strong> — et donc
+    <strong>non projetable sur un écran</strong>.</p>
+
+  <div class="bench-wrap">
+    <p class="bench-title">Banc 06 <span>Cherche la position de confort : celle où les rayons ressortent parallèles et où l'œil n'accommode plus du tout.</span></p>
+    <div class="bench">
+      <div class="stage">
+        <svg id="sv-loupe" viewBox="0 0 800 400" role="img"
+             aria-label="Loupe : objet entre le foyer et la lentille"></svg>
+        <p class="stage-cap">Glisse l'objet · l'œil est schématisé à droite du faisceau émergent</p>
+      </div>
+      <aside class="readout">
+        <h3>Grossissement</h3>
+        <div class="calc" id="ro-lp-calc"></div>
+        <dl class="vals" id="ro-lp-vals"></dl>
+        <p class="verdict" id="ro-lp-verdict"></p>
+        <div class="chips" id="ro-lp-chips"></div>
+      </aside>
+    </div>
+    <div class="controls">
+      <div class="ctl">
+        <span class="lab"><span>Focale de la loupe <span class="sym">f</span>′</span><span class="val" id="v-lpf">5,0 cm</span></span>
+        <input type="range" id="c-lpf" min="2" max="15" step="0.5" value="5" aria-label="Focale de la loupe en centimètres">
+      </div>
+      <div class="ctl">
+        <span class="lab"><span>Position de l'objet <span class="ov">OA</span></span><span class="val" id="v-lpa">−5,0 cm</span></span>
+        <input type="range" id="c-lpa" min="-150" max="-5" step="1" value="-50" aria-label="Position de l'objet, en dixièmes de la focale">
+      </div>
+      <div class="presets" id="p-lp">
+        <span class="pl">Réglages</span>
+        <button data-p="foyer">Objet exactement en F → confort optimal</button>
+        <button data-p="avant">Un peu avant F</button>
+        <button data-p="pp">Image ramenée au PP (25 cm)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pager">
+  <a class="prev" href="08-defauts-visuels.html"><span>&larr; Chapitre 8</span><b>Les défauts visuels</b></a>
+  <a class="next" href="10-appareil-photo.html"><span>Chapitre 10 &rarr;</span><b>L'appareil photo et le champ de vision</b></a>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
+    interactifs. Convention de signe unique dans tout le cours :
+    la lumière va de gauche à droite, l'origine est au sommet du système,
+    les distances vers la droite sont positives.
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

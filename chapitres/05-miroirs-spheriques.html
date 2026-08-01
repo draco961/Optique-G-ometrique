@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5. Les miroirs sphériques — Optique géométrique</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="../index.html">Accueil</a>
+    <a href="01-bases.html"><b>1</b>Bases</a>
+    <a href="02-snell-descartes.html"><b>2</b>Snell-Descartes</a>
+    <a href="03-reflexion-totale.html"><b>3</b>Réflexion totale</a>
+    <a href="04-miroir-plan.html"><b>4</b>Miroir plan</a>
+    <a href="05-miroirs-spheriques.html" class="live"><b>5</b>Miroirs sphériques</a>
+    <a href="06-lentilles-minces.html"><b>6</b>Lentilles minces</a>
+    <a href="07-oeil.html"><b>7</b>L'œil</a>
+    <a href="08-defauts-visuels.html"><b>8</b>Défauts visuels</a>
+    <a href="09-loupe.html"><b>9</b>La loupe</a>
+    <a href="10-appareil-photo.html"><b>10</b>Appareil photo</a>
+    <a href="11-microscope.html"><b>11</b>Microscope</a>
+    <a href="12-fermat.html"><b>12</b>Fermat</a>
+    <a href="13-formulaire.html"><b>13</b>Formulaire</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="ch" id="c5">
+  <div class="ch-head">
+    <p class="ch-num">Chapitre 5</p>
+    <h2>Les miroirs sphériques</h2>
+    <p class="lede">Un miroir courbe fait converger ou diverger la lumière. Toute la difficulté
+      tient dans les signes : ici le foyer est <em>devant</em> le miroir, donc négatif.</p>
+  </div>
+
+  <h3 data-n="5.1">Concave et convexe</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-kerning="normal" role="img"><defs><marker id="arf06varfbeam" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-beam)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">MIROIRS SPHÉRIQUES · LES RAYONS PARALLÈLES À L'AXE</text><line x1="26.0" y1="230.0" x2="360.0" y2="230.0" stroke="var(--f-ink3)" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/><path d="M265.7 144 Q338.3 230 265.7 316" fill="none" stroke="var(--f-glass)" stroke-width="7" stroke-linecap="round" opacity="0.2"/><path d="M265.7 144 Q338.3 230 265.7 316" fill="none" stroke="var(--f-glass)" stroke-width="2.4" stroke-linecap="round" opacity="1.0"/><line x1="280.9" y1="153.6" x2="291.9" y2="148.6" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="306.0" y1="172.7" x2="317.0" y2="167.7" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="324.0" y1="191.8" x2="335.0" y2="186.8" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="334.7" y1="210.9" x2="345.7" y2="205.9" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="338.3" y1="230.0" x2="349.3" y2="225.0" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="334.7" y1="249.1" x2="345.7" y2="244.1" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="324.0" y1="268.2" x2="335.0" y2="263.2" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="306.0" y1="287.3" x2="317.0" y2="282.3" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="280.9" y1="306.4" x2="291.9" y2="301.4" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><circle cx="302.0" cy="230.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="302.0" y="254.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">S</text><circle cx="242.0" cy="230.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="242.0" y="254.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">F</text><circle cx="182.0" cy="230.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="182.0" y="254.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">C</text><line x1="30.0" y1="172.0" x2="302.0" y2="172.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="302.0" y1="172.0" x2="169.6" y2="300.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="30.0" y1="200.0" x2="302.0" y2="200.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="302.0" y1="200.0" x2="102.0" y2="300.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="30.0" y1="260.0" x2="302.0" y2="260.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="302.0" y1="260.0" x2="22.0" y2="120.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="30.0" y1="288.0" x2="302.0" y2="288.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="302.0" y1="288.0" x2="80.6" y2="74.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><circle cx="242.0" cy="230.0" r="5" fill="var(--f-beam)"/><text xml:space="preserve" x="130.0" y="106.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-obj)" text-anchor="start" font-weight="600" opacity="1.0">ils convergent en F</text><text xml:space="preserve" x="30.0" y="74.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-obj)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">CONCAVE · CONVERGENT</text><text xml:space="preserve" x="30.0" y="336.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">R = -40 cm  (C devant)</text><text xml:space="preserve" x="30.0" y="355.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">f = R/2 = -20 cm</text><line x1="384.0" y1="66.0" x2="384.0" y2="392.0" stroke="var(--f-line)" stroke-width="1" stroke-linecap="round" opacity="1.0"/><line x1="406.0" y1="230.0" x2="740.0" y2="230.0" stroke="var(--f-ink3)" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/><path d="M718.3 144 Q645.7 230 718.3 316" fill="none" stroke="var(--f-glass)" stroke-width="7" stroke-linecap="round" opacity="0.2"/><path d="M718.3 144 Q645.7 230 718.3 316" fill="none" stroke="var(--f-glass)" stroke-width="2.4" stroke-linecap="round" opacity="1.0"/><line x1="703.1" y1="153.6" x2="714.1" y2="148.6" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="678.0" y1="172.7" x2="689.0" y2="167.7" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="660.0" y1="191.8" x2="671.0" y2="186.8" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="649.3" y1="210.9" x2="660.3" y2="205.9" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="645.7" y1="230.0" x2="656.7" y2="225.0" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="649.3" y1="249.1" x2="660.3" y2="244.1" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="660.0" y1="268.2" x2="671.0" y2="263.2" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="678.0" y1="287.3" x2="689.0" y2="282.3" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="703.1" y1="306.4" x2="714.1" y2="301.4" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><circle cx="682.0" cy="230.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="682.0" y="254.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">S</text><circle cx="742.0" cy="230.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="742.0" y="254.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">F</text><line x1="410.0" y1="172.0" x2="682.0" y2="172.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="682.0" y1="172.0" x2="580.6" y2="74.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="682.0" y1="172.0" x2="742.0" y2="230.0" stroke="var(--f-beam)" stroke-width="1.1" stroke-linecap="round" opacity="0.7" stroke-dasharray="6 5"/><line x1="410.0" y1="200.0" x2="682.0" y2="200.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="682.0" y1="200.0" x2="430.0" y2="74.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="682.0" y1="200.0" x2="742.0" y2="230.0" stroke="var(--f-beam)" stroke-width="1.1" stroke-linecap="round" opacity="0.7" stroke-dasharray="6 5"/><line x1="410.0" y1="260.0" x2="682.0" y2="260.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="682.0" y1="260.0" x2="602.0" y2="300.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="682.0" y1="260.0" x2="742.0" y2="230.0" stroke="var(--f-beam)" stroke-width="1.1" stroke-linecap="round" opacity="0.7" stroke-dasharray="6 5"/><line x1="410.0" y1="288.0" x2="682.0" y2="288.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="682.0" y1="288.0" x2="669.6" y2="300.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf06varfbeam)"/><line x1="682.0" y1="288.0" x2="742.0" y2="230.0" stroke="var(--f-beam)" stroke-width="1.1" stroke-linecap="round" opacity="0.7" stroke-dasharray="6 5"/><text xml:space="preserve" x="510.0" y="106.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-warn)" text-anchor="start" font-weight="600" opacity="1.0">ils divergent</text><text xml:space="preserve" x="510.0" y="126.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink3)" text-anchor="start" font-weight="500" opacity="1.0">F est virtuel, derrière</text><text xml:space="preserve" x="410.0" y="74.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-warn)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">CONVEXE · DIVERGENT</text><text xml:space="preserve" x="410.0" y="336.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">R = +40 cm  (C derrière)</text><text xml:space="preserve" x="410.0" y="355.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">f = R/2 = +20 cm</text></svg></div>
+<figcaption><b>Figure 5.1</b>Miroir concave convergent et miroir convexe divergent</figcaption>
+</figure>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Symbole</th><th>Nom</th><th>Définition</th></tr></thead>
+      <tbody>
+        <tr><td class="num"><b>S</b></td><td>Sommet</td><td>Centre du miroir, sur l'axe optique — c'est l'origine des mesures</td></tr>
+        <tr><td class="num"><b>C</b></td><td>Centre de courbure</td><td>Centre de la sphère ; <span class="ov">SC</span> = R</td></tr>
+        <tr><td class="num"><b>F</b></td><td>Foyer</td><td>Point où convergent les rayons parallèles à l'axe</td></tr>
+        <tr><td class="num"><b>R</b></td><td>Rayon de courbure</td><td>Rayon de la sphère</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 data-n="5.2">Relation focale</h3>
+  <div class="formula big">
+    <span class="sym">f</span> = <span class="ov">SF</span> =
+    <span class="frac"><span><span class="ov">SC</span></span><span>2</span></span> =
+    <span class="frac"><span><span class="sym">R</span></span><span>2</span></span>
+    <span class="why">le foyer est toujours<br>au milieu du segment SC</span>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Type</th><th>Signe de R</th><th>Signe de f</th><th>Comportement</th></tr></thead>
+      <tbody>
+        <tr><td><b>Concave</b></td><td>R &lt; 0 — C devant le miroir</td><td>f &lt; 0</td><td><b>Convergent</b></td></tr>
+        <tr><td><b>Convexe</b></td><td>R &gt; 0 — C derrière</td><td>f &gt; 0</td><td><b>Divergent</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <span class="t">En pratique</span>
+    « Miroir concave de rayon R = 40 cm » ⇒ <b>distance focale de 20 cm</b>.
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h3 data-n="5.3" style="margin-top:0">Relation de conjugaison</h3>
+      <div class="formula big">
+        <span class="frac"><span>1</span><span><span class="ov">SA′</span></span></span> +
+        <span class="frac"><span>1</span><span><span class="ov">SA</span></span></span> =
+        <span class="frac"><span>2</span><span><span class="ov">SC</span></span></span> =
+        <span class="frac"><span>1</span><span><span class="sym">f</span></span></span>
+      </div>
+    </div>
+    <div>
+      <h3 data-n="5.4" style="margin-top:0">Grandissement</h3>
+      <div class="formula big">
+        γ = <span class="frac"><span><span class="ov">A′B′</span></span><span><span class="ov">AB</span></span></span> =
+        − <span class="frac"><span><span class="ov">SA′</span></span><span><span class="ov">SA</span></span></span>
+      </div>
+    </div>
+  </div>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Lecture du résultat</th><th>Interprétation</th></tr></thead>
+      <tbody>
+        <tr><td class="num">γ &lt; 0</td><td>Image <b>renversée</b></td></tr>
+        <tr><td class="num">γ &gt; 0</td><td>Image <b>droite</b></td></tr>
+        <tr><td class="num">|γ| &gt; 1</td><td>Image <b>agrandie</b></td></tr>
+        <tr><td class="num">|γ| &lt; 1</td><td>Image <b>rétrécie</b></td></tr>
+        <tr><td class="num">|γ| = 1</td><td>Image de même taille</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 data-n="5.5">Les 3 rayons de construction</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" font-kerning="normal" role="img"><defs><marker id="arf07varfbeam" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-beam)"/></marker><marker id="arf07varfimg" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-img)"/></marker><marker id="arf07varfobj" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-obj)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">MIROIR CONCAVE · LES 3 RAYONS DE CONSTRUCTION</text><line x1="30.0" y1="236.0" x2="740.0" y2="236.0" stroke="var(--f-ink3)" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/><path d="M644.8 136 Q675.2 236 644.8 336" fill="none" stroke="var(--f-glass)" stroke-width="7" stroke-linecap="round" opacity="0.2"/><path d="M644.8 136 Q675.2 236 644.8 336" fill="none" stroke="var(--f-glass)" stroke-width="2.4" stroke-linecap="round" opacity="1.0"/><line x1="651.2" y1="147.1" x2="662.2" y2="142.1" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="661.7" y1="169.3" x2="672.7" y2="164.3" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="669.2" y1="191.6" x2="680.2" y2="186.6" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="673.7" y1="213.8" x2="684.7" y2="208.8" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="675.2" y1="236.0" x2="686.2" y2="231.0" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="673.7" y1="258.2" x2="684.7" y2="253.2" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="669.2" y1="280.4" x2="680.2" y2="275.4" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="661.7" y1="302.7" x2="672.7" y2="297.7" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><line x1="651.2" y1="324.9" x2="662.2" y2="319.9" stroke="var(--f-glass)" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/><circle cx="660.0" cy="236.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="660.0" y="260.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">S</text><circle cx="492.0" cy="236.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="492.0" y="260.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">F</text><circle cx="324.0" cy="236.0" r="3.6" fill="var(--f-ink2)"/><text xml:space="preserve" x="324.0" y="260.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">C</text><line x1="156.0" y1="236.0" x2="156.0" y2="174.0" stroke="var(--f-obj)" stroke-width="2.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf07varfobj)"/><circle cx="156.0" cy="236.0" r="4.2" fill="var(--f-obj)"/><text xml:space="preserve" x="144.0" y="228.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-obj)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">A</text><text xml:space="preserve" x="154.0" y="162.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-obj)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">B</text><line x1="156.0" y1="174.0" x2="660.0" y2="174.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0"/><line x1="660.0" y1="174.0" x2="237.3" y2="330.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf07varfbeam)"/><text xml:space="preserve" x="408.0" y="164.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="var(--f-beam)" text-anchor="middle" font-weight="700" opacity="1.0">①</text><line x1="156.0" y1="174.0" x2="660.0" y2="267.0" stroke="var(--f-beam)" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/><line x1="660.0" y1="267.0" x2="120.0" y2="267.0" stroke="var(--f-beam)" stroke-width="1.6" stroke-linecap="round" opacity="0.8" marker-end="url(#arf07varfbeam)"/><text xml:space="preserve" x="448.0" y="285.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="var(--f-beam)" text-anchor="middle" font-weight="700" opacity="1.0">②</text><line x1="156.0" y1="174.0" x2="660.0" y2="360.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0"/><line x1="660.0" y1="360.0" x2="156.0" y2="174.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf07varfbeam)"/><text xml:space="preserve" x="368.0" y="348.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="var(--f-beam)" text-anchor="middle" font-weight="700" opacity="1.0">③</text><line x1="408.0" y1="236.0" x2="408.0" y2="267.0" stroke="var(--f-img)" stroke-width="2.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf07varfimg)"/><circle cx="408.0" cy="236.0" r="4.2" fill="var(--f-img)"/><text xml:space="preserve" x="420.0" y="228.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-img)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">A′</text><text xml:space="preserve" x="418.0" y="289.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-img)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">B′</text><text xml:space="preserve" x="30.0" y="84.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">① rayon parallèle à l'axe  → réfléchi par F</text><text xml:space="preserve" x="30.0" y="103.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">② rayon par F  → réfléchi parallèle à l'axe</text><text xml:space="preserve" x="30.0" y="122.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">③ rayon par C  → réfléchi sur lui-même</text><text xml:space="preserve" x="30.0" y="400.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">SA = −90 cm  ·  f = −30 cm  →  SA′ = −45 cm  ·  γ = −0,50</text><text xml:space="preserve" x="30.0" y="419.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">image réelle, renversée, réduite</text></svg></div>
+<figcaption><b>Figure 5.5</b>Construction de l'image par un miroir concave</figcaption>
+</figure>
+  <ol>
+    <li>Rayon <strong>parallèle à l'axe</strong> → réfléchi en passant par <strong>F</strong></li>
+    <li>Rayon <strong>passant par F</strong> → réfléchi <strong>parallèle à l'axe</strong></li>
+    <li>Rayon <strong>passant par C</strong> → réfléchi <strong>sur lui-même</strong>, car il
+      arrive perpendiculairement au miroir</li>
+  </ol>
+
+  <h3 data-n="5.6">Les cas types du miroir concave</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Position de l'objet</th><th>Position de l'image</th><th>Nature</th><th>Sens</th><th>Taille</th></tr></thead>
+      <tbody>
+        <tr><td>À l'infini</td><td>Au foyer F</td><td>Réelle</td><td>—</td><td>Ponctuelle</td></tr>
+        <tr><td>Au-delà de C</td><td>Entre F et C</td><td>Réelle</td><td>Renversée</td><td>Réduite</td></tr>
+        <tr><td>En C</td><td>En C</td><td>Réelle</td><td>Renversée</td><td>Égale</td></tr>
+        <tr><td>Entre C et F</td><td>Au-delà de C</td><td>Réelle</td><td>Renversée</td><td>Agrandie</td></tr>
+        <tr><td><b>En F</b></td><td><b>À l'infini</b></td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>Entre F et S</td><td>Derrière le miroir</td><td><b>Virtuelle</b></td><td>Droite</td><td>Agrandie</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <span class="t">Le cas piège</span>
+    Un objet placé <b>exactement au foyer</b> donne une image <b>à l'infini</b>.
+    Mathématiquement : 1/<span class="ov">SA′</span> = 1/f − 1/<span class="ov">SA</span> = 0 →
+    <span class="ov">SA′</span> → ∞. Les rayons réfléchis ressortent <b>parallèles</b> entre eux :
+    aucune image observable à distance finie. C'est le principe du <b>projecteur</b> et du
+    <b>phare de voiture</b>.
+  </div>
+
+  <div class="bench-wrap">
+    <p class="bench-title">Banc 03 <span>Les six cas types sont des boutons — y compris l'objet au foyer.</span></p>
+    <div class="bench">
+      <div class="stage">
+        <svg id="sv-mirror" viewBox="0 0 800 400" role="img"
+             aria-label="Construction de l'image par un miroir sphérique"></svg>
+        <p class="stage-cap">Glisse l'objet · les rayons réfléchis repartent vers la gauche</p>
+      </div>
+      <aside class="readout">
+        <h3>Relation de conjugaison</h3>
+        <div class="calc" id="ro-mir-calc"></div>
+        <dl class="vals" id="ro-mir-vals"></dl>
+        <p class="verdict" id="ro-mir-verdict"></p>
+        <div class="chips" id="ro-mir-chips"></div>
+      </aside>
+    </div>
+    <div class="controls">
+      <div class="ctl">
+        <span class="lab"><span>Position de l'objet <span class="ov">SA</span></span><span class="val" id="v-sa">−60,0 cm</span></span>
+        <input type="range" id="c-sa" min="-200" max="-1" step="0.5" value="-60" aria-label="Position de l'objet en centimètres">
+      </div>
+      <div class="ctl">
+        <span class="lab"><span>Rayon de courbure |R|</span><span class="val" id="v-R">40,0 cm</span></span>
+        <input type="range" id="c-R" min="10" max="140" step="1" value="40" aria-label="Rayon de courbure en centimètres">
+      </div>
+      <div class="ctl" style="flex:0 0 240px">
+        <span class="lab"><span>Type de miroir</span></span>
+        <div class="seg" id="c-mirtype">
+          <label><input type="radio" name="mirtype" value="concave" checked>Concave</label>
+          <label><input type="radio" name="mirtype" value="convex">Convexe</label>
+        </div>
+      </div>
+      <div class="presets" id="p-mir">
+        <span class="pl">Cas types</span>
+        <button data-p="beyondC">Au-delà de C</button>
+        <button data-p="atC">En C (γ = −1)</button>
+        <button data-p="CF">Entre C et F</button>
+        <button data-p="atF">Objet en F → projecteur</button>
+        <button data-p="FS">Entre F et S</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pager">
+  <a class="prev" href="04-miroir-plan.html"><span>&larr; Chapitre 4</span><b>Le miroir plan</b></a>
+  <a class="next" href="06-lentilles-minces.html"><span>Chapitre 6 &rarr;</span><b>Les lentilles minces</b></a>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
+    interactifs. Convention de signe unique dans tout le cours :
+    la lumière va de gauche à droite, l'origine est au sommet du système,
+    les distances vers la droite sont positives.
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

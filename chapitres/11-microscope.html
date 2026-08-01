@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11. Le microscope — Optique géométrique</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="../index.html">Accueil</a>
+    <a href="01-bases.html"><b>1</b>Bases</a>
+    <a href="02-snell-descartes.html"><b>2</b>Snell-Descartes</a>
+    <a href="03-reflexion-totale.html"><b>3</b>Réflexion totale</a>
+    <a href="04-miroir-plan.html"><b>4</b>Miroir plan</a>
+    <a href="05-miroirs-spheriques.html"><b>5</b>Miroirs sphériques</a>
+    <a href="06-lentilles-minces.html"><b>6</b>Lentilles minces</a>
+    <a href="07-oeil.html"><b>7</b>L'œil</a>
+    <a href="08-defauts-visuels.html"><b>8</b>Défauts visuels</a>
+    <a href="09-loupe.html"><b>9</b>La loupe</a>
+    <a href="10-appareil-photo.html"><b>10</b>Appareil photo</a>
+    <a href="11-microscope.html" class="live"><b>11</b>Microscope</a>
+    <a href="12-fermat.html"><b>12</b>Fermat</a>
+    <a href="13-formulaire.html"><b>13</b>Formulaire</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="ch" id="c11">
+  <div class="ch-head">
+    <p class="ch-num">Chapitre 11</p>
+    <h2>Le microscope</h2>
+    <p class="lede">Deux lentilles en série. Toute la clé tient en une phrase :
+      l'image intermédiaire formée par l'objectif sert d'objet pour l'oculaire.</p>
+  </div>
+
+  <h3 data-n="11.1">Principe : deux lentilles en série</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" font-kerning="normal" role="img"><defs><marker id="arf18varfbeam" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-beam)"/></marker><marker id="arf18varfimg" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-img)"/></marker><marker id="arf18varfobj" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-obj)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">MICROSCOPE · L'IMAGE DE L'OBJECTIF SERT D'OBJET À L'OCULAIRE</text><line x1="30.0" y1="250.0" x2="736.0" y2="250.0" stroke="var(--f-ink3)" stroke-width="1.1" stroke-linecap="round" opacity="0.8"/><path d="M210 176 C 227 218.92000000000002 227 281.08 210 324 C 193 281.08 193 218.92000000000002 210 176 Z" fill="var(--f-glass-fill)" stroke="var(--f-glass)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="210.0" y1="164.0" x2="210.0" y2="336.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.55" stroke-dasharray="3 4"/><path d="M540 162 C 557 213.04 557 286.96 540 338 C 523 286.96 523 213.04 540 162 Z" fill="var(--f-glass-fill)" stroke="var(--f-glass)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="540.0" y1="150.0" x2="540.0" y2="350.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.55" stroke-dasharray="3 4"/><text xml:space="preserve" x="210.0" y="350.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-glass)" text-anchor="middle" font-weight="700" opacity="1.0">OBJECTIF</text><text xml:space="preserve" x="210.0" y="368.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-ink3)" text-anchor="middle" font-weight="500" opacity="1.0">focale très courte</text><text xml:space="preserve" x="628.0" y="346.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-glass)" text-anchor="middle" font-weight="700" opacity="1.0">OCULAIRE</text><text xml:space="preserve" x="628.0" y="364.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-ink3)" text-anchor="middle" font-weight="500" opacity="1.0">joue le rôle de loupe</text><circle cx="158.0" cy="250.0" r="3.2" fill="var(--f-ink2)"/><text xml:space="preserve" x="158.0" y="272.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">F₁</text><circle cx="210.0" cy="250.0" r="3.2" fill="var(--f-ink2)"/><text xml:space="preserve" x="210.0" y="272.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">O₁</text><circle cx="262.0" cy="250.0" r="3.2" fill="var(--f-ink2)"/><text xml:space="preserve" x="262.0" y="272.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">F₁′</text><circle cx="540.0" cy="250.0" r="3.2" fill="var(--f-ink2)"/><text xml:space="preserve" x="540.0" y="272.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">O₂</text><circle cx="444.0" cy="250.0" r="3.2" fill="var(--f-ink2)"/><text xml:space="preserve" x="430.0" y="272.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-ink)" text-anchor="end" font-weight="400" font-style="italic" opacity="1.0">F₂</text><line x1="143.1" y1="250.0" x2="143.1" y2="224.0" stroke="var(--f-obj)" stroke-width="2.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf18varfobj)"/><circle cx="143.1" cy="250.0" r="4.2" fill="var(--f-obj)"/><text xml:space="preserve" x="132.1" y="242.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-obj)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">A</text><text xml:space="preserve" x="141.1" y="213.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-obj)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">B</text><text xml:space="preserve" x="143.1" y="294.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-obj)" text-anchor="middle" font-weight="600" opacity="1.0">objet</text><line x1="143.1" y1="224.0" x2="210.0" y2="224.0" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="210.0" y1="224.0" x2="444.0" y2="341.0" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="143.1" y1="224.0" x2="210.0" y2="250.0" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="210.0" y1="250.0" x2="444.0" y2="341.0" stroke="var(--f-beam)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="444.0" y1="250.0" x2="444.0" y2="341.0" stroke="var(--f-img)" stroke-width="2.6" stroke-linecap="round" opacity="1.0" marker-end="url(#arf18varfimg)"/><circle cx="444.0" cy="250.0" r="4" fill="var(--f-img)"/><text xml:space="preserve" x="430.0" y="240.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-img)" text-anchor="end" font-weight="400" font-style="italic" opacity="1.0">A₁</text><text xml:space="preserve" x="430.0" y="347.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-img)" text-anchor="end" font-weight="400" font-style="italic" opacity="1.0">B₁</text><text xml:space="preserve" x="540.0" y="381.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-img)" text-anchor="end" font-weight="600" opacity="1.0">image intermédiaire  =  objet de l'oculaire</text><text xml:space="preserve" x="540.0" y="399.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12" fill="var(--f-ink3)" text-anchor="end" font-weight="500" opacity="1.0">réelle · renversée · agrandie · placée en F₂</text><line x1="444.0" y1="341.0" x2="540.0" y2="341.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="0.9"/><line x1="540.0" y1="341.0" x2="682.2" y2="206.2" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf18varfbeam)"/><line x1="444.0" y1="341.0" x2="540.0" y2="250.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="0.9"/><line x1="540.0" y1="250.0" x2="682.2" y2="115.2" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf18varfbeam)"/><line x1="444.0" y1="341.0" x2="540.0" y2="304.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="0.9"/><line x1="540.0" y1="304.0" x2="682.2" y2="169.2" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf18varfbeam)"/><text xml:space="preserve" x="740.0" y="400.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-img)" text-anchor="end" font-weight="400" opacity="1.0">rayons parallèles en sortie</text><text xml:space="preserve" x="740.0" y="419.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-img)" text-anchor="end" font-weight="400" opacity="1.0">→ image finale VIRTUELLE, à l'infini,</text><text xml:space="preserve" x="740.0" y="438.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-img)" text-anchor="end" font-weight="400" opacity="1.0">très agrandie et RENVERSÉE</text><rect x="30.0" y="78.0" width="288.0" height="62.0" rx="4" fill="var(--f-beam-fill)" stroke="var(--f-beam)" stroke-width="1.3" opacity="1.0"/><text xml:space="preserve" x="46.0" y="104.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="15" fill="var(--f-ink)" text-anchor="start" font-weight="700" opacity="1.0">G = γ objectif × G oculaire</text><text xml:space="preserve" x="46.0" y="126.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="500" opacity="1.0">×40 avec ×10  →  ×400</text><text xml:space="preserve" x="30.0" y="458.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">Une seule inversion (celle de l'objectif) : l'image finale est renversée —</text><text xml:space="preserve" x="30.0" y="477.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">d'où la lame qu'on pousse à droite et l'image qui part à gauche.</text></svg></div>
+<figcaption><b>Figure 11.1</b>Marche des rayons dans un microscope</figcaption>
+</figure>
+
+  <h3 data-n="11.2">Rôle de chaque élément</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Élément</th><th>Rôle</th><th>Fonctionnement</th></tr></thead>
+      <tbody>
+        <tr><td><b>Objectif</b></td><td>Former une <b>première image réelle et agrandie</b> de l'objet</td><td>Focale très courte ; l'objet est placé juste <b>au-delà de F₁</b> ⇒ image réelle, renversée, fortement agrandie</td></tr>
+        <tr><td><b>Oculaire</b></td><td>Jouer le rôle de <b>loupe</b> sur cette image intermédiaire</td><td>L'image intermédiaire est placée <b>entre F₂ et O₂</b> ⇒ image finale virtuelle et encore agrandie</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 data-n="11.3">Nature et orientation de l'image finale</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Étape</th><th>Image</th><th>Inversion</th></tr></thead>
+      <tbody>
+        <tr><td>Objet → objectif</td><td>Réelle, agrandie</td><td><b>Renversée</b> (1 inversion)</td></tr>
+        <tr><td>Image intermédiaire → oculaire</td><td>Virtuelle, agrandie</td><td>Droite <em>par rapport à l'intermédiaire</em> (0 inversion)</td></tr>
+        <tr><td><b>Bilan</b></td><td><b>Virtuelle, très agrandie</b></td><td><b>RENVERSÉE</b> par rapport à l'objet</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout info">
+    <span class="t">Conséquence pratique</span>
+    Au microscope, quand on pousse la lame <b>vers la droite</b>, l'image se déplace
+    <b>vers la gauche</b>.
+  </div>
+
+  <h3 data-n="11.4">Grossissement total</h3>
+  <div class="formula big">
+    G<sub>total</sub> = γ<sub>objectif</sub> × G<sub>oculaire</sub>
+    <span class="why">objectif ×40 avec oculaire ×10<br>⇒ grossissement total <b>×400</b></span>
+  </div>
+
+  <div class="bench-wrap">
+    <p class="bench-title">Banc 08 <span>Les deux étages en même temps : l'objectif fabrique l'image intermédiaire, l'oculaire s'en sert d'objet.</span></p>
+    <div class="bench">
+      <div class="stage">
+        <svg id="sv-micro" viewBox="0 0 800 420" role="img"
+             aria-label="Marche des rayons dans un microscope"></svg>
+        <p class="stage-cap">Étage 1 en trait plein · étage 2 en trait plein plus clair · l'image intermédiaire est en violet</p>
+      </div>
+      <aside class="readout">
+        <h3>Grossissement</h3>
+        <div class="calc" id="ro-mi-calc"></div>
+        <dl class="vals" id="ro-mi-vals"></dl>
+        <p class="verdict" id="ro-mi-verdict"></p>
+        <div class="chips" id="ro-mi-chips"></div>
+      </aside>
+    </div>
+    <div class="controls">
+      <div class="ctl">
+        <span class="lab"><span>Focale objectif <span class="sym">f</span>₁′</span><span class="val" id="v-mf1">4,0 mm</span></span>
+        <input type="range" id="c-mf1" min="2" max="12" step="0.5" value="4" aria-label="Focale de l'objectif en millimètres">
+      </div>
+      <div class="ctl">
+        <span class="lab"><span>Focale oculaire <span class="sym">f</span>₂′</span><span class="val" id="v-mf2">25,0 mm</span></span>
+        <input type="range" id="c-mf2" min="10" max="50" step="1" value="25" aria-label="Focale de l'oculaire en millimètres">
+      </div>
+      <div class="ctl">
+        <span class="lab"><span>Intervalle optique Δ</span><span class="val" id="v-md">160 mm</span></span>
+        <input type="range" id="c-md" min="80" max="220" step="5" value="160" aria-label="Intervalle optique en millimètres">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pager">
+  <a class="prev" href="10-appareil-photo.html"><span>&larr; Chapitre 10</span><b>L'appareil photo et le champ de vision</b></a>
+  <a class="next" href="12-fermat.html"><span>Chapitre 12 &rarr;</span><b>Le principe de Fermat</b></a>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
+    interactifs. Convention de signe unique dans tout le cours :
+    la lumière va de gauche à droite, l'origine est au sommet du système,
+    les distances vers la droite sont positives.
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7. L'œil — Optique géométrique</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="../index.html">Accueil</a>
+    <a href="01-bases.html"><b>1</b>Bases</a>
+    <a href="02-snell-descartes.html"><b>2</b>Snell-Descartes</a>
+    <a href="03-reflexion-totale.html"><b>3</b>Réflexion totale</a>
+    <a href="04-miroir-plan.html"><b>4</b>Miroir plan</a>
+    <a href="05-miroirs-spheriques.html"><b>5</b>Miroirs sphériques</a>
+    <a href="06-lentilles-minces.html"><b>6</b>Lentilles minces</a>
+    <a href="07-oeil.html" class="live"><b>7</b>L'œil</a>
+    <a href="08-defauts-visuels.html"><b>8</b>Défauts visuels</a>
+    <a href="09-loupe.html"><b>9</b>La loupe</a>
+    <a href="10-appareil-photo.html"><b>10</b>Appareil photo</a>
+    <a href="11-microscope.html"><b>11</b>Microscope</a>
+    <a href="12-fermat.html"><b>12</b>Fermat</a>
+    <a href="13-formulaire.html"><b>13</b>Formulaire</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="ch" id="c7">
+  <div class="ch-head">
+    <p class="ch-num">Chapitre 7</p>
+    <h2>L'œil</h2>
+    <p class="lede">Une lentille convergente à focale variable, un diaphragme et un écran :
+      tout ce qui précède s'applique tel quel.</p>
+  </div>
+
+  <h3 data-n="7.1">L'œil = un système optique</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" font-kerning="normal" role="img"><defs><marker id="arf11varfbeam" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-beam)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">L'ŒIL VU COMME UN SYSTÈME OPTIQUE</text><circle cx="330" cy="232" r="118" fill="var(--f-eye-fill)" stroke="var(--f-ink3)" stroke-width="1.5"/><path d="M 381.4 125.8 A 118 118 0 0 1 381.4 338.2" fill="none" stroke="var(--f-warn)" stroke-width="4" stroke-linecap="round" opacity="0.85"/><path d="M 262.1 147.0 A 106.2 106.2 0 0 0 262.1 317.0" fill="none" stroke="var(--f-glass)" stroke-width="2.4" stroke-linecap="round" opacity="0.5"/><path d="M265.1 167.1 C 289.1 208.4 289.1 255.6 265.1 296.9 C 241.10000000000002 255.6 241.10000000000002 208.4 265.1 167.1 Z" fill="var(--f-glass-fill)" stroke="var(--f-glass)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><line x1="263.1" y1="165.9" x2="263.1" y2="130.5" stroke="#6B4A2E" stroke-width="5" stroke-linecap="round" opacity="1.0"/><line x1="263.1" y1="298.1" x2="263.1" y2="333.5" stroke="#6B4A2E" stroke-width="5" stroke-linecap="round" opacity="1.0"/><line x1="36.0" y1="181.4" x2="265.1" y2="203.5" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf11varfbeam)"/><line x1="265.1" y1="203.5" x2="444.0" y2="232.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0"/><line x1="36.0" y1="232.0" x2="265.1" y2="232.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf11varfbeam)"/><line x1="265.1" y1="232.0" x2="444.0" y2="232.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0"/><line x1="36.0" y1="282.6" x2="265.1" y2="260.5" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0" marker-end="url(#arf11varfbeam)"/><line x1="265.1" y1="260.5" x2="444.0" y2="232.0" stroke="var(--f-beam)" stroke-width="1.9" stroke-linecap="round" opacity="1.0"/><circle cx="444.0" cy="232.0" r="5" fill="var(--f-beam)"/><line x1="271.1" y1="173.0" x2="470.0" y2="96.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.7" stroke-dasharray="3 4"/><text xml:space="preserve" x="476.0" y="100.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-glass)" text-anchor="start" font-weight="400" opacity="1.0">cornée + cristallin</text><text xml:space="preserve" x="476.0" y="119.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-glass)" text-anchor="start" font-weight="400" opacity="1.0">= lentille convergente ≈ 60 δ</text><line x1="442.0" y1="262.0" x2="470.0" y2="186.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.7" stroke-dasharray="3 4"/><text xml:space="preserve" x="476.0" y="190.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-warn)" text-anchor="start" font-weight="400" opacity="1.0">rétine = écran</text><text xml:space="preserve" x="476.0" y="209.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-warn)" text-anchor="start" font-weight="400" opacity="1.0">l'image s'y forme : réelle,</text><text xml:space="preserve" x="476.0" y="228.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-warn)" text-anchor="start" font-weight="400" opacity="1.0">renversée, réduite</text><line x1="403.2" y1="324.0" x2="470.0" y2="300.0" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.7" stroke-dasharray="3 4"/><text xml:space="preserve" x="476.0" y="304.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">nerf optique</text><text xml:space="preserve" x="476.0" y="323.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">→ transmission au cerveau</text><line x1="263.1" y1="317.0" x2="150.0" y2="344.1" stroke="var(--f-ink3)" stroke-width="1" stroke-linecap="round" opacity="0.7" stroke-dasharray="3 4"/><text xml:space="preserve" x="44.0" y="348.1" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6B4A2E" text-anchor="start" font-weight="400" opacity="1.0">iris / pupille = diaphragme</text><text xml:space="preserve" x="436.0" y="254.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-warn)" text-anchor="end" font-weight="600" opacity="1.0">fovéa</text><text xml:space="preserve" x="36.0" y="166.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-beam)" text-anchor="start" font-weight="600" opacity="1.0">objet</text><text xml:space="preserve" x="30.0" y="400.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink3)" text-anchor="start" font-weight="400" opacity="1.0">La distance cristallin–rétine est fixe : c'est le cristallin qui change de forme.</text></svg></div>
+<figcaption><b>Figure 7.1</b>L'œil vu comme un système optique</figcaption>
+</figure>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Élément de l'œil</th><th>Équivalent optique</th></tr></thead>
+      <tbody>
+        <tr><td>Cornée + cristallin</td><td><b>Lentille convergente</b> — vergence totale ≈ 60 δ</td></tr>
+        <tr><td>Iris / pupille</td><td><b>Diaphragme</b> — règle la quantité de lumière</td></tr>
+        <tr><td>Rétine</td><td><b>Écran</b> de projection</td></tr>
+        <tr><td>Nerf optique</td><td>Transmission du signal au cerveau</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 data-n="7.2">Où se forme l'image ?</h3>
+  <p>Dans un œil normal — <strong>emmétrope</strong> — au repos, l'image d'un objet éloigné se
+    forme <strong>exactement sur la rétine</strong>, plus précisément sur la <strong>fovéa</strong>,
+    la zone de vision la plus nette. L'image formée est <strong>réelle</strong>,
+    <strong>renversée</strong> et <strong>réduite</strong>.</p>
+
+  <h3 data-n="7.3">Pourquoi l'image est-elle inversée mais perçue droite ?</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" font-kerning="normal" role="img"><defs><marker id="arf12varfimg" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-img)"/></marker><marker id="arf12varfink3" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-ink3)"/></marker><marker id="arf12varfobj" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-obj)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">L'INVERSION EST OPTIQUE · LE REDRESSEMENT EST PHYSIOLOGIQUE</text><line x1="80.0" y1="190.0" x2="80.0" y2="130.0" stroke="var(--f-obj)" stroke-width="2.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf12varfobj)"/><circle cx="80.0" cy="190.0" r="4.2" fill="var(--f-obj)"/><text xml:space="preserve" x="80.0" y="218.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-obj)" text-anchor="middle" font-weight="500" opacity="1.0">objet droit</text><circle cx="250" cy="190" r="62" fill="var(--f-eye-fill)" stroke="var(--f-ink3)" stroke-width="1.5"/><path d="M 277.0 134.2 A 62 62 0 0 1 277.0 245.8" fill="none" stroke="var(--f-warn)" stroke-width="4" stroke-linecap="round" opacity="0.85"/><path d="M 212.9 145.4 A 55.8 55.8 0 0 0 212.9 234.6" fill="none" stroke="var(--f-glass)" stroke-width="2.4" stroke-linecap="round" opacity="0.5"/><path d="M215.9 155.9 C 228.9 177.6 228.9 202.4 215.9 224.1 C 202.9 202.4 202.9 177.6 215.9 155.9 Z" fill="var(--f-glass-fill)" stroke="var(--f-glass)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><line x1="92.0" y1="132.0" x2="215.9" y2="168.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><line x1="215.9" y1="168.0" x2="309.0" y2="204.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><line x1="92.0" y1="132.0" x2="215.9" y2="190.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><line x1="215.9" y1="190.0" x2="309.0" y2="204.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><line x1="92.0" y1="132.0" x2="215.9" y2="212.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><line x1="215.9" y1="212.0" x2="309.0" y2="204.0" stroke="var(--f-beam)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><line x1="309.0" y1="190.0" x2="309.0" y2="206.0" stroke="var(--f-img)" stroke-width="3" stroke-linecap="round" opacity="1.0" marker-end="url(#arf12varfimg)"/><text xml:space="preserve" x="250.0" y="282.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-img)" text-anchor="middle" font-weight="600" opacity="1.0">image sur la rétine</text><text xml:space="preserve" x="250.0" y="300.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-img)" text-anchor="middle" font-weight="700" opacity="1.0">RÉELLE et RENVERSÉE</text><line x1="334.0" y1="190.0" x2="400.0" y2="190.0" stroke="var(--f-ink3)" stroke-width="1.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf12varfink3)"/><text xml:space="preserve" x="370.0" y="178.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink3)" text-anchor="middle" font-weight="500" opacity="1.0">nerf optique</text><rect x="410.0" y="144.0" width="190.0" height="92.0" rx="46" fill="var(--f-img-fill)" stroke="var(--f-img)" stroke-width="1.6" opacity="1.0"/><text xml:space="preserve" x="505.0" y="184.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16" fill="var(--f-img)" text-anchor="middle" font-weight="700" opacity="1.0">CERVEAU</text><text xml:space="preserve" x="505.0" y="206.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink2)" text-anchor="middle" font-weight="400" opacity="1.0">réinterprète l'image</text><line x1="612.0" y1="190.0" x2="660.0" y2="190.0" stroke="var(--f-ink3)" stroke-width="1.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf12varfink3)"/><line x1="700.0" y1="220.0" x2="700.0" y2="160.0" stroke="var(--f-obj)" stroke-width="2.8" stroke-linecap="round" opacity="1.0" marker-end="url(#arf12varfobj)"/><circle cx="700.0" cy="220.0" r="4.2" fill="var(--f-obj)"/><text xml:space="preserve" x="700.0" y="242.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-obj)" text-anchor="middle" font-weight="700" opacity="1.0">perçu DROIT</text><text xml:space="preserve" x="30.0" y="296.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">L'image est réellement renversée sur la rétine — l'optique ne triche pas.</text><text xml:space="preserve" x="30.0" y="315.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">Le cerveau apprend dès la naissance à la remettre à l'endroit.</text></svg></div>
+<figcaption><b>Figure 7.3</b>De l'image rétinienne renversée à la perception droite</figcaption>
+</figure>
+  <p>C'est un phénomène <strong>physiologique, pas optique</strong>. L'image <em>est</em>
+    réellement renversée sur la rétine — l'optique ne triche pas. Mais le <strong>cerveau</strong>
+    apprend dès la naissance à interpréter cette image en la remettant « à l'endroit », en la
+    confrontant en permanence avec le toucher et le mouvement.</p>
+  <div class="callout info">
+    <span class="t">Expérience</span>
+    Avec des lunettes prismatiques inversantes, après quelques jours le cerveau se réadapte et
+    le monde redevient « droit ». Puis, quand on les retire, il faut se réadapter à nouveau.
+  </div>
+
+  <h3 data-n="7.4">L'accommodation</h3>
+  <p>L'œil doit former une image nette sur la rétine <strong>quelle que soit la distance de
+    l'objet</strong>. Or la distance cristallin–rétine est <strong>fixe</strong>. La solution :
+    le cristallin <strong>change de forme</strong>.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th></th><th>Vision de loin (repos)</th><th>Vision de près (accommodation)</th></tr></thead>
+      <tbody>
+        <tr><td>Muscles ciliaires</td><td>relâchés</td><td>contractés</td></tr>
+        <tr><td>Cristallin</td><td><b>aplati</b></td><td><b>bombé</b></td></tr>
+        <tr><td>Distance focale f′</td><td>grande</td><td>petite</td></tr>
+        <tr><td>Vergence</td><td>faible</td><td>forte</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 data-n="7.5">Punctum proximum et punctum remotum</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" font-kerning="normal" role="img"><defs></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">ZONE DE VISION NETTE D'UN ŒIL NORMAL (EMMÉTROPE)</text><circle cx="690" cy="170" r="46" fill="var(--f-eye-fill)" stroke="var(--f-ink3)" stroke-width="1.5"/><path d="M 710.0 128.6 A 46 46 0 0 1 710.0 211.4" fill="none" stroke="var(--f-warn)" stroke-width="4" stroke-linecap="round" opacity="0.85"/><path d="M 661.7 136.9 A 41.4 41.4 0 0 0 661.7 203.1" fill="none" stroke="var(--f-glass)" stroke-width="2.4" stroke-linecap="round" opacity="0.5"/><path d="M664.7 144.7 C 675.7 160.8 675.7 179.2 664.7 195.3 C 653.7 179.2 653.7 160.8 664.7 144.7 Z" fill="var(--f-glass-fill)" stroke="var(--f-glass)" stroke-width="1.7" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="690.0" y="244.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="middle" font-weight="500" opacity="1.0">œil</text><rect x="150.0" y="144.0" width="450.0" height="52.0" rx="4" fill="var(--f-obj-fill)" stroke="var(--f-obj)" stroke-width="1.3" opacity="1.0"/><text xml:space="preserve" x="375.0" y="176.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-obj)" text-anchor="middle" font-weight="700" letter-spacing="0.8" opacity="1.0">ZONE DE VISION NETTE</text><line x1="60.0" y1="170.0" x2="150.0" y2="170.0" stroke="var(--f-ink3)" stroke-width="1.4" stroke-linecap="round" opacity="1.0" stroke-dasharray="6 5"/><line x1="600.0" y1="170.0" x2="640.0" y2="170.0" stroke="var(--f-ink3)" stroke-width="1.4" stroke-linecap="round" opacity="1.0"/><line x1="150.0" y1="118.0" x2="150.0" y2="222.0" stroke="var(--f-img)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><circle cx="150.0" cy="170.0" r="5" fill="var(--f-img)"/><text xml:space="preserve" x="150.0" y="106.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16" fill="var(--f-img)" text-anchor="middle" font-weight="700" opacity="1.0">PP</text><text xml:space="preserve" x="150.0" y="244.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink3)" text-anchor="middle" font-weight="500" opacity="1.0">punctum proximum</text><line x1="600.0" y1="118.0" x2="600.0" y2="222.0" stroke="var(--f-img)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><circle cx="600.0" cy="170.0" r="5" fill="var(--f-img)"/><text xml:space="preserve" x="600.0" y="106.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16" fill="var(--f-img)" text-anchor="middle" font-weight="700" opacity="1.0">PR</text><text xml:space="preserve" x="600.0" y="244.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink3)" text-anchor="middle" font-weight="500" opacity="1.0">punctum remotum</text><text xml:space="preserve" x="88.0" y="270.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">le plus PRÈS vu net</text><text xml:space="preserve" x="88.0" y="289.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">accommodation maximale</text><text xml:space="preserve" x="88.0" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">≈ 25 cm  (noté dₘ)</text><text xml:space="preserve" x="560.0" y="270.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">le plus LOIN vu net</text><text xml:space="preserve" x="560.0" y="289.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">œil au repos</text><text xml:space="preserve" x="560.0" y="308.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">à l'infini</text><text xml:space="preserve" x="64.0" y="156.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-warn)" text-anchor="start" font-weight="600" opacity="1.0">trop près :</text><text xml:space="preserve" x="64.0" y="174.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-warn)" text-anchor="start" font-weight="600" opacity="1.0">flou</text><text xml:space="preserve" x="30.0" y="300.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink3)" text-anchor="start" font-weight="400" opacity="1.0">Le PP recule avec l'âge : le cristallin durcit et accommode moins — c'est la presbytie.</text></svg></div>
+<figcaption><b>Figure 7.5</b>Zone de vision nette : du punctum proximum au punctum remotum</figcaption>
+</figure>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Terme</th><th>Définition</th><th>Œil normal</th></tr></thead>
+      <tbody>
+        <tr><td><b>Punctum proximum (PP)</b></td><td>Point le plus <b>proche</b> vu net, avec accommodation <b>maximale</b></td><td>≈ 25 cm — distance minimale de vision distincte, notée dₘ</td></tr>
+        <tr><td><b>Punctum remotum (PR)</b></td><td>Point le plus <b>éloigné</b> vu net, œil <b>au repos</b></td><td>à l'<b>infini</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <span class="t">À retenir</span>
+    Le PP recule avec l'âge — le cristallin durcit et accommode moins : c'est la
+    <b>presbytie</b>. Le banc du chapitre 8 calcule PP et PR en direct pour chaque défaut.
+  </div>
+</section>
+
+<div class="pager">
+  <a class="prev" href="06-lentilles-minces.html"><span>&larr; Chapitre 6</span><b>Les lentilles minces</b></a>
+  <a class="next" href="08-defauts-visuels.html"><span>Chapitre 8 &rarr;</span><b>Les défauts visuels</b></a>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
+    interactifs. Convention de signe unique dans tout le cours :
+    la lumière va de gauche à droite, l'origine est au sommet du système,
+    les distances vers la droite sont positives.
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

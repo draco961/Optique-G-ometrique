@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2. Les lois de Snell-Descartes — Optique géométrique</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="../index.html">Accueil</a>
+    <a href="01-bases.html"><b>1</b>Bases</a>
+    <a href="02-snell-descartes.html" class="live"><b>2</b>Snell-Descartes</a>
+    <a href="03-reflexion-totale.html"><b>3</b>Réflexion totale</a>
+    <a href="04-miroir-plan.html"><b>4</b>Miroir plan</a>
+    <a href="05-miroirs-spheriques.html"><b>5</b>Miroirs sphériques</a>
+    <a href="06-lentilles-minces.html"><b>6</b>Lentilles minces</a>
+    <a href="07-oeil.html"><b>7</b>L'œil</a>
+    <a href="08-defauts-visuels.html"><b>8</b>Défauts visuels</a>
+    <a href="09-loupe.html"><b>9</b>La loupe</a>
+    <a href="10-appareil-photo.html"><b>10</b>Appareil photo</a>
+    <a href="11-microscope.html"><b>11</b>Microscope</a>
+    <a href="12-fermat.html"><b>12</b>Fermat</a>
+    <a href="13-formulaire.html"><b>13</b>Formulaire</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="ch" id="c2">
+  <div class="ch-head">
+    <p class="ch-num">Chapitre 2</p>
+    <h2>Les lois de Snell-Descartes</h2>
+    <p class="lede">Deux lois seulement, et tout le comportement de la lumière à une surface
+      en découle : ce qui repart en arrière, et ce qui traverse en se déviant.</p>
+  </div>
+
+  <h3 data-n="2.1">Le schéma de référence</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" font-kerning="normal" role="img"><defs><marker id="arf02varfbeam" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-beam)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">RÉFLEXION ET RÉFRACTION À UN DIOPTRE PLAN</text><rect x="1.0" y="62.0" width="758.0" height="188.0" rx="0" fill="var(--f-zone1)" opacity="1.0"/><rect x="1.0" y="250.0" width="758.0" height="229.0" rx="0" fill="var(--f-zone2)" opacity="1.0"/><line x1="20.0" y1="250.0" x2="740.0" y2="250.0" stroke="var(--f-ink2)" stroke-width="2" stroke-linecap="round" opacity="1.0"/><line x1="31.2" y1="250.0" x2="21.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="53.8" y1="250.0" x2="43.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="76.2" y1="250.0" x2="66.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="98.8" y1="250.0" x2="88.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="121.2" y1="250.0" x2="111.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="143.8" y1="250.0" x2="133.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="166.2" y1="250.0" x2="156.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="188.8" y1="250.0" x2="178.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="211.2" y1="250.0" x2="201.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="233.8" y1="250.0" x2="223.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="256.2" y1="250.0" x2="246.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="278.8" y1="250.0" x2="268.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="301.2" y1="250.0" x2="291.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="323.8" y1="250.0" x2="313.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="346.2" y1="250.0" x2="336.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="368.8" y1="250.0" x2="358.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="391.2" y1="250.0" x2="381.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="413.8" y1="250.0" x2="403.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="436.2" y1="250.0" x2="426.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="458.8" y1="250.0" x2="448.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="481.2" y1="250.0" x2="471.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="503.8" y1="250.0" x2="493.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="526.2" y1="250.0" x2="516.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="548.8" y1="250.0" x2="538.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="571.2" y1="250.0" x2="561.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="593.8" y1="250.0" x2="583.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="616.2" y1="250.0" x2="606.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="638.8" y1="250.0" x2="628.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="661.2" y1="250.0" x2="651.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="683.8" y1="250.0" x2="673.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="706.2" y1="250.0" x2="696.2" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="728.8" y1="250.0" x2="718.8" y2="240.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="330.0" y1="78.0" x2="330.0" y2="452.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.9" stroke-dasharray="7 5"/><text xml:space="preserve" x="340.0" y="92.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink3)" text-anchor="start" font-weight="500" opacity="1.0">normale</text><line x1="195.6" y1="115.6" x2="330.0" y2="250.0" stroke="var(--f-beam)" stroke-width="2.1" stroke-linecap="round" opacity="1.0" marker-end="url(#arf02varfbeam)"/><text xml:space="preserve" x="191.6" y="105.6" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">rayon incident</text><line x1="330.0" y1="250.0" x2="464.4" y2="115.6" stroke="var(--f-beam)" stroke-width="2.1" stroke-linecap="round" opacity="1.0" marker-end="url(#arf02varfbeam)"/><text xml:space="preserve" x="474.4" y="105.6" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">rayon réfléchi</text><line x1="330.0" y1="250.0" x2="412.4" y2="404.2" stroke="var(--f-beam)" stroke-width="2.1" stroke-linecap="round" opacity="1.0" marker-end="url(#arf02varfbeam)"/><text xml:space="preserve" x="486.4" y="410.2" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">rayon réfracté</text><circle cx="330.0" cy="250.0" r="5" fill="var(--f-beam)"/><text xml:space="preserve" x="314.0" y="274.0" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif" font-size="17" fill="var(--f-ink)" text-anchor="middle" font-weight="400" font-style="italic" opacity="1.0">I</text><text xml:space="preserve" x="304.0" y="292.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="var(--f-ink3)" text-anchor="end" font-weight="500" opacity="1.0">point d'incidence</text><path d="M330.0 192.0 A 58 58 0 0 0 289.0 209.0" fill="none" stroke="var(--f-beam)" stroke-width="1.5" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="300.9" y="184.8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i₁ = 45°</text><path d="M330.0 192.0 A 58 58 0 0 1 371.0 209.0" fill="none" stroke="var(--f-beam)" stroke-width="1.5" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="359.1" y="184.8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">45°</text><path d="M330.0 308.0 A 58 58 0 0 0 357.3 301.2" fill="none" stroke="var(--f-beam)" stroke-width="1.5" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="348.5" y="328.7" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i₂ = 28,1°</text><text xml:space="preserve" x="596.0" y="120.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">milieu 1</text><text xml:space="preserve" x="596.0" y="139.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">n₁ = 1,00  (air)</text><text xml:space="preserve" x="596.0" y="284.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">milieu 2</text><text xml:space="preserve" x="596.0" y="303.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">n₂ = 1,50  (verre)</text><text xml:space="preserve" x="30.0" y="452.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">Tous les angles se mesurent depuis la normale, jamais depuis la surface.</text></svg></div>
+<figcaption><b>Figure 2.1</b>Réflexion et réfraction à un dioptre</figcaption>
+</figure>
+  <ul>
+    <li><strong>I</strong> = point d'incidence</li>
+    <li><strong>normale</strong> = droite perpendiculaire à la surface, passant par I</li>
+    <li>Tous les angles se mesurent <strong>par rapport à la normale</strong>, jamais par
+      rapport à la surface.</li>
+  </ul>
+
+  <div class="grid2">
+    <div>
+      <h3 data-n="2.2" style="margin-top:0">Lois de la réflexion</h3>
+      <ol>
+        <li>Le rayon réfléchi appartient au <strong>plan d'incidence</strong> — le plan
+          contenant le rayon incident et la normale.</li>
+        <li>L'angle de réflexion est <strong>égal</strong> à l'angle d'incidence.</li>
+      </ol>
+      <div class="formula"><span class="sym">i</span><sub>réfléchi</sub> = <span class="sym">i</span>₁</div>
+    </div>
+    <div>
+      <h3 data-n="2.3" style="margin-top:0">Lois de la réfraction</h3>
+      <ol>
+        <li>Le rayon réfracté appartient au plan d'incidence, <strong>de l'autre côté</strong>
+          du dioptre.</li>
+        <li>Loi de Snell-Descartes :</li>
+      </ol>
+      <div class="formula big"><span class="sym">n</span>₁ sin <span class="sym">i</span>₁ =
+        <span class="sym">n</span>₂ sin <span class="sym">i</span>₂</div>
+    </div>
+  </div>
+
+  <h3 data-n="2.4">Se rapprocher ou s'éloigner de la normale ?</h3>
+  <figure class="fig">
+<div class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" font-kerning="normal" role="img"><defs><marker id="arf03varfbeam" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--f-beam)"/></marker></defs><text xml:space="preserve" x="30.0" y="40.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">LE RAYON CHANGE DE COMPORTEMENT SELON LE SENS DE PASSAGE</text><text xml:space="preserve" x="40.0" y="62.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">n₁ &lt; n₂  ·  AIR → EAU</text><rect x="26.0" y="80.0" width="348.0" height="152.0" rx="0" fill="var(--f-zone1)" opacity="1.0"/><rect x="26.0" y="232.0" width="348.0" height="68.0" rx="0" fill="var(--f-zone2)" opacity="1.0"/><line x1="26.0" y1="232.0" x2="374.0" y2="232.0" stroke="var(--f-ink2)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="37.6" y1="232.0" x2="29.6" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="60.8" y1="232.0" x2="52.8" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="84.0" y1="232.0" x2="76.0" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="107.2" y1="232.0" x2="99.2" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="130.4" y1="232.0" x2="122.4" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="153.6" y1="232.0" x2="145.6" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="176.8" y1="232.0" x2="168.8" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="200.0" y1="232.0" x2="192.0" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="223.2" y1="232.0" x2="215.2" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="246.4" y1="232.0" x2="238.4" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="269.6" y1="232.0" x2="261.6" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="292.8" y1="232.0" x2="284.8" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="316.0" y1="232.0" x2="308.0" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="339.2" y1="232.0" x2="331.2" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="362.4" y1="232.0" x2="354.4" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="180.0" y1="92.0" x2="180.0" y2="292.0" stroke="var(--f-ink3)" stroke-width="1.1" stroke-linecap="round" opacity="0.9" stroke-dasharray="6 5"/><line x1="81.9" y1="143.7" x2="180.0" y2="232.0" stroke="var(--f-beam)" stroke-width="2" stroke-linecap="round" opacity="1.0" marker-end="url(#arf03varfbeam)"/><line x1="180.0" y1="232.0" x2="237.5" y2="317.4" stroke="var(--f-beam)" stroke-width="2" stroke-linecap="round" opacity="1.0" marker-end="url(#arf03varfbeam)"/><circle cx="180.0" cy="232.0" r="4.4" fill="var(--f-beam)"/><path d="M180.0 190.0 A 42 42 0 0 0 148.8 203.9" fill="none" stroke="var(--f-beam)" stroke-width="1.3" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="155.6" y="182.2" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i₁ = 48°</text><path d="M180.0 274.0 A 42 42 0 0 0 203.5 266.8" fill="none" stroke="var(--f-beam)" stroke-width="1.3" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="197.5" y="294.4" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i₂ = 34°</text><text xml:space="preserve" x="40.0" y="106.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink3)" text-anchor="start" font-weight="500" opacity="1.0">air   n₁ = 1,00</text><text xml:space="preserve" x="40.0" y="254.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink3)" text-anchor="start" font-weight="500" opacity="1.0">eau   n₂ = 1,33</text><text xml:space="preserve" x="40.0" y="332.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14.5" fill="var(--f-obj)" text-anchor="start" font-weight="700" opacity="1.0">se RAPPROCHE de la normale</text><text xml:space="preserve" x="40.0" y="354.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">milieu plus lent → il se redresse</text><line x1="388.0" y1="80.0" x2="388.0" y2="366.0" stroke="var(--f-line)" stroke-width="1" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="412.0" y="62.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="var(--f-ink3)" text-anchor="start" font-weight="700" letter-spacing="1.4" opacity="1.0">n₁ &gt; n₂  ·  EAU → AIR</text><rect x="398.0" y="80.0" width="348.0" height="152.0" rx="0" fill="var(--f-zone1)" opacity="1.0"/><rect x="398.0" y="232.0" width="348.0" height="68.0" rx="0" fill="var(--f-zone2)" opacity="1.0"/><line x1="398.0" y1="232.0" x2="746.0" y2="232.0" stroke="var(--f-ink2)" stroke-width="1.8" stroke-linecap="round" opacity="1.0"/><line x1="409.6" y1="232.0" x2="401.6" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="432.8" y1="232.0" x2="424.8" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="456.0" y1="232.0" x2="448.0" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="479.2" y1="232.0" x2="471.2" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="502.4" y1="232.0" x2="494.4" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="525.6" y1="232.0" x2="517.6" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="548.8" y1="232.0" x2="540.8" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="572.0" y1="232.0" x2="564.0" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="595.2" y1="232.0" x2="587.2" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="618.4" y1="232.0" x2="610.4" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="641.6" y1="232.0" x2="633.6" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="664.8" y1="232.0" x2="656.8" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="688.0" y1="232.0" x2="680.0" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="711.2" y1="232.0" x2="703.2" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="734.4" y1="232.0" x2="726.4" y2="224.0" stroke="var(--f-ink3)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/><line x1="552.0" y1="92.0" x2="552.0" y2="292.0" stroke="var(--f-ink3)" stroke-width="1.1" stroke-linecap="round" opacity="0.9" stroke-dasharray="6 5"/><line x1="486.0" y1="117.7" x2="552.0" y2="232.0" stroke="var(--f-beam)" stroke-width="2" stroke-linecap="round" opacity="1.0" marker-end="url(#arf03varfbeam)"/><line x1="552.0" y1="232.0" x2="620.5" y2="308.9" stroke="var(--f-beam)" stroke-width="2" stroke-linecap="round" opacity="1.0" marker-end="url(#arf03varfbeam)"/><circle cx="552.0" cy="232.0" r="4.4" fill="var(--f-beam)"/><path d="M552.0 190.0 A 42 42 0 0 0 531.0 195.6" fill="none" stroke="var(--f-beam)" stroke-width="1.3" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="536.5" y="179.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i₁ = 30°</text><path d="M552.0 274.0 A 42 42 0 0 0 579.9 263.4" fill="none" stroke="var(--f-beam)" stroke-width="1.3" stroke-linecap="round" opacity="1.0"/><text xml:space="preserve" x="573.3" y="293.1" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-beam)" text-anchor="middle" font-weight="600" opacity="1.0">i₂ = 42°</text><text xml:space="preserve" x="412.0" y="106.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink3)" text-anchor="start" font-weight="500" opacity="1.0">eau   n₁ = 1,33</text><text xml:space="preserve" x="412.0" y="254.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" fill="var(--f-ink3)" text-anchor="start" font-weight="500" opacity="1.0">air   n₂ = 1,00</text><text xml:space="preserve" x="412.0" y="332.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14.5" fill="var(--f-warn)" text-anchor="start" font-weight="700" opacity="1.0">s'ÉLOIGNE de la normale</text><text xml:space="preserve" x="412.0" y="354.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="var(--f-ink2)" text-anchor="start" font-weight="400" opacity="1.0">milieu plus rapide → il s'écarte</text></svg></div>
+<figcaption><b>Figure 2.4</b>Comportement du rayon selon le sens de passage</figcaption>
+</figure>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Situation</th><th>Comportement</th><th>Moyen mnémotechnique</th></tr></thead>
+      <tbody>
+        <tr><td><b>n₁ &lt; n₂</b><br>air → eau</td><td>Le rayon <b>se rapproche</b> de la normale (i₂ &lt; i₁)</td><td>On entre dans un milieu <b>plus lent</b> → on se redresse</td></tr>
+        <tr><td><b>n₁ &gt; n₂</b><br>eau → air</td><td>Le rayon <b>s'éloigne</b> de la normale (i₂ &gt; i₁)</td><td>On entre dans un milieu <b>plus rapide</b> → on s'écarte</td></tr>
+        <tr><td><b>n₁ = n₂</b></td><td>Pas de déviation</td><td>Aucun changement de vitesse</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 data-n="2.5">Retour inverse de la lumière</h3>
+  <p>Le trajet d'un rayon lumineux est <strong>réversible</strong> : si on inverse les milieux
+    et qu'on envoie le rayon en sens inverse, il suit exactement le même chemin. C'est pourquoi
+    la formule n₁ sin i₁ = n₂ sin i₂ est symétrique.</p>
+
+  <div class="bench-wrap">
+    <p class="bench-title">Banc 01 <span>Fais varier l'angle d'incidence et les deux indices — les chapitres 2 et 3 dans une seule figure vivante.</span></p>
+    <div class="bench">
+      <div class="stage">
+        <svg id="sv-snell" viewBox="0 0 760 420" role="img"
+             aria-label="Rayon incident, réfléchi et réfracté à un dioptre plan"></svg>
+        <p class="stage-cap">Tous les angles sont mesurés depuis la normale (pointillés), jamais depuis la surface.</p>
+      </div>
+      <aside class="readout">
+        <h3>Loi de la réfraction</h3>
+        <div class="calc" id="ro-snell-calc"></div>
+        <dl class="vals" id="ro-snell-vals"></dl>
+        <div class="chips" id="ro-snell-chips"></div>
+      </aside>
+    </div>
+    <div class="controls">
+      <div class="ctl">
+        <span class="lab"><span>Angle d'incidence <span class="sym">i</span>₁</span><span class="val" id="v-i1">50°</span></span>
+        <input type="range" id="c-i1" min="0" max="89" step="1" value="50" aria-label="Angle d'incidence en degrés">
+      </div>
+      <div class="ctl">
+        <span class="lab"><span>Milieu 1 — <span class="sym">n</span>₁</span><span class="val" id="v-n1">1,50</span></span>
+        <div class="seg" id="c-n1"></div>
+      </div>
+      <div class="ctl">
+        <span class="lab"><span>Milieu 2 — <span class="sym">n</span>₂</span><span class="val" id="v-n2">1,00</span></span>
+        <div class="seg" id="c-n2"></div>
+      </div>
+      <div class="presets" id="p-snell">
+        <span class="pl">Cas d'école</span>
+        <button data-p="dense">Air → eau</button>
+        <button data-p="rasant">Verre → air, rasant</button>
+        <button data-p="totale">Verre → air, réflexion totale</button>
+        <button data-p="diam">Diamant → air</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pager">
+  <a class="prev" href="01-bases.html"><span>&larr; Chapitre 1</span><b>Bases et conventions</b></a>
+  <a class="next" href="03-reflexion-totale.html"><span>Chapitre 3 &rarr;</span><b>La réflexion totale</b></a>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles et 9 bancs
+    interactifs. Convention de signe unique dans tout le cours :
+    la lumière va de gauche à droite, l'origine est au sommet du système,
+    les distances vers la droite sont positives.
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+</body>
+</html>
