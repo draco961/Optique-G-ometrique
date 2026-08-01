@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optique géométrique — Exercices par chapitre</title>
+<style>
+  :root {
+    --ink: #1a2530;
+    --accent: #0a6e8a;
+    --accent-soft: #e3f1f5;
+    --answer: #0a8a52;
+    --answer-soft: #e6f5ec;
+    --rule: #d5dde2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    background: #eceff1;
+    line-height: 1.55;
+  }
+  .page {
+    background: #fff;
+    max-width: 21cm;
+    min-height: 27.5cm;
+    margin: 1.2rem auto;
+    padding: 1.8cm 2cm;
+    box-shadow: 0 2px 10px rgba(0,0,0,.12);
+    position: relative;
+  }
+  @media print {
+    body { background: #fff; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      max-width: none;
+      min-height: 0;
+      padding: 0.8cm 0.4cm;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+  }
+  h1 { font-size: 1.9rem; margin: 0 0 .3rem; color: var(--accent); }
+  .chap-head {
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: .4rem;
+    margin-bottom: 1.1rem;
+  }
+  .chap-head.corrige { border-color: var(--answer); }
+  .chap-head .kicker {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #667;
+    margin: 0;
+  }
+  .chap-head h2 { margin: .1rem 0 0; font-size: 1.35rem; }
+  .chap-head.corrige h2 { color: var(--answer); }
+  .chap-head:not(.corrige) h2 { color: var(--accent); }
+  .exo {
+    margin-bottom: 1.05rem;
+  }
+  .exo h3 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .95rem;
+    margin: 0 0 .3rem;
+    padding: .2rem .55rem;
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+  }
+  .corrige-body .exo h3 {
+    background: var(--answer-soft);
+    border-left-color: var(--answer);
+  }
+  .exo p { margin: .25rem 0; }
+  ol.q { margin: .3rem 0 .2rem 1.4rem; padding: 0; }
+  ol.q li { margin: .18rem 0; }
+  .donnees {
+    font-size: .88rem;
+    color: #445;
+    background: #f4f6f7;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: .3rem .6rem;
+    margin: .4rem 0;
+  }
+  .ov { text-decoration: overline; }
+  .rep { color: var(--ink); }
+  .rep b.res { color: var(--answer); }
+  .cover { text-align: center; padding-top: 4cm; }
+  .cover .sub { font-size: 1.05rem; color: #556; margin-bottom: 2rem; }
+  .toc {
+    display: inline-block;
+    text-align: left;
+    font-size: .98rem;
+    line-height: 1.9;
+  }
+  .toc span.num { color: var(--accent); font-weight: bold; display: inline-block; width: 2rem; }
+  .note {
+    font-size: .85rem;
+    color: #667;
+    border-top: 1px solid var(--rule);
+    margin-top: 2rem;
+    padding-top: .6rem;
+  }
+  .pagefoot {
+    position: absolute;
+    bottom: 0.9cm;
+    left: 2cm; right: 2cm;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .7rem;
+    color: #99a;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--rule);
+    padding-top: .25rem;
+  }
+  @media print { .pagefoot { position: static; margin-top: 1.2rem; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ COUVERTURE ═══════════════ -->
+<div class="page cover">
+  <h1>Optique géométrique</h1>
+  <p class="sub">Exercices par chapitre — énoncés au recto, corrigés au verso</p>
+  <div class="toc">
+    <div><span class="num">1</span> Bases et conventions</div>
+    <div><span class="num">2</span> Lois de Snell-Descartes</div>
+    <div><span class="num">3</span> Réflexion totale</div>
+    <div><span class="num">4</span> Miroir plan</div>
+    <div><span class="num">5</span> Miroirs sphériques</div>
+    <div><span class="num">6</span> Lentilles minces</div>
+    <div><span class="num">7</span> L'œil</div>
+    <div><span class="num">8</span> Défauts visuels</div>
+    <div><span class="num">9</span> La loupe</div>
+    <div><span class="num">10</span> L'appareil photo et le champ de vision</div>
+    <div><span class="num">11</span> Le microscope</div>
+    <div><span class="num">12</span> Le principe de Fermat</div>
+  </div>
+  <p class="note">Conventions du cours : miroirs sphériques f = R/2 avec f &lt; 0 pour un miroir concave,
+  1/<span class="ov">SA′</span> + 1/<span class="ov">SA</span> = 1/f et γ = −<span class="ov">SA′</span>/<span class="ov">SA</span> ;
+  lentilles minces 1/<span class="ov">OA′</span> − 1/<span class="ov">OA</span> = 1/f′ et γ = <span class="ov">OA′</span>/<span class="ov">OA</span>.
+  Sauf indication contraire : c = 3,00 × 10⁸ m/s, n(air) = 1,00, n(eau) = 1,33, n(verre) = 1,5.</p>
+</div>
+
+<!-- ═══════════════ CHAPITRE 1 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 1 · Exercices</p>
+    <h2>Bases et conventions</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 1.1 — Indice et vitesse</h3>
+    <ol class="q">
+      <li>Rappeler la définition de l'indice de réfraction n d'un milieu.</li>
+      <li>Calculer la vitesse de la lumière dans l'eau (n = 1,33) et dans le diamant (n = 2,42).</li>
+      <li>Dans lequel de ces deux milieux la lumière est-elle la plus lente ? Pourquoi dit-on qu'il est « optiquement plus dense » ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 1.2 — Un indice impossible ?</h3>
+    <p>Dans un milieu transparent, on mesure une vitesse de la lumière v = 1,5 × 10⁸ m/s.</p>
+    <ol class="q">
+      <li>Calculer l'indice de réfraction de ce milieu.</li>
+      <li>Un élève affirme avoir trouvé un milieu d'indice n = 0,8. Expliquer pourquoi c'est impossible.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 1.3 — Image réelle ou virtuelle ?</h3>
+    <ol class="q">
+      <li>Donner la définition d'une image réelle et d'une image virtuelle.</li>
+      <li>Proposer un test expérimental simple permettant de les distinguer.</li>
+      <li>Classer : image d'un film au cinéma ; image dans un miroir de salle de bain ; image donnée par une loupe.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 1.4 — Le modèle du rayon</h3>
+    <ol class="q">
+      <li>Énoncer le principe de propagation rectiligne de la lumière et sa condition de validité (milieu).</li>
+      <li>Dans quelle limite le modèle du rayon lumineux cesse-t-il d'être valable ?</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 1</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 1 · Corrigés</p>
+    <h2>Bases et conventions</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 1.1</h3>
+    <ol class="q rep">
+      <li>n = c / v : rapport entre la vitesse de la lumière dans le vide et sa vitesse dans le milieu.</li>
+      <li>Eau : v = 3,00 × 10⁸ / 1,33 ≈ <b class="res">2,26 × 10⁸ m/s</b>. Diamant : v = 3,00 × 10⁸ / 2,42 ≈ <b class="res">1,24 × 10⁸ m/s</b>.</li>
+      <li>Dans le <b class="res">diamant</b> : plus n est grand, plus la lumière est lente. Un milieu « optiquement dense » est un milieu qui ralentit fortement la lumière (n élevé).</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 1.2</h3>
+    <ol class="q rep">
+      <li>n = c / v = 3,00 × 10⁸ / 1,5 × 10⁸ = <b class="res">2,0</b>.</li>
+      <li>n = 0,8 &lt; 1 signifierait v = c/n &gt; c : la lumière irait <b>plus vite que dans le vide</b>, ce qui est impossible. On a toujours <b class="res">n ≥ 1</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 1.3</h3>
+    <ol class="q rep">
+      <li>Image <b>réelle</b> : les rayons lumineux se croisent physiquement au point image. Image <b>virtuelle</b> : les rayons semblent provenir du point image, mais seuls leurs <i>prolongements</i> s'y croisent.</li>
+      <li>Placer un <b class="res">écran</b> à l'endroit de l'image : une image réelle s'y projette, une image virtuelle non.</li>
+      <li>Cinéma : <b>réelle</b> (projetée sur l'écran). Miroir plan : <b>virtuelle</b>. Loupe : <b>virtuelle</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 1.4</h3>
+    <ol class="q rep">
+      <li>Dans un milieu <b>homogène et transparent</b>, la lumière se propage en <b class="res">ligne droite</b>.</li>
+      <li>Quand les obstacles ou ouvertures deviennent de taille comparable à la longueur d'onde : la <b class="res">diffraction</b> n'est plus négligeable et le modèle du rayon échoue.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 1</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 2 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 2 · Exercices</p>
+    <h2>Lois de Snell-Descartes</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 2.1 — De l'air vers le verre</h3>
+    <p>Un rayon lumineux arrive de l'air sur une vitre en verre (n = 1,5) avec un angle d'incidence i₁ = 45°.</p>
+    <ol class="q">
+      <li>Énoncer les deux lois de Snell-Descartes pour la réfraction.</li>
+      <li>Calculer l'angle de réfraction i₂.</li>
+      <li>Le rayon se rapproche-t-il ou s'éloigne-t-il de la normale ? Justifier par une règle générale.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 2.2 — De l'eau vers l'air</h3>
+    <p>Un rayon passe de l'eau (n = 1,33) vers l'air avec un angle d'incidence de 25°.</p>
+    <ol class="q">
+      <li>Calculer l'angle de réfraction.</li>
+      <li>Comparer à l'angle d'incidence et commenter.</li>
+      <li>Expliquer pourquoi une paille plongée dans un verre d'eau semble « cassée ».</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 2.3 — Identifier un milieu</h3>
+    <p>Un rayon venant de l'air entre dans un milieu transparent inconnu : pour i₁ = 60°, on mesure i₂ = 35°.</p>
+    <ol class="q">
+      <li>Calculer l'indice de réfraction du milieu.</li>
+      <li>À l'aide du tableau des indices du cours, proposer la nature de ce milieu.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 2.4 — Questions de cours</h3>
+    <ol class="q">
+      <li>Énoncer les lois de la réflexion.</li>
+      <li>Que signifie le principe du retour inverse de la lumière ?</li>
+      <li>Que se passe-t-il pour un rayon arrivant avec i = 0° (incidence normale) ?</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 2</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 2 · Corrigés</p>
+    <h2>Lois de Snell-Descartes</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 2.1</h3>
+    <ol class="q rep">
+      <li>① Le rayon réfracté est dans le <b>plan d'incidence</b> (plan contenant le rayon incident et la normale). ② <b>n₁ sin i₁ = n₂ sin i₂</b>.</li>
+      <li>sin i₂ = (n₁/n₂) sin i₁ = (1/1,5) × sin 45° = 0,471 → <b class="res">i₂ ≈ 28°</b>.</li>
+      <li>Il se <b class="res">rapproche de la normale</b>. Règle : en passant vers un milieu <b>plus réfringent</b> (n₂ &gt; n₁), le rayon se rapproche toujours de la normale.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 2.2</h3>
+    <ol class="q rep">
+      <li>sin i₂ = (1,33/1) × sin 25° = 0,562 → <b class="res">i₂ ≈ 34°</b>.</li>
+      <li>i₂ &gt; i₁ : le rayon <b class="res">s'éloigne de la normale</b> (passage vers un milieu moins réfringent).</li>
+      <li>Les rayons venant de la partie immergée de la paille sont déviés à la traversée de la surface eau → air : l'œil les prolonge en ligne droite et « voit » la paille à une position décalée, d'où l'apparence brisée.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 2.3</h3>
+    <ol class="q rep">
+      <li>n₂ = sin i₁ / sin i₂ = sin 60° / sin 35° = 0,866 / 0,574 ≈ <b class="res">1,51</b>.</li>
+      <li>n ≈ 1,5 : c'est du <b class="res">verre courant</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 2.4</h3>
+    <ol class="q rep">
+      <li>① Le rayon réfléchi est dans le plan d'incidence. ② L'angle de réflexion est égal à l'angle d'incidence : <b class="res">r = i</b>.</li>
+      <li>Si la lumière suit un trajet d'un point A vers un point B, elle peut suivre exactement le <b>même trajet en sens inverse</b> de B vers A.</li>
+      <li>sin 0° = 0 donc i₂ = 0° : le rayon <b class="res">traverse sans être dévié</b> (mais sa vitesse change).</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 2</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 3 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 3 · Exercices</p>
+    <h2>Réflexion totale</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 3.1 — Angle limite du verre</h3>
+    <p>Un rayon se propage dans le verre (n = 1,5) et rencontre la surface verre/air.</p>
+    <ol class="q">
+      <li>Rappeler les deux conditions nécessaires pour observer une réflexion totale.</li>
+      <li>Calculer l'angle limite θ<sub>c</sub>.</li>
+      <li>Que devient un rayon arrivant avec i = 30° ? Avec i = 45° ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 3.2 — Le plongeur</h3>
+    <p>Un plongeur sous l'eau (n = 1,33) regarde vers la surface.</p>
+    <ol class="q">
+      <li>Calculer l'angle limite pour le passage eau → air.</li>
+      <li>Expliquer pourquoi, au-delà de cet angle, la surface de l'eau lui apparaît comme un miroir.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 3.3 — L'éclat du diamant</h3>
+    <ol class="q">
+      <li>Calculer l'angle limite du diamant (n = 2,42) vers l'air.</li>
+      <li>Comparer avec celui du verre et expliquer pourquoi un diamant taillé « piège » si bien la lumière.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 3.4 — Applications</h3>
+    <ol class="q">
+      <li>Expliquer le principe de guidage de la lumière dans une fibre optique.</li>
+      <li>Pourquoi la réflexion totale est-elle impossible en passant de l'air vers le verre ?</li>
+      <li>Citer une autre application concrète de la réflexion totale.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 3</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 3 · Corrigés</p>
+    <h2>Réflexion totale</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 3.1</h3>
+    <ol class="q rep">
+      <li>① Passage d'un milieu <b>plus réfringent vers un moins réfringent</b> (n₁ &gt; n₂). ② Angle d'incidence <b>supérieur à l'angle limite</b> (i &gt; θ<sub>c</sub>).</li>
+      <li>sin θ<sub>c</sub> = n₂/n₁ = 1/1,5 → <b class="res">θ<sub>c</sub> ≈ 41,8°</b>.</li>
+      <li>i = 30° &lt; θ<sub>c</sub> : le rayon est <b>réfracté</b> (il sort dans l'air en s'éloignant de la normale, avec une réflexion partielle). i = 45° &gt; θ<sub>c</sub> : <b class="res">réflexion totale</b>, tout le rayon reste dans le verre.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 3.2</h3>
+    <ol class="q rep">
+      <li>sin θ<sub>c</sub> = 1/1,33 → <b class="res">θ<sub>c</sub> ≈ 48,8°</b>.</li>
+      <li>Pour i &gt; 48,8°, plus aucune lumière ne sort : toute la lumière est réfléchie vers le bas. La surface se comporte alors comme un <b class="res">miroir parfait</b> : le plongeur y voit le reflet du fond.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 3.3</h3>
+    <ol class="q rep">
+      <li>sin θ<sub>c</sub> = 1/2,42 → <b class="res">θ<sub>c</sub> ≈ 24,4°</b>.</li>
+      <li>24,4° ≪ 41,8° : dans le diamant, la réflexion totale se produit dès de petits angles. La lumière subit de <b>multiples réflexions totales internes</b> avant de ressortir vers l'œil — d'où l'éclat exceptionnel du diamant taillé.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 3.4</h3>
+    <ol class="q rep">
+      <li>La lumière injectée dans le cœur de la fibre frappe la paroi avec un angle <b>supérieur à l'angle limite</b> : elle subit une <b class="res">succession de réflexions totales</b> et reste piégée dans le cœur, même si la fibre est courbée.</li>
+      <li>Il faudrait n₁ &gt; n₂ ; or ici n(air) = 1 &lt; n(verre) = 1,5. En passant vers un milieu <b>plus</b> réfringent, le rayon se rapproche de la normale et il existe toujours un rayon réfracté : <b class="res">pas de réflexion totale possible</b>.</li>
+      <li>Exemples : prismes à réflexion totale (jumelles, périscopes), endoscopie médicale, réflecteurs de vélo.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 3</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 4 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 4 · Exercices</p>
+    <h2>Miroir plan</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 4.1 — Caractéristiques de l'image</h3>
+    <p>Une bougie est placée à 50 cm devant un miroir plan.</p>
+    <ol class="q">
+      <li>Où se trouve l'image ? Donner ses caractéristiques (nature, sens, taille, grandissement).</li>
+      <li>Quelle est la distance entre la bougie et son image ?</li>
+      <li>Peut-on projeter cette image sur un écran ? Pourquoi ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 4.2 — Le miroir minimal</h3>
+    <p>Une personne mesure 1,70 m et veut se voir en entier dans un miroir plan vertical.</p>
+    <ol class="q">
+      <li>Quelle est la hauteur minimale du miroir ?</li>
+      <li>Cette hauteur dépend-elle de la distance entre la personne et le miroir ? Justifier.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 4.3 — Objet en mouvement</h3>
+    <p>Une personne s'approche d'un miroir plan à la vitesse de 2 m/s.</p>
+    <ol class="q">
+      <li>À quelle vitesse son image s'approche-t-elle du miroir ?</li>
+      <li>À quelle vitesse l'image s'approche-t-elle de la personne ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 4.4 — Symétrie</h3>
+    <ol class="q">
+      <li>Pourquoi le mot « AMBULANCE » est-il écrit à l'envers sur le capot des ambulances ?</li>
+      <li>L'image d'un miroir plan inverse-t-elle le haut et le bas ? La gauche et la droite ? Préciser la nature exacte de la symétrie.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 4</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 4 · Corrigés</p>
+    <h2>Miroir plan</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 4.1</h3>
+    <ol class="q rep">
+      <li>L'image est le <b>symétrique de l'objet par rapport au plan du miroir</b> : elle se trouve <b class="res">50 cm derrière le miroir</b>. Elle est <b>virtuelle</b>, <b>droite</b>, de <b>même taille</b> que l'objet : <b class="res">γ = +1</b>.</li>
+      <li>50 + 50 = <b class="res">1,00 m</b>.</li>
+      <li><b>Non</b> : l'image est virtuelle, aucun rayon lumineux ne passe réellement derrière le miroir — seuls les prolongements des rayons s'y croisent.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 4.2</h3>
+    <ol class="q rep">
+      <li>Il suffit d'un miroir de <b class="res">85 cm</b> (la moitié de la taille) : pour chaque point du corps, le rayon œil–miroir–point touche le miroir à mi-hauteur entre l'œil et ce point.</li>
+      <li><b>Non</b> : la construction par symétrie donne toujours le point d'incidence à mi-chemin, quelle que soit la distance au miroir. La hauteur minimale reste <b class="res">taille/2</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 4.3</h3>
+    <ol class="q rep">
+      <li>L'image reste symétrique de l'objet : elle s'approche du miroir à <b class="res">2 m/s</b> (de l'autre côté).</li>
+      <li>La distance personne–image vaut deux fois la distance personne–miroir : elle diminue donc à <b class="res">4 m/s</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 4.4</h3>
+    <ol class="q rep">
+      <li>Pour que le conducteur qui précède lise le mot <b>à l'endroit dans son rétroviseur</b> (le miroir « re-inverse » le texte).</li>
+      <li>Le miroir n'inverse ni le haut/bas ni réellement la gauche/droite : il inverse <b class="res">l'avant et l'arrière</b> (symétrie par rapport au plan du miroir). C'est cette inversion avant/arrière que nous interprétons comme une inversion gauche–droite.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 4</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 5 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 5 · Exercices</p>
+    <h2>Miroirs sphériques</h2>
+  </div>
+  <p class="donnees">Convention du cours : miroir concave → f &lt; 0 ; relation de conjugaison 1/<span class="ov">SA′</span> + 1/<span class="ov">SA</span> = 1/f ; grandissement γ = −<span class="ov">SA′</span>/<span class="ov">SA</span>. L'objet est placé devant le miroir (<span class="ov">SA</span> &lt; 0).</p>
+
+  <div class="exo">
+    <h3>Exercice 5.1 — Miroir concave, objet lointain</h3>
+    <p>Un miroir concave a un rayon de courbure de 60 cm. Un objet de 4 cm de haut est placé à 90 cm devant le miroir.</p>
+    <ol class="q">
+      <li>Calculer la distance focale du miroir.</li>
+      <li>Déterminer la position de l'image.</li>
+      <li>Calculer le grandissement, puis donner la nature, le sens et la taille de l'image.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 5.2 — Le miroir de maquillage</h3>
+    <p>Même miroir (R = 60 cm). Le visage est maintenant placé à 20 cm du miroir.</p>
+    <ol class="q">
+      <li>Déterminer la position de l'image.</li>
+      <li>Calculer le grandissement et décrire l'image.</li>
+      <li>Expliquer pourquoi ce réglage convient à un miroir de maquillage.</li>
+      <li>Que se passe-t-il si le visage est exactement à 30 cm ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 5.3 — Miroir convexe (rétroviseur)</h3>
+    <p>Un miroir convexe a un rayon de courbure de 40 cm. Une voiture (l'objet) est à 30 cm du miroir.</p>
+    <ol class="q">
+      <li>Donner la distance focale (avec son signe).</li>
+      <li>Déterminer la position de l'image et le grandissement.</li>
+      <li>Pourquoi les rétroviseurs portent-ils la mention « les objets sont plus proches qu'ils ne paraissent » ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 5.4 — Rayons de construction</h3>
+    <p>Citer les trois rayons de construction d'un miroir concave et le devenir de chacun après réflexion.</p>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 5</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 5 · Corrigés</p>
+    <h2>Miroirs sphériques</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 5.1</h3>
+    <ol class="q rep">
+      <li>f = R/2 = 60/2 = 30 cm, soit avec la convention du cours <b class="res">f = −30 cm</b> (miroir concave, convergent).</li>
+      <li><span class="ov">SA</span> = −90 cm. 1/<span class="ov">SA′</span> = 1/f − 1/<span class="ov">SA</span> = −1/30 + 1/90 = −2/90 → <b class="res"><span class="ov">SA′</span> = −45 cm</b> : image réelle à 45 cm devant le miroir.</li>
+      <li>γ = −<span class="ov">SA′</span>/<span class="ov">SA</span> = −(−45)/(−90) = <b class="res">−0,5</b>. Image <b>réelle</b>, <b>renversée</b> (γ &lt; 0), <b>réduite</b> de moitié : 4 × 0,5 = <b class="res">2 cm</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 5.2</h3>
+    <ol class="q rep">
+      <li><span class="ov">SA</span> = −20 cm. 1/<span class="ov">SA′</span> = −1/30 + 1/20 = 1/60 → <b class="res"><span class="ov">SA′</span> = +60 cm</b> : image <b>virtuelle</b>, 60 cm derrière le miroir.</li>
+      <li>γ = −60/(−20) = <b class="res">+3</b> : image <b>droite</b> et <b>agrandie trois fois</b>.</li>
+      <li>L'objet est <b>entre le foyer et le sommet</b> (20 cm &lt; 30 cm) : on obtient une image droite et agrandie du visage — exactement ce qu'on attend d'un miroir de maquillage.</li>
+      <li>À 30 cm, l'objet est <b>au foyer</b> : 1/<span class="ov">SA′</span> = 0, l'image est rejetée <b class="res">à l'infini</b> (rayons réfléchis parallèles). C'est le cas piège du cours — principe du projecteur.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 5.3</h3>
+    <ol class="q rep">
+      <li>Miroir convexe : R &gt; 0 donc <b class="res">f = +20 cm</b> (divergent).</li>
+      <li><span class="ov">SA</span> = −30 cm. 1/<span class="ov">SA′</span> = 1/20 + 1/30 = 5/60 → <b class="res"><span class="ov">SA′</span> = +12 cm</b> (image virtuelle derrière le miroir). γ = −12/(−30) = <b class="res">+0,4</b> : droite et réduite.</li>
+      <li>L'image est <b>rétrécie</b> (|γ| &lt; 1) : le cerveau interprète cette petitesse comme de l'éloignement. En contrepartie le miroir convexe offre un <b>champ de vision élargi</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 5.4</h3>
+    <ol class="q rep">
+      <li>Rayon <b>parallèle à l'axe</b> → réfléchi en passant par le foyer <b class="res">F</b>.</li>
+      <li>Rayon <b>passant par F</b> → réfléchi <b class="res">parallèle à l'axe</b>.</li>
+      <li>Rayon <b>passant par C</b> → réfléchi <b class="res">sur lui-même</b> (incidence perpendiculaire au miroir).</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 5</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 6 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 6 · Exercices</p>
+    <h2>Lentilles minces</h2>
+  </div>
+  <p class="donnees">Relation de conjugaison : 1/<span class="ov">OA′</span> − 1/<span class="ov">OA</span> = 1/f′ ; grandissement γ = <span class="ov">OA′</span>/<span class="ov">OA</span>. L'objet est à gauche de la lentille (<span class="ov">OA</span> &lt; 0).</p>
+
+  <div class="exo">
+    <h3>Exercice 6.1 — Image réelle</h3>
+    <p>Une lentille convergente a une distance focale f′ = 20 cm. Un objet de 3 cm est placé à 60 cm devant la lentille.</p>
+    <ol class="q">
+      <li>Déterminer la position de l'image.</li>
+      <li>Calculer le grandissement.</li>
+      <li>Donner la nature, le sens et la taille de l'image.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 6.2 — Vergence</h3>
+    <ol class="q">
+      <li>Définir la vergence d'une lentille et donner son unité.</li>
+      <li>Calculer la vergence d'une lentille convergente de focale f′ = 25 cm, puis celle d'une lentille divergente de focale f′ = −50 cm.</li>
+      <li>Quelle est la distance focale d'une lentille de vergence C = +8 δ ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 6.3 — Objet entre F et O (cas piège)</h3>
+    <p>Une lentille convergente de focale f′ = 15 cm. Un objet est placé à 10 cm devant la lentille.</p>
+    <ol class="q">
+      <li>Déterminer la position de l'image.</li>
+      <li>Calculer le grandissement et décrire l'image.</li>
+      <li>Peut-on projeter cette image sur un écran ? Quel instrument fonctionne exactement dans cette configuration ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 6.4 — Retrouver la focale</h3>
+    <p>Un objet placé à 30 cm devant une lentille donne une image nette sur un écran situé à 60 cm derrière la lentille.</p>
+    <ol class="q">
+      <li>Calculer la distance focale de la lentille et sa vergence.</li>
+      <li>Calculer le grandissement. L'image est-elle droite ou renversée ?</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 6</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 6 · Corrigés</p>
+    <h2>Lentilles minces</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 6.1</h3>
+    <ol class="q rep">
+      <li><span class="ov">OA</span> = −60 cm. 1/<span class="ov">OA′</span> = 1/f′ + 1/<span class="ov">OA</span> = 1/20 − 1/60 = 2/60 → <b class="res"><span class="ov">OA′</span> = +30 cm</b> (30 cm derrière la lentille).</li>
+      <li>γ = <span class="ov">OA′</span>/<span class="ov">OA</span> = 30/(−60) = <b class="res">−0,5</b>.</li>
+      <li>Image <b>réelle</b> (<span class="ov">OA′</span> &gt; 0), <b>renversée</b> (γ &lt; 0), <b>réduite</b> : 3 × 0,5 = <b class="res">1,5 cm</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 6.2</h3>
+    <ol class="q rep">
+      <li>C = 1/f′ avec f′ en <b>mètres</b> ; unité : la <b class="res">dioptrie (δ)</b>.</li>
+      <li>C = 1/0,25 = <b class="res">+4 δ</b> ; C = 1/(−0,50) = <b class="res">−2 δ</b>.</li>
+      <li>f′ = 1/C = 1/8 = 0,125 m = <b class="res">12,5 cm</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 6.3</h3>
+    <ol class="q rep">
+      <li><span class="ov">OA</span> = −10 cm. 1/<span class="ov">OA′</span> = 1/15 − 1/10 = −1/30 → <b class="res"><span class="ov">OA′</span> = −30 cm</b> : l'image est du <b>même côté que l'objet</b>.</li>
+      <li>γ = (−30)/(−10) = <b class="res">+3</b> : image <b>virtuelle</b>, <b>droite</b>, <b>agrandie trois fois</b>.</li>
+      <li><b>Non</b>, une image virtuelle n'est pas projetable (les rayons ne s'y croisent pas réellement). C'est exactement le fonctionnement de la <b class="res">loupe</b> : objet entre F et O.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 6.4</h3>
+    <ol class="q rep">
+      <li><span class="ov">OA</span> = −30 cm, <span class="ov">OA′</span> = +60 cm. 1/f′ = 1/<span class="ov">OA′</span> − 1/<span class="ov">OA</span> = 1/60 + 1/30 = 3/60 → <b class="res">f′ = 20 cm</b>, C = 1/0,20 = <b class="res">+5 δ</b>.</li>
+      <li>γ = 60/(−30) = <b class="res">−2</b> : image <b>renversée</b> et agrandie deux fois (cohérent : l'image est réelle donc projetable, et une image réelle donnée par une lentille est renversée).</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 6</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 7 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 7 · Exercices</p>
+    <h2>L'œil</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 7.1 — L'œil, système optique</h3>
+    <ol class="q">
+      <li>Associer chaque élément de l'œil à son équivalent optique : cristallin + cornée ; iris/pupille ; rétine.</li>
+      <li>Où se forme l'image dans un œil normal (emmétrope) ? Donner les caractéristiques de cette image.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 7.2 — L'image renversée</h3>
+    <ol class="q">
+      <li>L'image sur la rétine est-elle réellement renversée ?</li>
+      <li>Pourquoi percevons-nous pourtant le monde « à l'endroit » ? S'agit-il d'un phénomène optique ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 7.3 — Accommodation</h3>
+    <p>La distance cristallin–rétine est fixe (≈ 17 mm), pourtant l'œil voit net de 25 cm à l'infini.</p>
+    <ol class="q">
+      <li>Expliquer le paradoxe : comment l'œil fait-il la « mise au point » ?</li>
+      <li>Compléter : en vision de près, le cristallin est … , sa distance focale … et sa vergence … .</li>
+      <li>Dans quel état sont les muscles ciliaires quand on regarde au loin ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 7.4 — PP et PR</h3>
+    <ol class="q">
+      <li>Définir le punctum proximum (PP) et le punctum remotum (PR).</li>
+      <li>Donner leurs valeurs pour un œil normal.</li>
+      <li>Pourquoi le PP recule-t-il avec l'âge, et comment s'appelle ce phénomène ?</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 7</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 7 · Corrigés</p>
+    <h2>L'œil</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 7.1</h3>
+    <ol class="q rep">
+      <li>Cristallin + cornée → <b class="res">lentille convergente</b> (≈ 60 δ) ; iris/pupille → <b class="res">diaphragme</b> (dose la lumière) ; rétine → <b class="res">écran</b>.</li>
+      <li>Sur la <b class="res">rétine</b> (précisément la fovéa). L'image est <b>réelle, renversée et réduite</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 7.2</h3>
+    <ol class="q rep">
+      <li><b>Oui</b> : l'optique ne triche pas, l'image rétinienne est réellement renversée.</li>
+      <li>C'est le <b class="res">cerveau</b> qui interprète l'image et la « remet à l'endroit », par apprentissage (confrontation avec le toucher et le mouvement). C'est un phénomène <b>physiologique, pas optique</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 7.3</h3>
+    <ol class="q rep">
+      <li>Puisque la distance lentille–écran est fixe, l'œil change la <b>forme du cristallin</b>, donc sa distance focale : c'est l'<b class="res">accommodation</b>.</li>
+      <li>En vision de près, le cristallin est <b class="res">bombé</b>, sa focale <b class="res">diminue</b> et sa vergence <b class="res">augmente</b>.</li>
+      <li>Ils sont <b class="res">relâchés</b> : la vision de loin correspond à l'œil au repos (cristallin aplati).</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 7.4</h3>
+    <ol class="q rep">
+      <li><b>PP</b> : point le plus <b>proche</b> vu net, accommodation <b>maximale</b>. <b>PR</b> : point le plus <b>éloigné</b> vu net, œil <b>au repos</b>.</li>
+      <li>Œil normal : PP ≈ <b class="res">25 cm</b> (distance minimale de vision distincte d<sub>m</sub>), PR à <b class="res">l'infini</b>.</li>
+      <li>Le cristallin <b>durcit</b> avec l'âge et accommode de moins en moins : le PP recule. C'est la <b class="res">presbytie</b>.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 7</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 8 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 8 · Exercices</p>
+    <h2>Défauts visuels</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 8.1 — Diagnostic (type examen)</h3>
+    <p>Un patient voit net jusqu'à 1,5 m au maximum.</p>
+    <ol class="q">
+      <li>Que vaut son punctum remotum ? Quel est son défaut visuel ?</li>
+      <li>Où se forme l'image d'un objet lointain dans son œil ?</li>
+      <li>Quel type de lentille corrige ce défaut ? Justifier son rôle.</li>
+      <li>Calculer la vergence de la lentille de correction.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 8.2 — L'hypermétrope</h3>
+    <ol class="q">
+      <li>Quelle est la cause de l'hypermétropie et où se forme l'image ?</li>
+      <li>Quel type de lentille la corrige ?</li>
+      <li>Comparer les lunettes d'un myope et d'un hypermétrope (forme, effet sur les yeux vus à travers).</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 8.3 — Presbytie</h3>
+    <p>Avec l'âge, le punctum proximum d'une personne est passé de 25 cm à 50 cm.</p>
+    <ol class="q">
+      <li>Comment s'appelle ce défaut et quelle est sa cause ?</li>
+      <li>On veut qu'elle puisse lire à 25 cm : la lentille de lecture doit donner, d'un texte placé à 25 cm, une image virtuelle à 50 cm. Calculer f′ et la vergence nécessaires.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 8.4 — Tableau récapitulatif</h3>
+    <p>Pour chaque défaut — myopie, hypermétropie, presbytie, astigmatisme — donner : la cause, la position de l'image par rapport à la rétine, et la correction.</p>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 8</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 8 · Corrigés</p>
+    <h2>Défauts visuels</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 8.1</h3>
+    <ol class="q rep">
+      <li>PR = <b>1,5 m</b> (au lieu de l'infini) : il ne voit pas net au loin → <b class="res">myopie</b> (œil trop long ou trop convergent).</li>
+      <li><b class="res">En avant de la rétine</b> : les rayons se croisent trop tôt.</li>
+      <li>Une lentille <b class="res">divergente</b> : elle « écarte » les rayons pour ramener un objet à l'infini au niveau du PR, que l'œil sait voir net.</li>
+      <li>C = −1/d<sub>PR</sub> = −1/1,5 ≈ <b class="res">−0,67 δ</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 8.2</h3>
+    <ol class="q rep">
+      <li>Œil trop <b>court</b> (ou pas assez convergent) : l'image se forme <b class="res">en arrière de la rétine</b>.</li>
+      <li>Une lentille <b class="res">convergente</b> (C &gt; 0), qui aide l'œil à faire converger les rayons plus tôt.</li>
+      <li>Myope : verres <b>divergents</b>, plus épais au bord, yeux paraissant <b>plus petits</b>. Hypermétrope : verres <b>convergents</b>, plus épais au centre, yeux paraissant <b>plus gros</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 8.3</h3>
+    <ol class="q rep">
+      <li>La <b class="res">presbytie</b> : le cristallin perd sa souplesse avec l'âge et n'accommode plus assez.</li>
+      <li><span class="ov">OA</span> = −25 cm, <span class="ov">OA′</span> = −50 cm (image virtuelle du même côté). 1/f′ = 1/<span class="ov">OA′</span> − 1/<span class="ov">OA</span> = −1/50 + 1/25 = 1/50 → <b class="res">f′ = 50 cm</b>, soit C = <b class="res">+2 δ</b> (lentille convergente : lunettes de lecture typiques).</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 8.4</h3>
+    <ol class="q rep">
+      <li><b>Myopie</b> : œil trop long / trop convergent → image <b>en avant</b> de la rétine → lentille <b class="res">divergente</b>.</li>
+      <li><b>Hypermétropie</b> : œil trop court / pas assez convergent → image <b>en arrière</b> → lentille <b class="res">convergente</b>.</li>
+      <li><b>Presbytie</b> : cristallin rigidifié (âge) → image en arrière <b>de près uniquement</b> → lentille <b class="res">convergente</b> (lecture).</li>
+      <li><b>Astigmatisme</b> : cornée non sphérique → deux images à des distances différentes → lentille <b class="res">cylindrique / torique</b>.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 8</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 9 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 9 · Exercices</p>
+    <h2>La loupe</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 9.1 — Grossissement commercial</h3>
+    <p>Une loupe a une distance focale f′ = 2,5 cm.</p>
+    <ol class="q">
+      <li>Rappeler la formule du grossissement commercial et la signification de d<sub>m</sub>.</li>
+      <li>Calculer le grossissement de cette loupe.</li>
+      <li>Quelle focale faut-il pour une loupe « ×5 » ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 9.2 — Position de l'objet</h3>
+    <ol class="q">
+      <li>Où faut-il placer l'objet par rapport à la lentille pour qu'elle fonctionne en loupe ?</li>
+      <li>Où faut-il le placer précisément pour un confort visuel optimal ? Où se forme alors l'image ?</li>
+      <li>Pourquoi ce réglage est-il le plus confortable pour l'œil ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 9.3 — Nature de l'image</h3>
+    <ol class="q">
+      <li>Donner la nature, le sens et la taille de l'image donnée par une loupe.</li>
+      <li>Peut-on projeter cette image sur un écran ?</li>
+      <li>Que voit-on si l'objet est placé au-delà du foyer objet F ? La lentille fonctionne-t-elle encore en loupe ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 9.4 — Vérification par le calcul</h3>
+    <p>Une loupe de focale f′ = 5 cm est utilisée avec un objet placé à 4 cm.</p>
+    <ol class="q">
+      <li>Calculer la position de l'image et le grandissement.</li>
+      <li>Le résultat confirme-t-il les caractéristiques annoncées à l'exercice 9.3 ?</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 9</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 9 · Corrigés</p>
+    <h2>La loupe</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 9.1</h3>
+    <ol class="q rep">
+      <li>G = d<sub>m</sub>/f′ = 0,25/f′ (f′ en mètres), où d<sub>m</sub> = 25 cm est la <b>distance minimale de vision distincte</b> d'un œil normal.</li>
+      <li>G = 25/2,5 = <b class="res">10</b> → loupe « ×10 ».</li>
+      <li>f′ = 25/5 = <b class="res">5 cm</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 9.2</h3>
+    <ol class="q rep">
+      <li><b>Entre le foyer objet F et la lentille</b> (à une distance inférieure à f′).</li>
+      <li><b class="res">Exactement au foyer objet F</b> : l'image se forme alors <b>à l'infini</b>.</li>
+      <li>Pour regarder à l'infini, l'œil est <b>au repos</b> (aucune accommodation) : pas de fatigue visuelle, même en observation prolongée.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 9.3</h3>
+    <ol class="q rep">
+      <li>Image <b class="res">virtuelle, droite, agrandie</b>.</li>
+      <li><b>Non</b> : une image virtuelle n'est pas projetable.</li>
+      <li>Au-delà de F, la lentille donne une image <b>réelle et renversée</b> (fonctionnement type projecteur/appareil photo) : ce n'est <b>plus une loupe</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 9.4</h3>
+    <ol class="q rep">
+      <li><span class="ov">OA</span> = −4 cm. 1/<span class="ov">OA′</span> = 1/5 − 1/4 = −1/20 → <b class="res"><span class="ov">OA′</span> = −20 cm</b>. γ = (−20)/(−4) = <b class="res">+5</b>.</li>
+      <li>Oui : <span class="ov">OA′</span> &lt; 0 → image <b>virtuelle</b> ; γ &gt; 0 → <b>droite</b> ; |γ| = 5 &gt; 1 → <b>agrandie</b>. ✓</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 9</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 10 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 10 · Exercices</p>
+    <h2>L'appareil photo et le champ de vision</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 10.1 — Formation de l'image</h3>
+    <ol class="q">
+      <li>Pourquoi l'image formée sur le capteur est-elle nécessairement réelle ?</li>
+      <li>Donner les trois caractéristiques de l'image sur le capteur.</li>
+      <li>Un objectif a une focale de 50 mm. À quelle distance de l'objectif faut-il placer le capteur pour photographier un paysage lointain ? Justifier.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 10.2 — La mise au point</h3>
+    <p>Avec ce même objectif (f′ = 50 mm), on photographie maintenant un sujet placé à 2 m.</p>
+    <ol class="q">
+      <li>Que signifie « faire la mise au point » ?</li>
+      <li>Calculer la nouvelle distance objectif–capteur nécessaire.</li>
+      <li>De combien et dans quel sens faut-il déplacer l'objectif par rapport au réglage « infini » ?</li>
+      <li>À quel mécanisme de l'œil cette opération correspond-elle ? Citer la différence.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 10.3 — Champ de vision</h3>
+    <p>On compare deux objectifs, 20 mm et 200 mm, montés sur un capteur de 24 mm de hauteur. On rappelle : tan α = (taille du capteur / 2)/f′, champ = 2α.</p>
+    <ol class="q">
+      <li>Calculer le champ de vision vertical pour chaque objectif.</li>
+      <li>Lequel choisir pour un paysage ? Pour photographier un animal lointain ? Justifier.</li>
+      <li>Citer deux autres conséquences d'une augmentation de la focale.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 10</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 10 · Corrigés</p>
+    <h2>L'appareil photo et le champ de vision</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 10.1</h3>
+    <ol class="q rep">
+      <li>L'objet est toujours <b>bien au-delà du foyer objet</b> : les rayons ressortent convergents et se croisent <b>physiquement</b> sur le capteur. C'est indispensable : un capteur ne peut enregistrer que de la lumière qui l'atteint <b>réellement</b>.</li>
+      <li><b class="res">Réelle, renversée, réduite</b>.</li>
+      <li>Objet à l'infini → rayons parallèles → image <b>au foyer image F′</b> : capteur à <b class="res">50 mm</b> de l'objectif (<span class="ov">OA′</span> = f′).</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 10.2</h3>
+    <ol class="q rep">
+      <li>Déplacer l'objectif pour que l'image du sujet se forme <b>exactement sur le capteur</b>.</li>
+      <li><span class="ov">OA</span> = −2000 mm. 1/<span class="ov">OA′</span> = 1/50 − 1/2000 = 39/2000 → <b class="res"><span class="ov">OA′</span> ≈ 51,3 mm</b>.</li>
+      <li>Il faut <b class="res">éloigner l'objectif du capteur d'environ 1,3 mm</b> (l'objet se rapproche → l'image s'éloigne).</li>
+      <li>À l'<b class="res">accommodation</b>. Différence : l'œil <b>déforme</b> son cristallin (focale variable), l'appareil <b>déplace</b> sa lentille (focale fixe).</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 10.3</h3>
+    <ol class="q rep">
+      <li>20 mm : tan α = 12/20 = 0,6 → α ≈ 31° → champ ≈ <b class="res">62°</b>. 200 mm : tan α = 12/200 = 0,06 → α ≈ 3,4° → champ ≈ <b class="res">7°</b>.</li>
+      <li>Paysage → <b class="res">20 mm</b> (grand-angle : champ large). Animal lointain → <b class="res">200 mm</b> (téléobjectif : champ étroit mais grandissement fort). Le champ de vision est <b>inversement</b> lié à la focale.</li>
+      <li>Quand f′ augmente : le grandissement <b>augmente</b>, la profondeur de champ <b>diminue</b> (arrière-plan plus flou), et le capteur doit être plus éloigné de l'objectif.</li>
+    </ol>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 10</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 11 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 11 · Exercices</p>
+    <h2>Le microscope</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 11.1 — Les deux étages</h3>
+    <ol class="q">
+      <li>Quel est le rôle de l'objectif ? Où l'objet est-il placé par rapport à son foyer F₁ et quelle image obtient-on ?</li>
+      <li>Quel est le rôle de l'oculaire ? Où l'image intermédiaire est-elle placée par rapport à son foyer F₂ ?</li>
+      <li>Quelle est l'idée clé qui relie les deux lentilles ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 11.2 — Image finale</h3>
+    <ol class="q">
+      <li>Donner la nature de l'image finale (réelle/virtuelle, taille).</li>
+      <li>L'image finale est-elle droite ou renversée par rapport à l'objet ? Détailler le bilan des inversions étage par étage.</li>
+      <li>Au microscope, on pousse la lame porte-objet vers la droite. Dans quel sens l'image semble-t-elle se déplacer ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 11.3 — Grossissement total</h3>
+    <ol class="q">
+      <li>Rappeler la formule du grossissement total d'un microscope.</li>
+      <li>Calculer le grossissement d'un microscope équipé d'un objectif ×40 et d'un oculaire ×10.</li>
+      <li>Un oculaire a une focale f′ = 2,5 cm. Calculer son grossissement (formule de la loupe), puis le grossissement total avec un objectif ×60.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 11.4 — Comparaison loupe / microscope</h3>
+    <p>Expliquer en quoi le microscope peut être vu comme « une loupe améliorée », et pourquoi il grossit beaucoup plus qu'une loupe seule.</p>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 11</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 11 · Corrigés</p>
+    <h2>Le microscope</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 11.1</h3>
+    <ol class="q rep">
+      <li>L'objectif forme une <b>première image réelle et agrandie</b> de l'objet. L'objet est placé <b class="res">juste au-delà de F₁</b> → image réelle, renversée, fortement agrandie.</li>
+      <li>L'oculaire joue le rôle de <b class="res">loupe</b> sur l'image intermédiaire, placée <b>entre F₂ et l'oculaire</b> → image finale virtuelle et encore agrandie.</li>
+      <li><b class="res">L'image intermédiaire formée par l'objectif sert d'objet pour l'oculaire.</b></li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 11.2</h3>
+    <ol class="q rep">
+      <li>Image finale <b class="res">virtuelle et très agrandie</b> (non projetable, observée à travers l'oculaire).</li>
+      <li>Objectif : 1 inversion (image intermédiaire <b>renversée</b>). Oculaire : 0 inversion (loupe → image droite par rapport à l'intermédiaire). Bilan : image finale <b class="res">renversée</b> par rapport à l'objet.</li>
+      <li>Vers la <b class="res">gauche</b> : l'image étant renversée, tout déplacement de l'objet est vu inversé.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 11.3</h3>
+    <ol class="q rep">
+      <li>G<sub>total</sub> = γ<sub>objectif</sub> × G<sub>oculaire</sub>.</li>
+      <li>G = 40 × 10 = <b class="res">×400</b>.</li>
+      <li>G<sub>oculaire</sub> = 25/2,5 = <b class="res">10</b> ; G<sub>total</sub> = 60 × 10 = <b class="res">×600</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 11.4</h3>
+    <p class="rep">L'oculaire seul est une loupe, mais au lieu de regarder l'objet directement, on lui donne à observer une image intermédiaire <b>déjà agrandie</b> par l'objectif. Les grossissements des deux étages se <b class="res">multiplient</b> (γ<sub>obj</sub> × G<sub>oc</sub>) : avec un objectif ×40 et un oculaire ×10, on atteint ×400, hors de portée d'une loupe seule (limitée en pratique à ×10–×20 par les aberrations et les focales réalisables).</p>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 11</span><span>Corrigés</span></div>
+</div>
+
+<!-- ═══════════════ CHAPITRE 12 ═══════════════ -->
+<div class="page">
+  <div class="chap-head">
+    <p class="kicker">Chapitre 12 · Exercices</p>
+    <h2>Le principe de Fermat</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 12.1 — Énoncé et chemin optique</h3>
+    <ol class="q">
+      <li>Énoncer le principe de Fermat.</li>
+      <li>Définir le chemin optique L et donner son lien avec le temps de parcours.</li>
+      <li>Un rayon traverse 5 cm de verre (n = 1,5). Calculer le chemin optique correspondant, puis le temps de traversée.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 12.2 — Fermat et la réflexion</h3>
+    <ol class="q">
+      <li>Montrer, à l'aide du point symétrique A′ de la source A par rapport au miroir, que le trajet le plus court A → miroir → B impose la loi i = r.</li>
+      <li>Pourquoi peut-on raisonner sur la distance plutôt que sur le temps dans ce cas ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 12.3 — L'analogie du sauveteur</h3>
+    <p>Un sauveteur sur la plage doit atteindre un nageur en difficulté. Il court vite sur le sable et nage lentement.</p>
+    <ol class="q">
+      <li>Pourquoi le sauveteur ne doit-il pas suivre la ligne droite ?</li>
+      <li>Décrire qualitativement le trajet optimal.</li>
+      <li>Expliquer le lien entre cette situation et la loi de la réfraction. Que représentent le sable, l'eau et la ligne de rivage ?</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Exercice 12.4 — Question de synthèse</h3>
+    <p>Expliquer en quelques lignes pourquoi on dit que les lois de Snell-Descartes ne sont pas des règles arbitraires, mais les conséquences d'un principe plus profond.</p>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 12</span><span>Énoncés</span></div>
+</div>
+
+<div class="page corrige-body">
+  <div class="chap-head corrige">
+    <p class="kicker">Chapitre 12 · Corrigés</p>
+    <h2>Le principe de Fermat</h2>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 12.1</h3>
+    <ol class="q rep">
+      <li>Le trajet suivi par la lumière entre deux points est celui dont le <b class="res">temps de parcours est extrémal</b> (le plus souvent minimal).</li>
+      <li>L = n × d ; le temps de parcours est t = L/c : minimiser le temps revient à minimiser le chemin optique.</li>
+      <li>L = 1,5 × 0,05 = 0,075 m = <b class="res">7,5 cm</b> ; t = L/c = 0,075/(3,00 × 10⁸) = <b class="res">2,5 × 10⁻¹⁰ s</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 12.2</h3>
+    <ol class="q rep">
+      <li>Tout trajet A → I → B a la même longueur que A′ → I → B (symétrie). Le plus court trajet de A′ à B est la <b>ligne droite</b> : le point I optimal est donc celui où <b>A′, I et B sont alignés</b>. Cette condition géométrique impose exactement <b class="res">i = r</b>.</li>
+      <li>Tout le trajet se fait <b>dans le même milieu</b> (n constant) : le temps est proportionnel à la distance, minimiser l'un revient à minimiser l'autre.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 12.3</h3>
+    <ol class="q rep">
+      <li>La ligne droite minimise la <b>distance</b>, mais pas le <b>temps</b> : elle fait passer trop de trajet dans l'eau, où il est lent.</li>
+      <li>Il <b>rallonge son parcours sur le sable</b> (rapide) pour <b>raccourcir la partie nagée</b> (lente) : sa trajectoire se « brise » à la ligne de rivage.</li>
+      <li>C'est exactement ce que fait la lumière : le sable = milieu d'indice faible (rapide), l'eau = milieu d'indice fort (lent), la ligne de rivage = le <b>dioptre</b>. La minimisation du temps total donne exactement <b class="res">n₁ sin i₁ = n₂ sin i₂</b>.</li>
+    </ol>
+  </div>
+
+  <div class="exo">
+    <h3>Corrigé 12.4</h3>
+    <p class="rep">La propagation rectiligne, la loi de la réflexion (i = r) et la loi de la réfraction (n₁ sin i₁ = n₂ sin i₂) se <b>déduisent toutes</b> d'un unique principe : la lumière suit le trajet de <b class="res">temps de parcours minimal</b> (principe de Fermat). Ces lois ne sont donc pas des règles empiriques indépendantes, mais trois conséquences d'un même principe variationnel plus profond — une idée qui se généralise d'ailleurs à toute la physique (principe de moindre action).</p>
+  </div>
+
+  <div class="pagefoot"><span>Optique géométrique — Chapitre 12</span><span>Corrigés</span></div>
+</div>
+
+</body>
+</html>
