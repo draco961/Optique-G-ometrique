@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retours des étudiants — Optique géométrique</title>
+<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+<style>
+.fbl-list{ display:flex; flex-direction:column; gap:14px; margin-top:22px }
+.fbl-item{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:16px 18px; box-shadow:var(--shadow);
+}
+.fbl-meta{
+  display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline; margin-bottom:8px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-3);
+}
+.fbl-type{
+  text-transform:uppercase; letter-spacing:.12em; color:var(--ink-2);
+  background:var(--surface-2); border:1px solid var(--line); border-radius:999px;
+  padding:2px 10px;
+}
+.fbl-msg{ margin:0; font-size:15px; line-height:1.55; color:var(--ink); white-space:pre-wrap }
+.fbl-name{ margin:8px 0 0; font-size:13px; color:var(--ink-2); font-style:italic }
+.fbl-status{ font-family:var(--mono); font-size:12.5px; color:var(--ink-3); margin-top:22px }
+.fbl-status.err{ color:var(--warn) }
+.fbl-tools{ margin-top:18px }
+.fbl-refresh{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
+  border:1px solid var(--line); border-radius:8px; background:var(--surface-2);
+  color:var(--ink-2); padding:9px 14px; cursor:pointer;
+}
+.fbl-refresh:hover{ color:var(--ink); border-color:var(--ink-3) }
+</style>
+</head>
+<body>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="index.html">Accueil</a>
+    <a href="chapitres/01-bases.html"><b>1</b>Bases</a>
+    <a href="chapitres/02-snell-descartes.html"><b>2</b>Snell-Descartes</a>
+    <a href="chapitres/03-reflexion-totale.html"><b>3</b>Réflexion totale</a>
+    <a href="chapitres/04-miroir-plan.html"><b>4</b>Miroir plan</a>
+    <a href="chapitres/05-miroirs-spheriques.html"><b>5</b>Miroirs sphériques</a>
+    <a href="chapitres/06-lentilles-minces.html"><b>6</b>Lentilles minces</a>
+    <a href="chapitres/07-oeil.html"><b>7</b>L'œil</a>
+    <a href="chapitres/08-defauts-visuels.html"><b>8</b>Défauts visuels</a>
+    <a href="chapitres/09-loupe.html"><b>9</b>La loupe</a>
+    <a href="chapitres/10-appareil-photo.html"><b>10</b>Appareil photo</a>
+    <a href="chapitres/11-microscope.html"><b>11</b>Microscope</a>
+    <a href="chapitres/12-fermat.html"><b>12</b>Fermat</a>
+    <a href="chapitres/13-formulaire.html"><b>13</b>Formulaire</a>
+    <a href="revision.html"><b>✓</b>Tests</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="ch" id="retours">
+  <div class="ch-head">
+    <p class="ch-num">Amélioration continue</p>
+    <h2>Retours des étudiants</h2>
+    <p class="lede">Toutes les remarques envoyées depuis le bouton
+    « ✉ Un avis ? » du site : erreurs signalées, points obscurs, suggestions.
+    Elles sont publiques — chacun peut vérifier qu'un problème a déjà été signalé
+    avant d'envoyer le sien.</p>
+  </div>
+
+  <p class="fbl-status" id="fbl-status">Chargement des retours…</p>
+  <div class="fbl-list" id="fbl-list"></div>
+  <div class="fbl-tools">
+    <button class="fbl-refresh" id="fbl-refresh" type="button">Actualiser</button>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles, 9 bancs
+    interactifs, 47 exercices corrigés et 65 cartes de révision.
+  </div>
+</footer>
+
+<script src="js/feedback.js"></script>
+<script>
+(function(){
+"use strict";
+const list = document.getElementById("fbl-list");
+const status = document.getElementById("fbl-status");
+
+/* tout le contenu vient des étudiants : on n'insère jamais de HTML brut */
+function el(tag, cls, text){
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text) e.textContent = text;
+  return e;
+}
+
+function fmtDate(iso){
+  const d = new Date(iso);
+  if (isNaN(d)) return "";
+  return d.toLocaleDateString("fr-FR", {day:"numeric", month:"long", year:"numeric"}) +
+    " à " + d.toLocaleTimeString("fr-FR", {hour:"2-digit", minute:"2-digit"});
+}
+
+async function load(){
+  status.className = "fbl-status";
+  status.textContent = "Chargement des retours…";
+  list.textContent = "";
+  try {
+    const data = await window.FB.loadAll();
+    const items = data.feedbacks.slice().reverse();   /* les plus récents d'abord */
+    if (!items.length){
+      status.textContent = "Aucun retour pour l'instant — sois le premier à donner ton avis !";
+      return;
+    }
+    status.textContent = items.length + " retour" + (items.length > 1 ? "s" : "");
+    items.forEach(f => {
+      const card = el("div", "fbl-item");
+      const meta = el("div", "fbl-meta");
+      if (f.type) meta.appendChild(el("span", "fbl-type", f.type));
+      if (f.page) meta.appendChild(el("span", "", f.page));
+      if (f.date) meta.appendChild(el("span", "", fmtDate(f.date)));
+      card.appendChild(meta);
+      card.appendChild(el("p", "fbl-msg", String(f.message || "")));
+      if (f.nom) card.appendChild(el("p", "fbl-name", "— " + f.nom));
+      list.appendChild(card);
+    });
+  } catch(e){
+    status.className = "fbl-status err";
+    status.textContent = "Impossible de charger les retours (" + e.message + "). Réessaie dans un instant.";
+  }
+}
+
+document.getElementById("fbl-refresh").addEventListener("click", load);
+load();
+})();
+</script>
+
+</body>
+</html>
