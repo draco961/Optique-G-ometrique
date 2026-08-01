@@ -146,7 +146,7 @@ dlg.innerHTML = `
     <div class="fb-actions">
       <button type="button" class="fb-btn main" id="fb-send">Envoyer</button>
       <a class="fb-view" href="${ROOT}feedbacks.html">Voir les retours</a>
-      <button type="submit" class="fb-btn fb-cancel" value="cancel">Fermer</button>
+      <button type="submit" class="fb-btn fb-cancel" value="cancel" formnovalidate>Fermer</button>
     </div>
     <p class="fb-note" id="fb-note"></p>
   </form>`;
