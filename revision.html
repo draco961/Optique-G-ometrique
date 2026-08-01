@@ -34,19 +34,20 @@
 
 <section class="ch" id="cartes">
   <div class="ch-head">
-    <p class="ch-num">Révision globale · 43 cartes</p>
+    <p class="ch-num">Révision globale · 65 cartes</p>
     <h2>Teste-toi : retourne les cartes</h2>
-    <p class="lede">Quarante-trois questions éclair qui couvrent les treize chapitres.
-    Lis la question, réponds dans ta tête, puis <strong>retourne la carte</strong> pour
-    vérifier. Marque chaque carte « je savais » ou « à revoir » : à la fin de la série,
-    tu peux rejouer uniquement celles qui t'ont résisté.</p>
+    <p class="lede">Soixante-cinq cartes qui couvrent les treize chapitres : des questions
+    de cours éclair et des <strong>exercices chiffrés</strong> à faire au brouillon.
+    Lis la question, réponds dans ta tête (ou pose le calcul), puis
+    <strong>retourne la carte</strong> pour vérifier. Marque chaque carte « je savais » ou
+    « à revoir » : à la fin de la série, tu peux rejouer uniquement celles qui t'ont résisté.</p>
   </div>
 
   <div class="fc-filter" id="fc-filter" role="group" aria-label="Filtrer les cartes par chapitre"></div>
 
   <div class="fc-app">
     <div class="fc-top">
-      <span class="fc-count" id="fc-count">1 / 43</span>
+      <span class="fc-count" id="fc-count">1 / 65</span>
       <div class="fc-progress" aria-hidden="true"><i id="fc-bar"></i></div>
       <span class="fc-tally" id="fc-tally"><span class="ok">✓ 0</span> · <span class="ko">✗ 0</span></span>
     </div>
@@ -97,7 +98,7 @@
 <footer>
   <div class="wrap">
     Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles, 9 bancs
-    interactifs, 47 exercices corrigés et 43 cartes de révision. Convention de signe unique
+    interactifs, 47 exercices corrigés et 65 cartes de révision. Convention de signe unique
     dans tout le cours : la lumière va de gauche à droite, l'origine est au sommet du système,
     les distances vers la droite sont positives.
   </div>
@@ -220,7 +221,66 @@ const CARDS = [
    a:"Elle est <b>virtuelle</b> : du même côté que l'objet, visible à l'œil mais <b>non projetable</b> sur un écran."},
   {c:13, t:"Formulaire", q:"Cite trois pièges classiques de l'examen.",
    a:"1. Oublier <span class='ov'>OA</span> &lt; 0 pour un objet réel. 2. Rendre 1/<span class='ov'>OA′</span> sans <b>inverser</b> à la fin. 3. Mélanger cm et m — vergence et grossissement exigent des <b>mètres</b>."},
+
+  /* ——— cartes-exercices (x:true) : petits calculs à faire au brouillon ——— */
+  {c:1, t:"Bases", x:true, q:"Calcule la vitesse de la lumière dans le diamant (n = 2,42).",
+   a:"v = c / n = 3,00 × 10⁸ / 2,42 ≈ <b>1,24 × 10⁸ m/s</b> — soit 124 000 km/s, moins de la moitié de la vitesse dans le vide."},
+  {c:1, t:"Bases", x:true, q:"Dans un milieu, la lumière se propage à 2,00 × 10⁸ m/s. Quel est son indice ? Quel milieu cela peut-il être ?",
+   a:"n = c / v = 3,00 × 10⁸ / 2,00 × 10⁸ = <b>1,5</b> : c'est l'indice du <b>verre courant</b>."},
+
+  {c:2, t:"Snell-Descartes", x:true, q:"Un rayon passe de l'air dans l'eau (n = 1,33) avec i₁ = 45°. Calcule i₂.",
+   a:"sin i₂ = n₁ sin i₁ / n₂ = sin 45° / 1,33 ≈ 0,532 → <b>i₂ ≈ 32°</b>. Le rayon se rapproche de la normale, comme toujours vers un milieu plus réfringent."},
+  {c:2, t:"Snell-Descartes", x:true, q:"Un rayon sort du verre (n = 1,5) vers l'air avec i₁ = 30°. Calcule i₂.",
+   a:"sin i₂ = 1,5 × sin 30° = 0,75 → <b>i₂ ≈ 48,6°</b>. Le rayon s'éloigne de la normale — et au-delà de λ ≈ 41,8° il ne sortirait plus du tout."},
+
+  {c:3, t:"Réflexion totale", x:true, q:"Calcule l'angle limite pour le passage eau (n = 1,33) → air.",
+   a:"sin λ = n₂ / n₁ = 1/1,33 ≈ 0,752 → <b>λ ≈ 48,8°</b>. Au-delà, réflexion totale : vue de dessous, la surface de l'eau devient un miroir."},
+  {c:3, t:"Réflexion totale", x:true, q:"Un rayon arrive du verre (n = 1,5) sur une interface verre/eau (n = 1,33) avec i = 70°. Que se passe-t-il ?",
+   a:"sin λ = 1,33/1,5 ≈ 0,887 → λ ≈ 62,5°. Comme i = 70° &gt; λ : <b>réflexion totale</b>, le rayon reste dans le verre."},
+
+  {c:4, t:"Miroir plan", x:true, q:"Tu te tiens à 2 m d'un miroir plan. À quelle distance de toi se trouve ton image ?",
+   a:"L'image est symétrique : 2 m <b>derrière</b> le miroir, donc à <b>4 m</b> de toi."},
+  {c:4, t:"Miroir plan", x:true, q:"Tu t'approches d'un miroir plan à 1 m/s. À quelle vitesse ton image se rapproche-t-elle de toi ?",
+   a:"À <b>2 m/s</b> : toi et ton image avancez chacun de 1 m/s l'un vers l'autre."},
+
+  {c:5, t:"Miroirs sphériques", x:true, q:"Un miroir concave a un rayon de courbure R = 40 cm. Que valent <span class='ov'>SC</span> et f ?",
+   a:"Le centre C est <b>devant</b> le miroir : <span class='ov'>SC</span> = <b>−40 cm</b>, et f = <span class='ov'>SC</span>/2 = <b>−20 cm</b>. Le foyer est au milieu de [SC]."},
+  {c:5, t:"Miroirs sphériques", x:true, q:"Miroir concave, <span class='ov'>SC</span> = −20 cm, objet en <span class='ov'>SA</span> = −30 cm. Calcule <span class='ov'>SA′</span> et γ.",
+   a:"1/<span class='ov'>SA′</span> = 2/<span class='ov'>SC</span> − 1/<span class='ov'>SA</span> = −1/10 + 1/30 = −1/15 → <b><span class='ov'>SA′</span> = −15 cm</b> : image réelle, devant le miroir. γ = −<span class='ov'>SA′</span>/<span class='ov'>SA</span> = <b>−0,5</b> : renversée, deux fois plus petite."},
+
+  {c:6, t:"Lentilles minces", x:true, q:"Lentille convergente f′ = 20 cm, objet à 30 cm devant. Calcule <span class='ov'>OA′</span>.",
+   a:"<span class='ov'>OA</span> = −30 cm. 1/<span class='ov'>OA′</span> = 1/f′ + 1/<span class='ov'>OA</span> = 1/20 − 1/30 = 1/60 → <b><span class='ov'>OA′</span> = +60 cm</b> : image réelle, 60 cm derrière la lentille."},
+  {c:6, t:"Lentilles minces", x:true, q:"Suite : f′ = 20 cm, <span class='ov'>OA</span> = −30 cm, <span class='ov'>OA′</span> = +60 cm. Calcule γ et décris l'image.",
+   a:"γ = <span class='ov'>OA′</span> / <span class='ov'>OA</span> = 60 / (−30) = <b>−2</b> : image <b>renversée</b> (γ &lt; 0) et <b>agrandie 2×</b> (|γ| = 2)."},
+  {c:6, t:"Lentilles minces", x:true, q:"Lentille convergente f′ = 10 cm, objet à 5 cm devant (effet loupe). Calcule <span class='ov'>OA′</span> et γ.",
+   a:"1/<span class='ov'>OA′</span> = 1/10 − 1/5 = −1/10 → <b><span class='ov'>OA′</span> = −10 cm</b> : image <b>virtuelle</b>. γ = (−10)/(−5) = <b>+2</b> : droite et agrandie — c'est bien une loupe."},
+  {c:6, t:"Lentilles minces", x:true, q:"Quelle est la vergence d'une lentille de focale f′ = 25 cm ? Et la focale d'une lentille de C = −2 δ ?",
+   a:"C = 1/0,25 = <b>+4 δ</b> (convergente). Pour C = −2 δ : f′ = 1/C = <b>−50 cm</b> (divergente). Piège : f′ doit être <b>en mètres</b>."},
+  {c:6, t:"Lentilles minces", x:true, q:"Lentille divergente f′ = −20 cm, objet à 20 cm devant. Calcule <span class='ov'>OA′</span> et γ.",
+   a:"1/<span class='ov'>OA′</span> = −1/20 − 1/20 = −1/10 → <b><span class='ov'>OA′</span> = −10 cm</b> : image virtuelle. γ = (−10)/(−20) = <b>+0,5</b> : droite et réduite — l'image typique d'une divergente."},
+
+  {c:7, t:"L'œil", x:true, q:"Un élève lit son cours à 25 cm. Son œil est-il au repos ?",
+   a:"<b>Non</b> : 25 cm, c'est le punctum proximum — l'accommodation est <b>maximale</b>. L'œil normal n'est au repos que pour un objet à l'infini."},
+
+  {c:8, t:"Défauts visuels", x:true, q:"Un myope a son punctum remotum à 50 cm. Quel verre correcteur lui faut-il (verre au contact de l'œil) ?",
+   a:"Le verre doit donner de l'infini une image virtuelle au PR : <b>f′ = −50 cm</b>, soit <b>C = −2 δ</b> — lentille divergente."},
+
+  {c:9, t:"La loupe", x:true, q:"Quel est le grossissement commercial d'une loupe de focale f′ = 4 cm ?",
+   a:"G = 0,25 / f′ = 0,25 / 0,04 = <b>6,25</b>. (f′ toujours en <b>mètres</b> !)"},
+  {c:9, t:"La loupe", x:true, q:"On veut une loupe de grossissement G = 10. Quelle focale choisir ?",
+   a:"f′ = 0,25 / G = 0,25 / 10 = 0,025 m = <b>2,5 cm</b> — plus le grossissement voulu est grand, plus la focale est courte."},
+
+  {c:10, t:"Appareil photo", x:true, q:"Objectif de 50 mm, arbre de 10 m de haut situé à 100 m. Quelle est la taille de l'image sur le capteur ?",
+   a:"Image ≈ f′ × AB / d = 50 mm × 10/100 = <b>5 mm</b>. Avec un téléobjectif de 200 mm, elle mesurerait 20 mm."},
+
+  {c:11, t:"Microscope", x:true, q:"Objectif de grandissement 40, oculaire de grossissement 10 : quel est le grossissement du microscope ?",
+   a:"G = γ<sub>obj</sub> × G<sub>oc</sub> = 40 × 10 = <b>400</b> : l'objet est vu 400 fois plus grand."},
+
+  {c:12, t:"Fermat", x:true, q:"La lumière traverse 3 cm de verre (n = 1,5). Quel est le chemin optique ?",
+   a:"L = n × d = 1,5 × 3 = <b>4,5 cm</b> : tout se passe comme si elle avait parcouru 4,5 cm dans le vide."},
 ];
+/* tri stable par chapitre : les exercices se rangent après la théorie de leur chapitre */
+CARDS.sort((a, b) => a.c - b.c);
 
 /* ——— état ——— */
 let filter = 0;          // 0 = tous les chapitres
@@ -236,17 +296,19 @@ function buildFilters(){
   const bar = $("fc-filter");
   const counts = {};
   CARDS.forEach(c => counts[c.c] = (counts[c.c] || 0) + 1);
-  const mk = (label, num, ch) => {
+  const nx = CARDS.filter(c => c.x).length;
+  const mk = (label, num, val) => {
     const b = document.createElement("button");
     b.type = "button";
     if (num) b.innerHTML = "<b>" + num + "</b>" + label;
     else b.textContent = label;
-    b.classList.toggle("on", filter === ch);
-    b.addEventListener("click", () => { filter = ch; start(); refreshFilters(); });
+    b.dataset.f = val;
+    b.classList.toggle("on", filter === val);
+    b.addEventListener("click", () => { filter = val; start(); refreshFilters(); });
     bar.appendChild(b);
-    return b;
   };
   mk("Tout (" + CARDS.length + ")", "", 0);
+  mk("Exercices (" + nx + ")", "", "x");
   const seen = {};
   CARDS.forEach(c => {
     if (seen[c.c]) return;
@@ -255,19 +317,22 @@ function buildFilters(){
   });
 }
 function refreshFilters(){
-  const btns = $("fc-filter").querySelectorAll("button");
-  const chs = [0].concat([...new Set(CARDS.map(c => c.c))]);
-  btns.forEach((b, i) => b.classList.toggle("on", chs[i] === filter));
+  $("fc-filter").querySelectorAll("button")
+    .forEach(b => b.classList.toggle("on", b.dataset.f === String(filter)));
 }
 
 /* ——— série ——— */
+function baseDeck(){
+  return CARDS.map((_, i) => i).filter(i =>
+    filter === 0 || (filter === "x" ? CARDS[i].x : CARDS[i].c === filter));
+}
 function start(){
-  deck = CARDS.map((_, i) => i).filter(i => !filter || CARDS[i].c === filter);
+  deck = baseDeck();
   pos = 0; marks = {};
   render();
 }
 function shuffle(){
-  deck = CARDS.map((_, i) => i).filter(i => !filter || CARDS[i].c === filter);
+  deck = baseDeck();
   for (let i = deck.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * (i + 1));
     [deck[i], deck[j]] = [deck[j], deck[i]];
@@ -294,7 +359,7 @@ function render(){
   done.hidden = true; stage.hidden = false; actions.hidden = false;
   const c = CARDS[deck[pos]];
   unflipInstant();
-  $("fc-chap").textContent = "Chapitre " + c.c + " · " + c.t;
+  $("fc-chap").textContent = "Chapitre " + c.c + " · " + c.t + (c.x ? " — exercice" : "");
   $("fc-q").innerHTML = c.q;
   $("fc-a").innerHTML = c.a;
   $("fc-count").textContent = (pos + 1) + " / " + deck.length;
