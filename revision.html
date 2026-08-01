@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tests — cartes de révision — Optique géométrique</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="rail">
+  <div class="wrap">
+    <a href="index.html">Accueil</a>
+    <a href="chapitres/01-bases.html"><b>1</b>Bases</a>
+    <a href="chapitres/02-snell-descartes.html"><b>2</b>Snell-Descartes</a>
+    <a href="chapitres/03-reflexion-totale.html"><b>3</b>Réflexion totale</a>
+    <a href="chapitres/04-miroir-plan.html"><b>4</b>Miroir plan</a>
+    <a href="chapitres/05-miroirs-spheriques.html"><b>5</b>Miroirs sphériques</a>
+    <a href="chapitres/06-lentilles-minces.html"><b>6</b>Lentilles minces</a>
+    <a href="chapitres/07-oeil.html"><b>7</b>L'œil</a>
+    <a href="chapitres/08-defauts-visuels.html"><b>8</b>Défauts visuels</a>
+    <a href="chapitres/09-loupe.html"><b>9</b>La loupe</a>
+    <a href="chapitres/10-appareil-photo.html"><b>10</b>Appareil photo</a>
+    <a href="chapitres/11-microscope.html"><b>11</b>Microscope</a>
+    <a href="chapitres/12-fermat.html"><b>12</b>Fermat</a>
+    <a href="chapitres/13-formulaire.html"><b>13</b>Formulaire</a>
+    <a href="revision.html" class="live"><b>✓</b>Tests</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<section class="ch" id="cartes">
+  <div class="ch-head">
+    <p class="ch-num">Révision globale · 43 cartes</p>
+    <h2>Teste-toi : retourne les cartes</h2>
+    <p class="lede">Quarante-trois questions éclair qui couvrent les treize chapitres.
+    Lis la question, réponds dans ta tête, puis <strong>retourne la carte</strong> pour
+    vérifier. Marque chaque carte « je savais » ou « à revoir » : à la fin de la série,
+    tu peux rejouer uniquement celles qui t'ont résisté.</p>
+  </div>
+
+  <div class="fc-filter" id="fc-filter" role="group" aria-label="Filtrer les cartes par chapitre"></div>
+
+  <div class="fc-app">
+    <div class="fc-top">
+      <span class="fc-count" id="fc-count">1 / 43</span>
+      <div class="fc-progress" aria-hidden="true"><i id="fc-bar"></i></div>
+      <span class="fc-tally" id="fc-tally"><span class="ok">✓ 0</span> · <span class="ko">✗ 0</span></span>
+    </div>
+
+    <div class="fc-stage" id="fc-stage">
+      <div class="fcard" id="fcard" tabindex="0" role="button" aria-label="Carte de révision — activer pour retourner">
+        <div class="fc-face fc-front">
+          <span class="fc-tag" id="fc-chap">Chapitre</span>
+          <div class="fc-q" id="fc-q"></div>
+          <span class="fc-hint">Clique sur la carte pour voir la réponse</span>
+        </div>
+        <div class="fc-face fc-back">
+          <span class="fc-tag">Réponse</span>
+          <div class="fc-a" id="fc-a"></div>
+          <span class="fc-hint">Clique pour revenir à la question</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fc-actions" id="fc-actions">
+      <button class="fc-btn" id="fc-prev" type="button">← Précédente</button>
+      <button class="fc-btn bad" id="fc-again" type="button">✗ À revoir</button>
+      <button class="fc-btn good" id="fc-know" type="button">✓ Je savais</button>
+      <button class="fc-btn" id="fc-next" type="button">Passer →</button>
+    </div>
+
+    <div class="fc-done" id="fc-done" hidden>
+      <span class="fc-tag">Série terminée</span>
+      <p class="fc-score" id="fc-score"></p>
+      <p class="fc-sub" id="fc-detail"></p>
+      <div class="fc-actions">
+        <button class="fc-btn bad" id="fc-replay" type="button"></button>
+        <button class="fc-btn" id="fc-restart2" type="button">Recommencer la série</button>
+      </div>
+    </div>
+
+    <div class="fc-tools">
+      <button class="fc-link" id="fc-shuffle" type="button">Mélanger les cartes</button>
+      <button class="fc-link" id="fc-restart" type="button">Recommencer</button>
+    </div>
+    <p class="fc-kbd"><b>espace</b> retourner · <b>←</b> <b>→</b> naviguer · <b>V</b> je savais · <b>X</b> à revoir</p>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Cours complet d'optique géométrique — 13 chapitres, 20 figures vectorielles, 9 bancs
+    interactifs, 47 exercices corrigés et 43 cartes de révision. Convention de signe unique
+    dans tout le cours : la lumière va de gauche à droite, l'origine est au sommet du système,
+    les distances vers la droite sont positives.
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ——— le jeu de cartes : c = chapitre, t = titre, q = question, a = réponse ——— */
+const CARDS = [
+  // 1 · Bases
+  {c:1, t:"Bases", q:"Comment définit-on l'indice de réfraction <i>n</i> d'un milieu ?",
+   a:"<b>n = c / v</b> : le rapport entre la vitesse de la lumière dans le vide (c ≈ 3,00 × 10⁸ m/s) et sa vitesse dans le milieu. Conséquence : <b>n ≥ 1 toujours</b>."},
+  {c:1, t:"Bases", q:"Quelle différence entre une image <b>réelle</b> et une image <b>virtuelle</b> ?",
+   a:"Image <b>réelle</b> : les rayons se croisent physiquement — on peut la recueillir sur un écran. Image <b>virtuelle</b> : seuls les prolongements des rayons se croisent — rien à projeter, mais l'œil la voit parfaitement."},
+  {c:1, t:"Bases", q:"« Objet placé à 20 cm devant la lentille. » Que vaut <span class='ov'>OA</span> ?",
+   a:"<b><span class='ov'>OA</span> = −20 cm</b>, jamais +20. Un objet réel est toujours à gauche de la lentille, donc <span class='ov'>OA</span> &lt; 0. C'est le piège n° 1 du cours."},
+  {c:1, t:"Bases", q:"La lumière est-elle plus lente dans l'eau (n = 1,33) ou dans le verre (n = 1,5) ?",
+   a:"Dans le <b>verre</b> : v = c/n, donc plus n est grand, plus la lumière est lente. Le verre est « optiquement plus dense » que l'eau."},
+
+  // 2 · Snell-Descartes
+  {c:2, t:"Snell-Descartes", q:"Énonce la loi de la réflexion.",
+   a:"Le rayon réfléchi est dans le plan d'incidence et <b>i<sub>réfléchi</sub> = i<sub>incident</sub></b>, les angles étant mesurés depuis la <b>normale</b>."},
+  {c:2, t:"Snell-Descartes", q:"Énonce la loi de la réfraction.",
+   a:"<b>n₁ sin i₁ = n₂ sin i₂</b> : le produit n sin i se conserve à la traversée du dioptre."},
+  {c:2, t:"Snell-Descartes", q:"Depuis quelle référence mesure-t-on tous les angles ?",
+   a:"Depuis la <b>normale</b> à la surface, jamais depuis la surface elle-même. Un rayon « à 30° de la surface » a un angle d'incidence de <b>60°</b>."},
+  {c:2, t:"Snell-Descartes", q:"Un rayon passe de l'air au verre : se rapproche-t-il ou s'éloigne-t-il de la normale ?",
+   a:"Il <b>se rapproche</b> de la normale : le milieu d'arrivée est plus réfringent (n₂ &gt; n₁), donc sin i₂ &lt; sin i₁."},
+
+  // 3 · Réflexion totale
+  {c:3, t:"Réflexion totale", q:"Quelle est la formule de l'angle limite λ ?",
+   a:"<b>sin λ = n₂ / n₁</b> (avec n₁ &gt; n₂). Exemple verre → air : sin λ = 1/1,5, soit λ ≈ <b>41,8°</b>."},
+  {c:3, t:"Réflexion totale", q:"Quelles sont les deux conditions de la réflexion totale ?",
+   a:"1. La lumière va vers un milieu <b>moins réfringent</b> (n₁ &gt; n₂). 2. L'angle d'incidence dépasse l'angle limite : <b>i &gt; λ</b>. Alors 100 % de la lumière est réfléchie."},
+  {c:3, t:"Réflexion totale", q:"Cite l'application la plus importante de la réflexion totale.",
+   a:"La <b>fibre optique</b> : la lumière y reste piégée par réflexions totales successives. Aussi : prismes des jumelles, éclat du diamant."},
+
+  // 4 · Miroir plan
+  {c:4, t:"Miroir plan", q:"Quelles sont les caractéristiques de l'image donnée par un miroir plan ?",
+   a:"Image <b>virtuelle</b>, <b>symétrique</b> de l'objet par rapport au plan du miroir, <b>droite</b> et de <b>même taille</b> : γ = +1."},
+  {c:4, t:"Miroir plan", q:"Quelle taille minimale doit avoir un miroir pour s'y voir en entier ?",
+   a:"<b>La moitié de sa propre taille</b> — et ce résultat ne dépend pas de la distance au miroir."},
+
+  // 5 · Miroirs sphériques
+  {c:5, t:"Miroirs sphériques", q:"Où se trouve le foyer d'un miroir sphérique de sommet S et de centre C ?",
+   a:"Au <b>milieu de [SC]</b> : la distance focale vaut <b>f = R / 2</b>, la moitié du rayon de courbure."},
+  {c:5, t:"Miroirs sphériques", q:"Quelle est la relation de conjugaison d'un miroir sphérique ?",
+   a:"<b>1/<span class='ov'>SA′</span> + 1/<span class='ov'>SA</span> = 2/<span class='ov'>SC</span> = 1/f</b>. Attention au signe <b>+</b> — c'est lui qui distingue le miroir de la lentille."},
+  {c:5, t:"Miroirs sphériques", q:"Quel est le grandissement d'un miroir sphérique ?",
+   a:"<b>γ = −<span class='ov'>SA′</span> / <span class='ov'>SA</span></b>. Ne pas oublier le signe <b>−</b>, absent de la formule des lentilles."},
+  {c:5, t:"Miroirs sphériques", q:"Quelle image un miroir convexe (bombé) donne-t-il toujours d'un objet réel ?",
+   a:"Une image <b>virtuelle, droite et réduite</b>, quel que soit l'objet — d'où son usage comme rétroviseur ou miroir de surveillance."},
+
+  // 6 · Lentilles minces
+  {c:6, t:"Lentilles minces", q:"Quelle est la relation de conjugaison d'une lentille mince ?",
+   a:"<b>1/<span class='ov'>OA′</span> − 1/<span class='ov'>OA</span> = 1/f′</b>. Isoler 1/<span class='ov'>OA′</span>… puis <b>penser à inverser</b> pour obtenir <span class='ov'>OA′</span>."},
+  {c:6, t:"Lentilles minces", q:"Quel est le grandissement d'une lentille mince ?",
+   a:"<b>γ = <span class='ov'>OA′</span> / <span class='ov'>OA</span></b> (sans signe −, contrairement au miroir). γ &lt; 0 → image renversée ; |γ| &gt; 1 → agrandie."},
+  {c:6, t:"Lentilles minces", q:"Qu'est-ce que la vergence C d'une lentille ?",
+   a:"<b>C = 1/f′</b>, exprimée en <b>dioptries (δ)</b> avec f′ <b>en mètres</b>. Convergente : C &gt; 0 ; divergente : C &lt; 0."},
+  {c:6, t:"Lentilles minces", q:"Que signifie f′ &gt; 0 ? Et f′ &lt; 0 ?",
+   a:"f′ &gt; 0 : lentille <b>convergente</b> (bords minces). f′ &lt; 0 : lentille <b>divergente</b> (bords épais)."},
+  {c:6, t:"Lentilles minces", q:"Objet placé exactement au foyer objet F d'une lentille convergente : où est l'image ?",
+   a:"<b>À l'infini</b> : les rayons sortent parallèles. C'est le réglage de la loupe « sans fatigue »."},
+  {c:6, t:"Lentilles minces", q:"Objet à 2f′ devant une lentille convergente : que vaut l'image ?",
+   a:"Image <b>réelle</b> à 2f′ derrière la lentille, <b>renversée</b> et de <b>même taille</b> : γ = −1."},
+  {c:6, t:"Lentilles minces", q:"Objet entre F et O d'une lentille convergente : quelle image ?",
+   a:"Image <b>virtuelle, droite et agrandie</b>, du même côté que l'objet : c'est le principe de la <b>loupe</b>."},
+
+  // 7 · L'œil
+  {c:7, t:"L'œil", q:"Qu'est-ce que l'accommodation ?",
+   a:"Le <b>cristallin se bombe</b> (sa vergence augmente) pour ramener l'image sur la rétine quand l'objet se rapproche. Au repos, l'œil normal voit net à l'infini."},
+  {c:7, t:"L'œil", q:"Que valent le punctum proximum et le punctum remotum d'un œil normal ?",
+   a:"<b>PP ≈ 25 cm</b> (point net le plus proche, accommodation maximale) et <b>PR = ∞</b> (œil au repos)."},
+  {c:7, t:"L'œil", q:"Quelle image l'œil forme-t-il sur la rétine ?",
+   a:"Une image <b>réelle, renversée et réduite</b> — c'est le cerveau qui la remet à l'endroit."},
+
+  // 8 · Défauts visuels
+  {c:8, t:"Défauts visuels", q:"L'œil myope : quel défaut, quelle correction ?",
+   a:"Œil <b>trop convergent</b> (ou trop long) : l'image d'un objet lointain se forme <b>devant la rétine</b>, le PR est à distance finie. Correction : lentille <b>divergente</b>."},
+  {c:8, t:"Défauts visuels", q:"L'œil hypermétrope : quel défaut, quelle correction ?",
+   a:"Œil <b>pas assez convergent</b> (ou trop court) : l'image se formerait <b>derrière la rétine</b>. Correction : lentille <b>convergente</b>."},
+  {c:8, t:"Défauts visuels", q:"Qu'est-ce que la presbytie ?",
+   a:"La <b>perte d'accommodation</b> avec l'âge : le cristallin se rigidifie, le PP s'éloigne. Correction : verre <b>convergent</b> pour la vision de près."},
+  {c:8, t:"Défauts visuels", q:"Comment le verre divergent corrige-t-il la myopie ?",
+   a:"Il forme, d'un objet à l'infini, une <b>image virtuelle au punctum remotum</b> de l'œil : celui-ci la voit alors nette sans accommoder."},
+
+  // 9 · La loupe
+  {c:9, t:"La loupe", q:"Quel est le grossissement commercial d'une loupe ?",
+   a:"<b>G = 0,25 / f′</b> (f′ en mètres), soit G = C/4. Exemple : f′ = 5 cm → G = 5."},
+  {c:9, t:"La loupe", q:"Où placer l'objet pour observer à la loupe sans fatigue ?",
+   a:"<b>Dans le plan focal objet</b> : l'image part à l'infini et l'œil l'observe <b>au repos</b>, sans accommoder."},
+
+  // 10 · Appareil photo
+  {c:10, t:"Appareil photo", q:"Où se forme l'image d'un paysage lointain dans un appareil photo ?",
+   a:"<b>Dans le plan focal image</b> de l'objectif : le capteur doit donc y être placé. Pour un objet proche, on <b>éloigne l'objectif</b> du capteur (mise au point)."},
+  {c:10, t:"Appareil photo", q:"Quelle est la taille de l'image d'un objet lointain sur le capteur ?",
+   a:"Environ <b>f′ × AB / d</b> : proportionnelle à la focale. Doubler f′ double la taille de l'image sur le capteur."},
+  {c:10, t:"Appareil photo", q:"Quand la focale augmente, que devient le champ de vision ?",
+   a:"Il <b>diminue</b> : un téléobjectif (grande focale) grossit mais cadre étroit ; un grand-angle (courte focale) cadre large."},
+
+  // 11 · Microscope
+  {c:11, t:"Microscope", q:"Quel est le grossissement d'un microscope ?",
+   a:"<b>G = γ<sub>objectif</sub> × G<sub>oculaire</sub></b> : le grandissement de l'objectif multiplié par le grossissement de l'oculaire."},
+  {c:11, t:"Microscope", q:"Quel est le rôle de l'objectif dans le microscope ?",
+   a:"Former une <b>image intermédiaire réelle et agrandie</b> de l'objet, que l'oculaire examine ensuite comme une loupe."},
+
+  // 12 · Fermat
+  {c:12, t:"Fermat", q:"Qu'appelle-t-on chemin optique ?",
+   a:"<b>L = n × d</b> : la distance parcourue multipliée par l'indice du milieu (et la somme sur tous les milieux traversés)."},
+  {c:12, t:"Fermat", q:"Énonce le principe de Fermat.",
+   a:"La lumière suit le trajet dont le <b>chemin optique est extrémal</b> (en pratique minimal). Propagation rectiligne, réflexion et réfraction s'en déduisent toutes."},
+
+  // 13 · Formulaire
+  {c:13, t:"Formulaire", q:"Que t'apprend le signe de γ ? Et sa valeur absolue ?",
+   a:"γ &gt; 0 : image <b>droite</b> ; γ &lt; 0 : image <b>renversée</b>. |γ| &gt; 1 : <b>agrandie</b> ; |γ| &lt; 1 : réduite."},
+  {c:13, t:"Formulaire", q:"<span class='ov'>OA′</span> &lt; 0 : que peux-tu dire de l'image ?",
+   a:"Elle est <b>virtuelle</b> : du même côté que l'objet, visible à l'œil mais <b>non projetable</b> sur un écran."},
+  {c:13, t:"Formulaire", q:"Cite trois pièges classiques de l'examen.",
+   a:"1. Oublier <span class='ov'>OA</span> &lt; 0 pour un objet réel. 2. Rendre 1/<span class='ov'>OA′</span> sans <b>inverser</b> à la fin. 3. Mélanger cm et m — vergence et grossissement exigent des <b>mètres</b>."},
+];
+
+/* ——— état ——— */
+let filter = 0;          // 0 = tous les chapitres
+let deck = [];           // indices dans CARDS
+let pos = 0;
+let marks = {};          // index de carte → "know" | "again"
+
+const $ = id => document.getElementById(id);
+const card = $("fcard"), stage = $("fc-stage"), actions = $("fc-actions"), done = $("fc-done");
+
+/* ——— filtre par chapitre ——— */
+function buildFilters(){
+  const bar = $("fc-filter");
+  const counts = {};
+  CARDS.forEach(c => counts[c.c] = (counts[c.c] || 0) + 1);
+  const mk = (label, num, ch) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    if (num) b.innerHTML = "<b>" + num + "</b>" + label;
+    else b.textContent = label;
+    b.classList.toggle("on", filter === ch);
+    b.addEventListener("click", () => { filter = ch; start(); refreshFilters(); });
+    bar.appendChild(b);
+    return b;
+  };
+  mk("Tout (" + CARDS.length + ")", "", 0);
+  const seen = {};
+  CARDS.forEach(c => {
+    if (seen[c.c]) return;
+    seen[c.c] = true;
+    mk(c.t + " (" + counts[c.c] + ")", c.c, c.c);
+  });
+}
+function refreshFilters(){
+  const btns = $("fc-filter").querySelectorAll("button");
+  const chs = [0].concat([...new Set(CARDS.map(c => c.c))]);
+  btns.forEach((b, i) => b.classList.toggle("on", chs[i] === filter));
+}
+
+/* ——— série ——— */
+function start(){
+  deck = CARDS.map((_, i) => i).filter(i => !filter || CARDS[i].c === filter);
+  pos = 0; marks = {};
+  render();
+}
+function shuffle(){
+  deck = CARDS.map((_, i) => i).filter(i => !filter || CARDS[i].c === filter);
+  for (let i = deck.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+  pos = 0; marks = {};
+  render();
+}
+
+function unflipInstant(){
+  card.style.transition = "none";
+  card.classList.remove("flip");
+  void card.offsetWidth;
+  card.style.transition = "";
+}
+
+function tally(){
+  let know = 0, again = 0;
+  deck.forEach(i => { if (marks[i] === "know") know++; if (marks[i] === "again") again++; });
+  return {know, again};
+}
+
+function render(){
+  if (pos >= deck.length){ finish(); return; }
+  done.hidden = true; stage.hidden = false; actions.hidden = false;
+  const c = CARDS[deck[pos]];
+  unflipInstant();
+  $("fc-chap").textContent = "Chapitre " + c.c + " · " + c.t;
+  $("fc-q").innerHTML = c.q;
+  $("fc-a").innerHTML = c.a;
+  $("fc-count").textContent = (pos + 1) + " / " + deck.length;
+  $("fc-bar").style.width = (pos / deck.length * 100) + "%";
+  const s = tally();
+  $("fc-tally").innerHTML = "<span class='ok'>✓ " + s.know + "</span> · <span class='ko'>✗ " + s.again + "</span>";
+  $("fc-prev").disabled = pos === 0;
+}
+
+function finish(){
+  stage.hidden = true; actions.hidden = true; done.hidden = false;
+  $("fc-bar").style.width = "100%";
+  const s = tally();
+  const skipped = deck.length - s.know - s.again;
+  const toReplay = deck.length - s.know;
+  $("fc-score").textContent = s.know + " / " + deck.length + " cartes sues";
+  $("fc-detail").textContent = s.again + " à revoir" + (skipped ? " · " + skipped + " passée" + (skipped > 1 ? "s" : "") + " sans réponse" : "") +
+    (s.know === deck.length ? " — série parfaite, bravo !" : "");
+  const rp = $("fc-replay");
+  rp.hidden = toReplay === 0;
+  rp.textContent = "Rejouer les " + toReplay + " carte" + (toReplay > 1 ? "s" : "") + " non sue" + (toReplay > 1 ? "s" : "");
+}
+
+function replay(){
+  deck = deck.filter(i => marks[i] !== "know");
+  pos = 0; marks = {};
+  render();
+}
+
+function flip(){ card.classList.toggle("flip"); }
+function mark(v){ if (pos >= deck.length) return; marks[deck[pos]] = v; pos++; render(); }
+function next(){ if (pos < deck.length) { pos++; render(); } }
+function prev(){ if (pos > 0) { pos--; render(); } }
+
+/* ——— événements ——— */
+card.addEventListener("click", flip);
+card.addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " "){ e.preventDefault(); flip(); }
+});
+$("fc-know").addEventListener("click", () => mark("know"));
+$("fc-again").addEventListener("click", () => mark("again"));
+$("fc-next").addEventListener("click", next);
+$("fc-prev").addEventListener("click", prev);
+$("fc-shuffle").addEventListener("click", shuffle);
+$("fc-restart").addEventListener("click", start);
+$("fc-restart2").addEventListener("click", start);
+$("fc-replay").addEventListener("click", replay);
+
+document.addEventListener("keydown", e => {
+  if (e.target.closest("input,textarea,select") || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (!done.hidden && (e.key === "ArrowRight" || e.key === "ArrowLeft" || e.key === " ")) return;
+  if (e.key === "ArrowRight") next();
+  else if (e.key === "ArrowLeft") prev();
+  else if (e.key === " " && e.target !== card){ e.preventDefault(); flip(); }
+  else if (e.key === "v" || e.key === "V") mark("know");
+  else if (e.key === "x" || e.key === "X") mark("again");
+});
+
+buildFilters();
+start();
+})();
+</script>
+
+</body>
+</html>

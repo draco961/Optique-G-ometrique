@@ -441,3 +441,89 @@ details.sol{margin:16px 0 0; border-top:1px dashed var(--line)}
   .exo{padding:16px 16px 14px}
   .sol-body{padding:12px 14px}
 }
+
+/* ═══════════════════ cartes de révision (tests) ═══════════════════ */
+.fc-app [hidden]{display:none!important}
+.fc-filter{display:flex; flex-wrap:wrap; gap:6px; margin-top:36px}
+.fc-filter button{
+  font:inherit; font-size:12.5px; padding:5px 12px; cursor:pointer;
+  background:var(--surface); color:var(--ink-2); border:1px solid var(--line);
+  border-radius:999px; transition:border-color .14s,color .14s,background .14s;
+}
+.fc-filter button:hover{color:var(--ink); border-color:var(--beam)}
+.fc-filter button:focus-visible{outline:2px solid var(--beam); outline-offset:2px}
+.fc-filter button.on{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.fc-filter button b{font-family:var(--mono); font-size:10.5px; font-weight:500; margin-right:6px; opacity:.65}
+
+.fc-app{margin-top:28px; max-width:760px}
+.fc-top{display:flex; align-items:center; gap:14px; font-family:var(--mono); font-size:12px; color:var(--ink-3)}
+.fc-count{color:var(--ink); font-variant-numeric:tabular-nums; white-space:nowrap}
+.fc-tally{white-space:nowrap; font-variant-numeric:tabular-nums}
+.fc-tally .ok{color:var(--ok)} .fc-tally .ko{color:var(--warn)}
+.fc-progress{flex:1; height:3px; background:var(--sunk); border:1px solid var(--line-soft); border-radius:2px; overflow:hidden}
+.fc-progress i{display:block; height:100%; background:var(--beam); width:0; transition:width .25s}
+
+.fc-stage{margin-top:14px; perspective:1500px}
+.fcard{
+  position:relative; min-height:330px; cursor:pointer; outline:none;
+  transform-style:preserve-3d; transition:transform .55s cubic-bezier(.25,.8,.3,1);
+}
+.fcard.flip{transform:rotateY(180deg)}
+.fcard:focus-visible .fc-face{border-color:var(--beam)}
+.fc-face{
+  position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  display:flex; flex-direction:column; gap:14px; padding:26px 30px; overflow:auto;
+  background:var(--surface); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow);
+}
+.fc-back{transform:rotateY(180deg); border-left:2px solid var(--ok)}
+.fc-face .fc-tag{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--beam); font-weight:700;
+}
+.fc-back .fc-tag{color:var(--ok)}
+.fc-q{font-family:var(--serif); font-size:1.5rem; line-height:1.32; color:var(--ink); margin:auto 0; text-wrap:balance}
+.fc-a{font-size:1.03rem; line-height:1.62; color:var(--ink-2); margin:auto 0}
+.fc-a b{color:var(--ink)}
+.fc-hint{font-size:12px; color:var(--ink-3); text-align:center}
+
+.fc-actions{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:18px}
+.fc-btn{
+  font:inherit; font-size:13.5px; font-weight:600; padding:9px 16px; cursor:pointer;
+  border-radius:4px; border:1px solid var(--line); background:var(--surface); color:var(--ink-2);
+  transition:border-color .14s,color .14s;
+}
+.fc-btn:hover{color:var(--ink); border-color:var(--beam)}
+.fc-btn:focus-visible{outline:2px solid var(--beam); outline-offset:2px}
+.fc-btn.good{color:var(--ok); border-color:color-mix(in srgb,var(--ok) 45%,transparent); background:color-mix(in srgb,var(--ok) 8%,transparent)}
+.fc-btn.good:hover{border-color:var(--ok); color:var(--ok)}
+.fc-btn.bad{color:var(--warn); border-color:color-mix(in srgb,var(--warn) 45%,transparent); background:color-mix(in srgb,var(--warn) 8%,transparent)}
+.fc-btn.bad:hover{border-color:var(--warn); color:var(--warn)}
+
+.fc-tools{display:flex; justify-content:center; gap:20px; margin-top:14px}
+.fc-link{
+  font:inherit; font-size:12.5px; color:var(--ink-3); background:none; border:none; cursor:pointer; padding:2px;
+  text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px;
+}
+.fc-link:hover{color:var(--ink)}
+.fc-link:focus-visible{outline:2px solid var(--beam); outline-offset:2px}
+.fc-kbd{margin-top:16px; text-align:center; font-family:var(--mono); font-size:11px; color:var(--ink-3)}
+.fc-kbd b{font-weight:500; color:var(--ink-2); border:1px solid var(--line); border-radius:3px; padding:1px 5px; background:var(--surface)}
+
+.fc-done{
+  margin-top:14px; padding:30px 28px; text-align:center;
+  background:var(--surface); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow);
+}
+.fc-done .fc-tag{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--beam); font-weight:700;
+}
+.fc-score{font-family:var(--serif); font-size:1.7rem; line-height:1.2; margin:12px 0 0; color:var(--ink)}
+.fc-sub{margin:8px 0 0; font-size:14px; color:var(--ink-2)}
+.fc-done .fc-actions{margin-top:20px}
+
+@media (max-width:720px){
+  .fcard{min-height:380px}
+  .fc-face{padding:20px 18px}
+  .fc-q{font-size:1.22rem}
+  .fc-kbd{display:none}
+}
