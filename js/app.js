@@ -434,14 +434,16 @@ function defs(id) {
 (function () {
   const svg = document.getElementById("sv-mirror");
   if (!svg) return;   /* banc absent de cette page */
-  const st = { SA: -60, R: 40, concave: true };
-  const Sx = 560, y0 = 195, HOBJ = 52, CLIP = { x1: 4, y1: 4, x2: 796, y2: 396 };
+  const st = { SA: -60, R: 40, AB: 3, concave: true };
+  const Sx = 560, y0 = 195, CLIP = { x1: 4, y1: 4, x2: 796, y2: 396 };
   const ROOM_L = Sx - 46, ROOM_R = 800 - Sx - 44;
   let scale = 4;
 
-  const cSA = document.getElementById("c-sa"), cR = document.getElementById("c-R");
+  const cSA = document.getElementById("c-sa"), cR = document.getElementById("c-R"),
+        cAB = document.getElementById("c-mab");
   cSA.addEventListener("input", e => { st.SA = +e.target.value; render(); });
   cR.addEventListener("input", e => { st.R = +e.target.value; render(); });
+  cAB.addEventListener("input", e => { st.AB = +e.target.value; render(); });
   document.getElementById("c-mirtype").addEventListener("change", e => {
     st.concave = e.target.value === "concave"; render();
   });
@@ -488,8 +490,10 @@ function defs(id) {
     scale = Math.max(0.4, Math.min(26, Math.min(ROOM_L / (extL * 1.14), ROOM_R / (extR * 1.12))));
     const X = cm => Sx + cm * scale;
 
+    /* hauteur dessinée : 3 cm ↔ 52 px de référence, bornée pour rester lisible */
+    const hObj = Math.max(12, Math.min(130, st.AB * 52 / 3));
     const xC = X(R), xF = X(f), xA = X(SA);
-    const B = { x: xA, y: y0 - HOBJ };
+    const B = { x: xA, y: y0 - hObj };
 
     let g = defs("mr");
     g += L({ x: 8, y: y0 }, { x: 780, y: y0 }, "hair");
@@ -520,7 +524,7 @@ function defs(id) {
     g += DOT(xA, y0, "dot-obj", 4);
     g += T(xA - 10, y0 - 7, "A", "pt-obj", "end");
     g += T(B.x, B.y - 12, "B", "pt-obj");
-    g += HANDLE(xA, y0 - HOBJ / 2);
+    g += HANDLE(xA, y0 - hObj / 2);
 
     /* rays — paraxial: reflect at the plane x = Sx */
     let rays = "";
@@ -558,7 +562,7 @@ function defs(id) {
       g += T(300, y0 - 132, "c'est le projecteur / le phare de voiture", "tag");
     } else {
       const xAp = X(SAp);
-      let hp = gam * HOBJ, clamped = false;
+      let hp = gam * hObj, clamped = false;
       if (Math.abs(hp) > 168) { hp = Math.sign(hp) * 168; clamped = true; }
       const real = SAp < 0;                     /* in front of the mirror = real */
       if (xAp > 8 && xAp < 792) {
@@ -583,20 +587,27 @@ function defs(id) {
     /* readouts */
     document.getElementById("v-sa").textContent = sgn(SA) + " cm";
     document.getElementById("v-R").textContent = fmt(st.R) + " cm";
+    document.getElementById("v-mab").textContent = fmt(st.AB) + " cm";
 
+    const ABp = atInf ? null : gam * st.AB;
     let c = `<div class="step">1/SA′ + 1/SA = 1/f&nbsp;&nbsp;avec f = R/2</div>`;
     c += `<div class="step">f = ${sgn(R)}/2 = <b>${sgn(f)} cm</b></div>`;
     c += `<div class="step">1/SA′ = 1/(${sgn(f)}) − 1/(${sgn(SA)})</div>`;
     c += atInf
       ? `<div class="step">1/SA′ = 0 → SA′ → <b>∞</b></div>`
       : `<div class="step">SA′ = <b>${sgn(SAp)} cm</b></div>`;
-    if (!atInf) c += `<div class="step">γ = −SA′/SA = <b>${sgn(gam, 2)}</b></div>`;
+    if (!atInf) {
+      c += `<div class="step">γ = −SA′/SA = <b>${sgn(gam, 2)}</b></div>`;
+      c += `<div class="step">A′B′ = γ × AB = <b>${sgn(ABp, 2)} cm</b></div>`;
+    }
     document.getElementById("ro-mir-calc").innerHTML = c;
 
     let v = `<dt>Rayon <span class="ov">SC</span> = R</dt><dd>${sgn(R)} cm</dd>`;
     v += `<dt>Focale f = R/2</dt><dd>${sgn(f)} cm</dd>`;
     v += `<dt>Objet <span class="ov">SA</span></dt><dd>${sgn(SA)} cm</dd>`;
+    v += `<dt>Taille <span class="ov">AB</span></dt><dd>${fmt(st.AB)} cm</dd>`;
     v += `<dt>Image <span class="ov">SA′</span></dt><dd>${atInf ? "∞" : sgn(SAp) + " cm"}</dd>`;
+    v += `<dt>Taille <span class="ov">A′B′</span></dt><dd>${atInf ? "—" : sgn(ABp, 2) + " cm"}</dd>`;
     v += `<dt>Grandissement γ</dt><dd>${atInf ? "—" : sgn(gam, 2)}</dd>`;
     document.getElementById("ro-mir-vals").innerHTML = v;
 
