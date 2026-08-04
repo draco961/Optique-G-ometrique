@@ -233,12 +233,14 @@ function defs(id) {
 (function () {
   const svg = document.getElementById("sv-lens");
   if (!svg) return;   /* banc absent de cette page */
-  const st = { OA: -30, fp: 10, conv: true };
-  const Ox = 400, y0 = 195, HOBJ = 52, CLIP = { x1: 4, y1: 4, x2: 796, y2: 396 };
+  const st = { OA: -30, fp: 10, AB: 3, conv: true };
+  const Ox = 400, y0 = 195, CLIP = { x1: 4, y1: 4, x2: 796, y2: 396 };
 
-  const cOA = document.getElementById("c-oa"), cFP = document.getElementById("c-fp");
+  const cOA = document.getElementById("c-oa"), cFP = document.getElementById("c-fp"),
+        cAB = document.getElementById("c-ab");
   cOA.addEventListener("input", e => { st.OA = +e.target.value; render(); });
   cFP.addEventListener("input", e => { st.fp = +e.target.value; render(); });
+  cAB.addEventListener("input", e => { st.AB = +e.target.value; render(); });
   document.getElementById("c-lenstype").addEventListener("change", e => {
     st.conv = e.target.value === "conv"; render();
   });
@@ -287,8 +289,10 @@ function defs(id) {
     scale = Math.max(0.4, Math.min(26, 372 / ext));
     const X = cm => Ox + cm * scale;
 
+    /* hauteur dessinée : 3 cm ↔ 52 px de référence, bornée pour rester lisible */
+    const hObj = Math.max(12, Math.min(130, st.AB * 52 / 3));
     const xA = X(OA), xFp = X(fp), xF = X(-fp);
-    const B = { x: xA, y: y0 - HOBJ };
+    const B = { x: xA, y: y0 - hObj };
 
     let g = defs("ln");
     /* axis */
@@ -320,7 +324,7 @@ function defs(id) {
     g += DOT(xA, y0, "dot-obj", 4);
     g += T(xA - 10, y0 - 7, "A", "pt-obj", "end");
     g += T(B.x, B.y - 12, "B", "pt-obj");
-    g += HANDLE(xA, y0 - HOBJ / 2);
+    g += HANDLE(xA, y0 - hObj / 2);
 
     /* ---- the three construction rays ---- */
     let rays = "";
@@ -355,7 +359,7 @@ function defs(id) {
       g += T(640, y0 - 110, "image à l'infini", "tag-b", "middle");
     } else {
       const xAp = X(OAp);
-      let hp = gam * HOBJ, clamped = false;
+      let hp = gam * hObj, clamped = false;
       if (Math.abs(hp) > 168) { hp = Math.sign(hp) * 168; clamped = true; }
       const real = OAp > 0;
       const onScreen = xAp > 8 && xAp < 792;
@@ -382,18 +386,25 @@ function defs(id) {
     /* ---- readouts ---- */
     document.getElementById("v-oa").textContent = sgn(OA) + " cm";
     document.getElementById("v-fp").textContent = sgn(fp) + " cm";
+    document.getElementById("v-ab").textContent = fmt(st.AB) + " cm";
 
+    const ABp = atInf ? null : gam * st.AB;
     let c = `<div class="step">1/OA′ − 1/OA = 1/f′</div>`;
     c += `<div class="step">1/OA′ = 1/(${sgn(fp)}) + 1/(${sgn(OA)})</div>`;
     c += `<div class="step">1/OA′ = ${fmt(invOAp, 4)} cm⁻¹</div>`;
     c += atInf
       ? `<div class="step">OA′ → <b>∞</b></div>`
       : `<div class="step">OA′ = <b>${sgn(OAp)} cm</b></div>`;
-    if (!atInf) c += `<div class="step">γ = OA′/OA = <b>${sgn(gam, 2)}</b></div>`;
+    if (!atInf) {
+      c += `<div class="step">γ = OA′/OA = <b>${sgn(gam, 2)}</b></div>`;
+      c += `<div class="step">A′B′ = γ × AB = <b>${sgn(ABp, 2)} cm</b></div>`;
+    }
     document.getElementById("ro-lens-calc").innerHTML = c;
 
     let v = `<dt>Objet <span class="ov">OA</span></dt><dd>${sgn(OA)} cm</dd>`;
+    v += `<dt>Taille <span class="ov">AB</span></dt><dd>${fmt(st.AB)} cm</dd>`;
     v += `<dt>Image <span class="ov">OA′</span></dt><dd>${atInf ? "∞" : sgn(OAp) + " cm"}</dd>`;
+    v += `<dt>Taille <span class="ov">A′B′</span></dt><dd>${atInf ? "—" : sgn(ABp, 2) + " cm"}</dd>`;
     v += `<dt>Grandissement γ</dt><dd>${atInf ? "—" : sgn(gam, 2)}</dd>`;
     v += `<dt>Vergence C</dt><dd>${sgn(100 / fp, 2)} δ</dd>`;
     document.getElementById("ro-lens-vals").innerHTML = v;
